@@ -4,7 +4,7 @@ import 'template_one/data.dart';
 class TemplateOne extends StatelessWidget{
 
 //class TemplateOne extends StatelessWidget {
-  const TemplateOne({super.key})
+  const TemplateOne({super.key});
 
   @override
   Widget build(BuildContext context) {

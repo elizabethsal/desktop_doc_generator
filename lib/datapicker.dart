@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 
-class DataPicker {
-
-  void showDataPickerData(){
+class DataPicker extends StatelessWidget {
+  void showDataPickerData(BuildContext context) {
     showDatePicker(
-        context: context,
-        initialDate: DateTime.now(),
-        firstDate: DateTime(1940),
-        lastDate: DateTime(2030),
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(1940),
+      lastDate: DateTime(2030),
     );
   }
 
@@ -16,11 +15,13 @@ class DataPicker {
     return Scaffold(
         body: Center(
             child: MaterialButton(
-      onPressed: showDataPickerData,
-      child: const Padding(
-        padding: EdgeInsets.all(10),
-        child:  Text('Выберите дату', style: TextStyle(color: Colors.white, fontSize: 10)),
-      )
-    )));
+                onPressed: () {
+                  showDataPickerData(context);
+                },
+                child: const Padding(
+                  padding: EdgeInsets.all(10),
+                  child: Text('Выберите дату',
+                      style: TextStyle(color: Colors.white, fontSize: 10)),
+                ))));
   }
 }
