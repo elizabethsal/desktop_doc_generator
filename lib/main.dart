@@ -1,8 +1,4 @@
-import 'dart:html';
-
-import 'package:desktop_doc_generator/TemplateOne.dart';
 import 'package:flutter/material.dart';
-import 'template_one/data.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,14 +9,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String appTitle = 'Doc Generator';
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: appTitle,
       theme: ThemeData(
         colorScheme:
             ColorScheme.fromSeed(seedColor: Colors.deepPurple.shade400),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Doc Generator'),
+      home: MyHomePage(title: appTitle),
     );
   }
 }
@@ -35,20 +32,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
-    List<String> testList = [];
-    testList.add("first");
-    TemplateOne();
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -58,18 +43,13 @@ class _MyHomePageState extends State<MyHomePage> {
         children: [
           Expanded(
             child: Container(
-              /*    decoration: BoxDecoration(
-                border: Border.all(color: Colors.black, width: 1.0),
-              ),
-
-           */
               color: Colors.deepPurple[50],
-              child: const Column(
+              child: Column(
                 children: [
-                  Text(
-                    "Template 1",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
-                  ),
+                  TemplateListItem(title: "Template1", onTap: (title) {
+                    print("Clicked template $title");
+                    //TODO onClick action
+                  })
                 ],
               ),
             ),
@@ -80,12 +60,24 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
       ),
+    );
+  }
+}
 
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+class TemplateListItem extends StatelessWidget {
+  const TemplateListItem({super.key, required this.onTap, required this.title});
+
+  final Function(String title) onTap;
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () => onTap(title),
+      child: Text(
+        title,
+        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+      ),
     );
   }
 }
