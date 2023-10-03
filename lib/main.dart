@@ -1,3 +1,4 @@
+import 'package:desktop_doc_generator/template_one.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -34,6 +35,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
+    Widget currentScreen = ContentTemplateOne();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -58,6 +60,22 @@ class _MyHomePageState extends State<MyHomePage> {
             flex: 2,
             child: Container(color: Colors.white),
           ),
+          Expanded(
+            child: Container(
+              color: Colors.deepPurple[50],
+              child: const Column(
+                children: [
+                  Text(
+                    "Template 1",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+                  )
+                ],
+              ),
+            ),
+          ),
+           Expanded(flex: 2,
+            child: currentScreen,
+          )
         ],
       ),
     );

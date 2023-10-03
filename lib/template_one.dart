@@ -1,44 +1,6 @@
 import 'package:flutter/material.dart';
 import 'template_one/data.dart';
 
-class TemplateOne extends StatelessWidget {
-  const TemplateOne({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(title: const Text("Template 1")),
-        body: Row(
-          children: [
-          Material(
-          color: Colors.transparent,
-          child: InkWell(
-            onTap: () {},
-            splashColor: Colors.deepPurple[500],
-            highlightColor: Colors.deepPurple[300],
-          ),
-        ),
-        Expanded(
-          child: Container(
-            color: Colors.deepPurple[50],
-            child: const Column(
-              children: [
-                Text(
-                  "Template 1",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
-                )
-              ],
-            ),
-          ),
-        ),
-        const Expanded(flex: 2,
-          child: ContentTemplateOne(),
-        )
-        ],
-    ),
-    );
-  }
-}
 
 class ContentTemplateOne extends StatefulWidget {
   const ContentTemplateOne({super.key});
@@ -88,6 +50,7 @@ class _ContentTemplateOne extends State<ContentTemplateOne> {
               Row(
                 children: [
                   Text(PHONENUMBER),
+
                   SizedBox(width: 5),
                   SizedBox(width: 200, child: TextField())
                 ],
