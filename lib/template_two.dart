@@ -1,15 +1,29 @@
 import 'package:flutter/material.dart';
+import 'main.dart';
 import 'template_one/data.dart';
 
 
-class ContentTemplateTwo extends StatefulWidget{
-  const ContentTemplateTwo({super.key});
+class ContentTemplateTwo extends StatefulWidget implements TemplateInterface{
+
+   ContentTemplateTwo({super.key});
+   _ContentTemplateTwo stateTwo = _ContentTemplateTwo();
+
+
+   @override
+  _ContentTemplateTwo createState() => stateTwo;
 
   @override
-  _ContentTemplateTwo createState() => _ContentTemplateTwo();
+  void createDoc() {
+      stateTwo.createDocState();
+   }
 }
 
   class _ContentTemplateTwo extends State<ContentTemplateTwo>{
+
+    void createDocState(){
+
+    }
+
   @override
   Widget build(BuildContext context) {
   return Container(

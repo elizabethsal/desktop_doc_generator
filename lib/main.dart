@@ -49,6 +49,8 @@ class _MyHomePageState extends State<MyHomePage> {
       default:
         throw UnimplementedError('no templates for $selectedIndex');
     }
+    (page as TemplateInterface).createDoc();
+
     return Scaffold(
       body: Row(
         children: [
@@ -102,3 +104,7 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }*/
+
+abstract class TemplateInterface{
+  void createDoc();
+}
