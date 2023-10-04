@@ -1,4 +1,5 @@
 import 'package:desktop_doc_generator/template_one.dart';
+import 'package:desktop_doc_generator/template_two.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
       title: appTitle,
       theme: ThemeData(
         colorScheme:
-            ColorScheme.fromSeed(seedColor: Colors.deepPurple.shade400),
+            ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
       home: MyHomePage(title: appTitle),
@@ -33,56 +34,58 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  var selectedIndex = 0;
+
   @override
   Widget build(BuildContext context) {
-    Widget currentScreen = ContentTemplateOne();
+    Widget page;
+    switch (selectedIndex) {
+      case 0:
+        page = ContentTemplateOne();
+        break;
+      case 1:
+        page = ContentTemplateTwo();
+        break;
+      default:
+        throw UnimplementedError('no templates for $selectedIndex');
+    }
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
       body: Row(
         children: [
-          Expanded(
-            child: Container(
-              color: Colors.deepPurple[50],
-              child: Column(
-                children: [
-                  TemplateListItem(title: "Template1", onTap: (title) {
-                    print("Clicked template $title");
-                    //TODO onClick action
-                  })
-                ],
-              ),
+          SafeArea(
+            child: NavigationRail(
+              extended: true,
+              destinations: const [
+                NavigationRailDestination(
+                  icon: Icon(Icons.temple_buddhist),
+                  label: Text('Template 1'),
+                ),
+                NavigationRailDestination(
+                  icon: Icon(Icons.temple_buddhist_outlined),
+                  label: Text('Template 2'),
+                ),
+              ],
+              selectedIndex: selectedIndex,
+              onDestinationSelected: (value) {
+                setState(() {
+                  selectedIndex = value;
+                });
+              },
             ),
           ),
           Expanded(
-            flex: 2,
-            child: Container(color: Colors.white),
-          ),
-          Expanded(
             child: Container(
-              color: Colors.deepPurple[50],
-              child: const Column(
-                children: [
-                  Text(
-                    "Template 1",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
-                  )
-                ],
-              ),
+              color: Theme.of(context).colorScheme.primaryContainer,
+              child: page,
             ),
           ),
-           Expanded(flex: 2,
-            child: currentScreen,
-          )
         ],
       ),
     );
   }
 }
 
-class TemplateListItem extends StatelessWidget {
+/*class TemplateListItem extends StatelessWidget {
   const TemplateListItem({super.key, required this.onTap, required this.title});
 
   final Function(String title) onTap;
@@ -98,4 +101,4 @@ class TemplateListItem extends StatelessWidget {
       ),
     );
   }
-}
+}*/
