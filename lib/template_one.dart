@@ -1,6 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'main.dart';
 import 'template_one/data.dart';
+import 'package:docx_template/docx_template.dart';
+
 
 class ContentTemplateOne extends StatefulWidget implements TemplateInterface {
   ContentTemplateOne({super.key});
@@ -31,10 +35,47 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
   String littleMotorica = "";
   String priorityHand = "";
   String mimicMotor = "";
+  String attention = "";
 
 
-  void createDocState(){
+  void createDocState() async{
+  
+    final templateOne = File("/home/daria/Dev/Flutter/desktop_doc_generator/lib/template1.docx");
+    final docx = await DocxTemplate.fromBytes(await templateOne.readAsBytes());
+    
+    //final contentList = <Content> [];
+
+    Content content = Content();
+    content
+    ..add(TextContent("title_doc", HEADER))
+    ..add(TextContent("fio_child", FIOCHILD))
+    ..add(TextContent("fio_child_text", name))
+    ..add(TextContent("date_of_birth", DATEOFBIRTH))
+    ..add(TextContent("date", "дата"))
+    ..add(TextContent("text_name", "ГУО «Ясли-сад №555 г. Бреста»"))
+    ..add(TextContent("text_of_group", GROUPSTSPEC))
+    ..add(TextContent("variabel_of_group", group))
+    ..add(TextContent("home_addres", HOMEADDRES))
+    ..add(TextContent("exact_home_address", "address"))
+    ..add(TextContent("contact_number", PHONENUMBER))
+    ..add(TextContent("phone_number", "text"))
+    ..add(TextContent("family", FAMILY))
+    ..add(TextContent("inf_about_family", "married"))
+    ..add(TextContent("conditions_of_growing", "good"))
+    ..add(TextContent("fio_mother", FIOMOTHER))
+    ..add(TextContent("fio_mother_text", "Sem sem"))
+    ..add(TextContent("date_of_birth_parent", "22001"))
+    ..add(TextContent("mother_date_of_birth", YEAROFBIRTH))
+    ..add(TextContent("education", EDUCATION))
+    ..add(TextContent("exact_education", "high"))
+    ..add(TextContent("help_which_favour", HELP))
+    ..add(TextContent("help_inform", "dcvujnk"));
+
+    final docGenerated = await docx.generate(content);
+    final fileGenerated = File('generated.docx');
+    if (docGenerated != null) await fileGenerated.writeAsBytes(docGenerated);
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -296,6 +337,19 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                       DEVELOPOMENTDELAYS),
                 ],
               ),
+              Row(
+                children: [
+                  Text(ATTENTION),
+                  SizedBox(
+                      height: 100,
+                      child: DropdownMenuItems(
+                        onItemSelected: (String selectedValue) =>
+                        this.attention = selectedValue,
+                        items: ATTENTIONLIST,
+                      ),
+                  ),
+                ],
+              )
             ],
           ),
         ));
