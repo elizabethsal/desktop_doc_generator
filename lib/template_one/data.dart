@@ -32,7 +32,13 @@ const String MIMICALMOTORICA = " Мимическая моторика: ";
 const String DEVELOPOMENTDELAYS =
     " Особенности развития познавательной деятельности ";
 const String ATTENTION = " Внимание: ";
+const String PROIZVOL = "произвольность - ";
+const String USTOICH = " устойчивость - ";
+const String VOLUME = " объем - ";
+
 const String RECOGNITION = " Восприятие: ";
+const String TACTIL = " тактильное -  ";
+
 const String SPACEPREDSTAVLENIE = " Пространственные представления:";
 const String TIMEPREDSTAVLENIE = " Временные представления:";
 const String CONSTRUCTIVEPRACSIS = " Конструктивный праксис:";
@@ -214,7 +220,6 @@ const List<String> PRIORITYHANDITEM = [
   "смешанное преобладание"
 ];
 
-const List<String> ATTENTIONLIST = ["произвольность", "устойчивость", "объем"];
 
 const List<String> RANDOMNESSITEMSATTENTION = [
   "способность к длительному сосредоточению и переключению внимания",
