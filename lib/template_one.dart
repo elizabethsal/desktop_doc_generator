@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'main.dart';
 import 'template_one/data.dart';
 import 'package:docx_template/docx_template.dart';
+import 'package:auto_size_text_field/auto_size_text_field.dart';
+
 
 class ContentTemplateOne extends StatefulWidget implements TemplateInterface {
   ContentTemplateOne({super.key});
@@ -20,6 +22,7 @@ class ContentTemplateOne extends StatefulWidget implements TemplateInterface {
 }
 
 class _ContentTemplateOneState extends State<ContentTemplateOne> {
+
   String name = "";
   String group = "";
   String contact = "";
@@ -63,37 +66,38 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
   String rabotosposp = "";
 
   void createDocState() async {
-    final templateOne = File("lib/template1.docx");
+    final templateOne = File("template.docx");
     final docx = await DocxTemplate.fromBytes(await templateOne.readAsBytes());
 
-    final contentList = <Content>[];
+   /* final contentList = <Content>[];
     final c = PlainContent("value");
     contentList.add(c);
-
+*/
     Content content = Content();
-    content..add(TextContent("title_doc", HEADER))..add(
-        TextContent("fio_child", FIOCHILD))..add(
-        TextContent("fio_child_text", name))..add(
-        TextContent("date_of_birth", DATEOFBIRTH))..add(
-        TextContent("date", "дата"))..add(
-        TextContent("text_name", "ГУО «Ясли-сад №555 г. Бреста»"))..add(
-        TextContent("text_of_group", GROUPSTSPEC))..add(
-        TextContent("variabel_of_group", group))..add(
-        TextContent("home_addres", HOMEADDRES))..add(
-        TextContent("exact_home_address", "address"))..add(
-        TextContent("contact_number", PHONENUMBER))..add(
-        TextContent("phone_number", "text"))..add(
-        TextContent("family", FAMILY))..add(
-        TextContent("inf_about_family", "married"))..add(
-        TextContent("conditions_of_growing", "good"))..add(
-        TextContent("fio_mother", FIOMOTHER))..add(
-        TextContent("fio_mother_text", "Sem sem"))..add(
-        TextContent("date_of_birth_parent", "22001"))..add(
-        TextContent("mother_date_of_birth", YEAROFBIRTH))..add(
-        TextContent("education", EDUCATION))..add(
-        TextContent("exact_education", "high"))..add(
-        TextContent("help_which_favour", HELP))..add(
-        TextContent("help_inform", "dcvujnk"));
+    content
+      ..add(TextContent("title_doc", HEADER))
+      ..add(TextContent("fio_child", FIOCHILD))
+      ..add(TextContent("fio_child_text", name))
+      ..add(TextContent("date_of_birth", DATEOFBIRTH))
+      ..add(TextContent("date", "дата"))
+      ..add(TextContent("text_name", "ГУО «Ясли-сад №555 г. Бреста»"))
+      ..add(TextContent("text_of_group", GROUPSTSPEC))
+      ..add(TextContent("variabel_of_group", group))
+      ..add(TextContent("home_addres", HOMEADDRES))
+      ..add(TextContent("exact_home_address", "address"))
+      ..add(TextContent("contact_number", PHONENUMBER))
+      ..add(TextContent("phone_number", "text"))
+      ..add(TextContent("family", FAMILY))
+      ..add(TextContent("inf_about_family", "married"))
+      ..add(TextContent("conditions_of_growing", "good"))
+      ..add(TextContent("fio_mother", FIOMOTHER))
+      ..add(TextContent("fio_mother_text", "Sem sem"))
+      ..add(TextContent("date_of_birth_parent", "22001"))
+      ..add(TextContent("mother_date_of_birth", YEAROFBIRTH))
+      ..add(TextContent("education", EDUCATION))
+      ..add(TextContent("exact_education", "high"))
+      ..add(TextContent("help_which_favour", HELP))
+      ..add(TextContent("help_inform", "dcvujnk"));
 
     final docGenerated = await docx.generate(content);
     final fileGenerated = File('generated.docx');
@@ -134,7 +138,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     height: 100,
                     child: DropdownMenuItems(
                       onItemSelected: (String selectedValue) =>
-                      this.group = selectedValue,
+                          this.group = selectedValue,
                       items: GROUPOTSPEC,
                     )),
               ],
@@ -202,7 +206,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     height: 100,
                     child: DropdownMenuItems(
                       onItemSelected: (String selectedValue) =>
-                      this.contact = selectedValue,
+                          this.contact = selectedValue,
                       items: CONTACTITEM,
                     )),
               ],
@@ -214,7 +218,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                   height: 100,
                   child: DropdownMenuItems(
                     onItemSelected: (String selectedValue) =>
-                    this.emotions = selectedValue,
+                        this.emotions = selectedValue,
                     items: EMOTIONSiTEM,
                   ),
                 ),
@@ -226,7 +230,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                   height: 100,
                   child: DropdownMenuItems(
                     onItemSelected: (String selectedValue) =>
-                    this.emotionsFon = selectedValue,
+                        this.emotionsFon = selectedValue,
                     items: EMOTIONALFONITEMS,
                   ))
             ]),
@@ -238,7 +242,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     height: 100,
                     child: DropdownMenuItems(
                       onItemSelected: (String selectedValue) =>
-                      this.reactionOnPoochr = selectedValue,
+                          this.reactionOnPoochr = selectedValue,
                       items: REACTIONPOSSHRENIEITEM,
                     )),
                 Text(REACTIONPORICATIEN),
@@ -246,7 +250,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     height: 100,
                     child: DropdownMenuItems(
                       onItemSelected: (String selectedValue) =>
-                      this.reactionOnPoric = selectedValue,
+                          this.reactionOnPoric = selectedValue,
                       items: REACTIONPORICATIENITEM,
                     )),
               ],
@@ -258,7 +262,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     height: 100,
                     child: DropdownMenuItems(
                       onItemSelected: (String selectedValue) =>
-                      this.selfestimate = selectedValue,
+                          this.selfestimate = selectedValue,
                       items: SELFESTIMATEITEM,
                     )),
               ],
@@ -270,7 +274,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     height: 100,
                     child: DropdownMenuItems(
                       onItemSelected: (String selectedValue) =>
-                      this.characterSpec = selectedValue,
+                          this.characterSpec = selectedValue,
                       items: CHARACTERSPECIFICITEM,
                     )),
               ],
@@ -290,7 +294,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     height: 100,
                     child: DropdownMenuItems(
                       onItemSelected: (String selectedValue) =>
-                      this.coordination = selectedValue,
+                          this.coordination = selectedValue,
                       items: COORDINATIONITEM,
                     )),
               ],
@@ -302,7 +306,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     height: 100,
                     child: DropdownMenuItems(
                       onItemSelected: (String selectedValue) =>
-                      this.generalMotorica = selectedValue,
+                          this.generalMotorica = selectedValue,
                       items: GENERALMOTORICAITEM,
                     )),
               ],
@@ -314,7 +318,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     height: 100,
                     child: DropdownMenuItems(
                       onItemSelected: (String selectedValue) =>
-                      this.littleMotorica = selectedValue,
+                          this.littleMotorica = selectedValue,
                       items: GENERALMOTORICAITEM,
                     )),
               ],
@@ -326,7 +330,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     height: 100,
                     child: DropdownMenuItems(
                       onItemSelected: (String selectedValue) =>
-                      this.priorityHand = selectedValue,
+                          this.priorityHand = selectedValue,
                       items: PRIORITYHANDITEM,
                     )),
               ],
@@ -338,7 +342,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     height: 100,
                     child: DropdownMenuItems(
                       onItemSelected: (String selectedValue) =>
-                      this.mimicMotor = selectedValue,
+                          this.mimicMotor = selectedValue,
                       items: MIMICALMOTORICAITEM,
                     )),
               ],
@@ -359,7 +363,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     height: 100,
                     child: DropdownMenuItems(
                       onItemSelected: (String selectedValue) =>
-                      this.proizvol = selectedValue,
+                          this.proizvol = selectedValue,
                       items: RANDOMNESSITEMSATTENTION,
                     )),
                 Text(USTOICH),
@@ -367,7 +371,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     height: 100,
                     child: DropdownMenuItems(
                       onItemSelected: (String selectedValue) =>
-                      this.ustoich = selectedValue,
+                          this.ustoich = selectedValue,
                       items: STABILITYITEMSATTENTION,
                     )),
                 Text(VOLUME),
@@ -375,7 +379,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     height: 100,
                     child: DropdownMenuItems(
                       onItemSelected: (String selectedValue) =>
-                      this.volume = selectedValue,
+                          this.volume = selectedValue,
                       items: VOLUMEITEMSATTENTION,
                     )),
               ],
@@ -387,7 +391,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     height: 100,
                     child: DropdownMenuItems(
                       onItemSelected: (String selectedValue) =>
-                      this.vospr = selectedValue,
+                          this.vospr = selectedValue,
                       items: RECOGNITIONITEM,
                     )),
                 Text(TACTIL),
@@ -395,7 +399,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     height: 100,
                     child: DropdownMenuItems(
                       onItemSelected: (String selectedValue) =>
-                      this.tact = selectedValue,
+                          this.tact = selectedValue,
                       items: RECOGNITIONTACTICALITEM,
                     )),
               ],
@@ -407,7 +411,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     height: 100,
                     child: DropdownMenuItems(
                       onItemSelected: (String selectedValue) =>
-                      this.spacepred = selectedValue,
+                          this.spacepred = selectedValue,
                       items: SPACEPREDSTAVLENIEITEM,
                     )),
               ],
@@ -419,7 +423,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     height: 100,
                     child: DropdownMenuItems(
                       onItemSelected: (String selectedValue) =>
-                      this.timepred = selectedValue,
+                          this.timepred = selectedValue,
                       items: TIMEPREDSTAVLENIEITEM,
                     )),
               ],
@@ -431,7 +435,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     height: 100,
                     child: DropdownMenuItems(
                       onItemSelected: (String selectedValue) =>
-                      this.pracsis = selectedValue,
+                          this.pracsis = selectedValue,
                       items: CONSTRUCTIVEPRACSISITEM,
                     )),
               ],
@@ -443,7 +447,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     height: 100,
                     child: DropdownMenuItems(
                       onItemSelected: (String selectedValue) =>
-                      this.memory = selectedValue,
+                          this.memory = selectedValue,
                       items: MEMORYITEM,
                     )),
               ],
@@ -455,7 +459,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     height: 100,
                     child: DropdownMenuItems(
                       onItemSelected: (String selectedValue) =>
-                      this.imagination = selectedValue,
+                          this.imagination = selectedValue,
                       items: IMAGINATIONITEM,
                     )),
               ],
@@ -467,7 +471,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     height: 100,
                     child: DropdownMenuItems(
                       onItemSelected: (String selectedValue) =>
-                      this.mushlenie = selectedValue,
+                          this.mushlenie = selectedValue,
                       items: THINKINGITEM,
                     )),
               ],
@@ -479,7 +483,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     height: 100,
                     child: DropdownMenuItems(
                       onItemSelected: (String selectedValue) =>
-                      this.sposobyaction = selectedValue,
+                          this.sposobyaction = selectedValue,
                       items: MODESOFACTIONITEM,
                     )),
               ],
@@ -491,7 +495,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     height: 100,
                     child: DropdownMenuItems(
                       onItemSelected: (String selectedValue) =>
-                      this.preoblform = selectedValue,
+                          this.preoblform = selectedValue,
                       items: MODESOFACTIONITEM,
                     )),
               ],
@@ -504,7 +508,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     height: 100,
                     child: DropdownMenuItems(
                       onItemSelected: (String selectedValue) =>
-                      this.analyssyntes = selectedValue,
+                          this.analyssyntes = selectedValue,
                       items: ANALISANDSINTESITEM,
                     )),
                 Text(GENERALIZATION),
@@ -512,7 +516,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     height: 100,
                     child: DropdownMenuItems(
                       onItemSelected: (String selectedValue) =>
-                      this.obobshenie = selectedValue,
+                          this.obobshenie = selectedValue,
                       items: GENERALIZATIONITEM,
                     )),
                 Text(PERENOS),
@@ -520,7 +524,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     height: 100,
                     child: DropdownMenuItems(
                       onItemSelected: (String selectedValue) =>
-                      this.perenos = selectedValue,
+                          this.perenos = selectedValue,
                       items: PERENOSITEM,
                     )),
                 Text(SRAVNENIE),
@@ -528,7 +532,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     height: 100,
                     child: DropdownMenuItems(
                       onItemSelected: (String selectedValue) =>
-                      this.sravnenie = selectedValue,
+                          this.sravnenie = selectedValue,
                       items: SRAVNENIEITEM,
                     )),
                 Text(UPORIADOCHIVANIE),
@@ -536,7 +540,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     height: 100,
                     child: DropdownMenuItems(
                       onItemSelected: (String selectedValue) =>
-                      this.uporiad = selectedValue,
+                          this.uporiad = selectedValue,
                       items: UPORIADOCHIVANIEITEM,
                     )),
               ],
@@ -548,7 +552,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     height: 100,
                     child: DropdownMenuItems(
                       onItemSelected: (String selectedValue) =>
-                      this.resultcorrect = selectedValue,
+                          this.resultcorrect = selectedValue,
                       items: RESULTATIVNOSTITEM,
                     )),
               ],
@@ -560,7 +564,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     height: 100,
                     child: DropdownMenuItems(
                       onItemSelected: (String selectedValue) =>
-                      this.helpusing = selectedValue,
+                          this.helpusing = selectedValue,
                       items: DOZIROVANAYAHELPITEM,
                     )),
               ],
@@ -572,7 +576,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     height: 100,
                     child: DropdownMenuItems(
                       onItemSelected: (String selectedValue) =>
-                      this.characteraction = selectedValue,
+                          this.characteraction = selectedValue,
                       items: CHARACTERDEYATELNOSTIITEM,
                     )),
                 Text(MOTIVATION),
@@ -580,7 +584,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     height: 100,
                     child: DropdownMenuItems(
                       onItemSelected: (String selectedValue) =>
-                      this.motivation = selectedValue,
+                          this.motivation = selectedValue,
                       items: MOTIVATIONITEM,
                     )),
               ],
@@ -593,7 +597,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     height: 100,
                     child: DropdownMenuItems(
                       onItemSelected: (String selectedValue) =>
-                      this.temp = selectedValue,
+                          this.temp = selectedValue,
                       items: TEMPITEM,
                     )),
                 Text(RABOTOSPOSOBNOST),
@@ -601,7 +605,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     height: 100,
                     child: DropdownMenuItems(
                       onItemSelected: (String selectedValue) =>
-                      this.rabotosposp = selectedValue,
+                          this.rabotosposp = selectedValue,
                       items: RABOTOSPOSOBNOSTITEM,
                     )),
               ],
@@ -838,4 +842,5 @@ class DropdownMenuItems extends StatelessWidget {
       }).toList(),
     );
   }
+
 }
