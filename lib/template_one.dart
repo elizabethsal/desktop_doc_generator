@@ -99,7 +99,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
   String teachdefect = "";
 
   void createDocState() async {
-    final templateOne = File("template.docx");
+    final templateOne = File("lib/template.docx");
     final docx = await DocxTemplate.fromBytes(await templateOne.readAsBytes());
 
     /* final contentList = <Content>[];
