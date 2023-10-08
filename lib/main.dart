@@ -87,24 +87,6 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-/*class TemplateListItem extends StatelessWidget {
-  const TemplateListItem({super.key, required this.onTap, required this.title});
-
-  final Function(String title) onTap;
-  final String title;
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () => onTap(title),
-      child: Text(
-        title,
-        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
-      ),
-    );
-  }
-}*/
-
 abstract class TemplateInterface{
   void createDoc();
 }

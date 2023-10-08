@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'main.dart';
 import 'template_one/data.dart';
-import 'package:docx_template/docx_template.dart';
+import 'package:pdf/widgets.dart' as pw;
 import 'package:auto_size_text_field/auto_size_text_field.dart';
 
 class ContentTemplateOne extends StatefulWidget implements TemplateInterface {
@@ -98,43 +98,47 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
   String pedagog = "";
   String teachdefect = "";
 
-  void createDocState() async {
-    final templateOne = File("lib/template.docx");
-    final docx = await DocxTemplate.fromBytes(await templateOne.readAsBytes());
+  void createDocState() {
+    pdfGenerator().then((value) {
+      print('Print');
+    });
+  }
 
-    /* final contentList = <Content>[];
-    final c = PlainContent("value");
-    contentList.add(c);
-*/
-    Content content = Content();
-    content
-      ..add(TextContent("title_doc", HEADER))
-      ..add(TextContent("fio_child", FIOCHILD))
-      ..add(TextContent("fio_child_text", name))
-      ..add(TextContent("date_of_birth", DATEOFBIRTH))
-      ..add(TextContent("date", "дата"))
-      ..add(TextContent("text_name", "ГУО «Ясли-сад №555 г. Бреста»"))
-      ..add(TextContent("text_of_group", GROUPSTSPEC))
-      ..add(TextContent("variabel_of_group", group))
-      ..add(TextContent("home_addres", HOMEADDRES))
-      ..add(TextContent("exact_home_address", "address"))
-      ..add(TextContent("contact_number", PHONENUMBER))
-      ..add(TextContent("phone_number", "text"))
-      ..add(TextContent("family", FAMILY))
-      ..add(TextContent("inf_about_family", "married"))
-      ..add(TextContent("conditions_of_growing", "good"))
-      ..add(TextContent("fio_mother", FIOMOTHER))
-      ..add(TextContent("fio_mother_text", "Sem sem"))
-      ..add(TextContent("date_of_birth_parent", "22001"))
-      ..add(TextContent("mother_date_of_birth", YEAROFBIRTH))
-      ..add(TextContent("education", EDUCATION))
-      ..add(TextContent("exact_education", "high"))
-      ..add(TextContent("help_which_favour", HELP))
-      ..add(TextContent("help_inform", "dcvujnk"));
+  DateTime _yearOfBirthChild = DateTime.now();
+  DateTime _yearOfBirthMother = DateTime.now();
+  DateTime _yearOfBirthFather = DateTime.now();
 
-    final docGenerated = await docx.generate(content);
-    final fileGenerated = File('generated.docx');
-    if (docGenerated != null) await fileGenerated.writeAsBytes(docGenerated);
+
+
+  void selectTime(Function(DateTime selectedTime) onTimeSelected, int minAgeYears) {
+    DateTime currentDate = DateTime.now();
+    DateTime endDate = DateTime(currentDate.year - minAgeYears);
+    showDatePicker(
+      context: context,
+      initialDate: endDate,
+      firstDate: DateTime(1945),
+      lastDate: endDate,
+    ).then((value) {
+      if(value != null){
+        onTimeSelected(value);
+      }
+    });
+
+  }
+
+  Future<void> pdfGenerator() async {
+    final pdf = pw.Document();
+
+    pdf.addPage(
+      pw.Page(
+        build: (pw.Context context) => pw.Center(
+          child: pw.Text('Hello World!'),
+        ),
+      ),
+    );
+
+    final file = File('assets/example.pdf');
+    await file.writeAsBytes(await pdf.save());
   }
 
   late TextEditingController _textEditingControllerOne;
@@ -280,10 +284,43 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     ))
               ],
             ),
-            const Row(
+            Row(
               children: [
-                //date picker
                 Text(YEAROFBIRTH),
+                Text(
+                  _yearOfBirthMother.day.toString(),
+                  style: TextStyle(fontSize: 15),
+                ),
+                Text(_yearOfBirthMother.month.toString(),
+                    style: TextStyle(fontSize: 15)),
+                Text(
+                  _yearOfBirthMother.year.toString(),
+                  style: TextStyle(fontSize: 15),
+                ),
+                SizedBox(
+                  child: Row(
+                    children: [
+                      MaterialButton(
+                        onPressed: () => selectTime((DateTime dateTime){
+                          setState(() {
+                            this._yearOfBirthMother = dateTime;
+                          });
+                        }, 18),
+                        child: Padding(
+                          padding: const EdgeInsets.all(15.0),
+                          child: Text(
+                            "Выберите дату",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 11,
+                            ),
+                          ),
+                        ),
+                        color: Colors.deepPurple,
+                      ),
+                    ],
+                  ),
+                ),
               ],
             ),
             Row(
@@ -303,10 +340,17 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     ))
               ],
             ),
-            const Row(
+            Row(
               children: [
                 //date picker
                 Text(YEAROFBIRTH),
+                /* SizedBox(
+                    height: 100,
+                    child: DatePicker(
+                      onItemSelected: (String selectedValue) =>
+                      this.contact = selectedValue,
+                      items: CONTACTITEM,
+                    ))*/
               ],
             ),
             Row(
@@ -1303,20 +1347,3 @@ class DropdownMenuItems extends StatelessWidget {
     );
   }
 }
-
-/*class DatePicker extends StatelessWidget {
-  DateTime day;
-  DateTime month;
-  DateTime year;
-
-  const DatePicker({
-    super.key, required this.day, required this.month, required this.year
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Date
-  }
-
-
-}*/
