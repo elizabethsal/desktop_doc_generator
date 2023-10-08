@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'main.dart';
 import 'template_one/data.dart';
 import 'package:pdf/widgets.dart' as pw;
@@ -287,15 +288,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
             Row(
               children: [
                 Text(YEAROFBIRTH),
-                Text(
-                  _yearOfBirthMother.day.toString(),
-                  style: TextStyle(fontSize: 15),
-                ),
-                Text(_yearOfBirthMother.month.toString(),
-                    style: TextStyle(fontSize: 15)),
-                Text(
-                  _yearOfBirthMother.year.toString(),
-                  style: TextStyle(fontSize: 15),
+                Text(DateFormat("dd.MM.yyyy").format(_yearOfBirthMother), style: TextStyle(fontSize: 15),
                 ),
                 SizedBox(
                   child: Row(
