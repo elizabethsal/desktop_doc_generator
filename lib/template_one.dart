@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:pdf/pdf.dart';
 import 'main.dart';
@@ -130,10 +131,14 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
   Future<void> pdfGenerator() async {
     final pdf = pw.Document();
 
+    var font = pw.Font.ttf(await rootBundle.load("assets/NotoSerif-Black.ttf"));
+
     pdf.addPage(
       pw.Page(
         build: (pw.Context context) => pw.Center(
-          child: pw.Text('ПШНХДокс'),
+          child: pw.Text('ПШНХДокс',
+              style: pw.TextStyle(
+                  font: font)),
         ),
       ),
     );
