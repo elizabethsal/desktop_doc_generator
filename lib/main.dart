@@ -90,3 +90,28 @@ class _MyHomePageState extends State<MyHomePage> {
 abstract class TemplateInterface{
   void createDoc();
 }
+
+
+
+
+/* pageFormat: PdfPageFormat.a4,
+        build: (pw.Context context){
+          return pw.Container(
+              child: pw.Column(
+              children: [
+               pw.Text(
+              style: pw.TextStyle(fontWeight: pw.FontWeight.bold),
+          textAlign: pw.TextAlign.center,
+          HEADER),
+          pw.Row(children: [
+          pw.Text(style: pw.TextStyle(fontSize: 16), FIOCHILD),
+          pw.SizedBox(width: 5),
+          pw.SizedBox(
+          width: 200 )]),
+          pw.Row(children: [
+          pw.Text(DATEOFBIRTH),
+          pw.Text(
+          DateFormat(DATETIME).format(_yearOfBirthChild),
+          style: pw.TextStyle(fontSize: 15),
+          ),
+          ])]));*/

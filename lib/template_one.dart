@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:pdf/pdf.dart';
 import 'main.dart';
 import 'template_one/data.dart';
 import 'package:pdf/widgets.dart' as pw;
@@ -17,7 +18,7 @@ class ContentTemplateOne extends StatefulWidget implements TemplateInterface {
 
   @override
   void createDoc() {
-    state.createDocState();
+    state.pdfGenerator();
   }
 }
 
@@ -105,13 +106,13 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
     });
   }
 
+
   DateTime _yearOfBirthChild = DateTime.now();
   DateTime _yearOfBirthMother = DateTime.now();
   DateTime _yearOfBirthFather = DateTime.now();
 
-
-
-  void selectTime(Function(DateTime selectedTime) onTimeSelected, int minAgeYears) {
+  void selectTime(
+      Function(DateTime selectedTime) onTimeSelected, int minAgeYears) {
     DateTime currentDate = DateTime.now();
     DateTime endDate = DateTime(currentDate.year - minAgeYears);
     showDatePicker(
@@ -120,11 +121,10 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
       firstDate: DateTime(1945),
       lastDate: endDate,
     ).then((value) {
-      if(value != null){
+      if (value != null) {
         onTimeSelected(value);
       }
     });
-
   }
 
   Future<void> pdfGenerator() async {
@@ -133,7 +133,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
     pdf.addPage(
       pw.Page(
         build: (pw.Context context) => pw.Center(
-          child: pw.Text('Hello World!'),
+          child: pw.Text('ПШНХДокс'),
         ),
       ),
     );
@@ -188,7 +188,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                 textAlign: TextAlign.center,
                 HEADER),
             Row(children: [
-              const Text(FIOCHILD),
+              const Text(style: TextStyle(fontSize: 16), FIOCHILD),
               const SizedBox(width: 5),
               SizedBox(
                   width: 200,
@@ -202,8 +202,36 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     maxLines: 2,
                   ))
             ]),
-            const Row(children: [
+            Row(children: [
               Text(DATEOFBIRTH),
+              Text(
+                DateFormat(DATETIME).format(_yearOfBirthChild),
+                style: TextStyle(fontSize: 15),
+              ),
+              SizedBox(
+                child: Row(
+                  children: [
+                    MaterialButton(
+                      onPressed: () => selectTime((DateTime dateTime) {
+                        setState(() {
+                          this._yearOfBirthChild = dateTime;
+                        });
+                      }, 18),
+                      child: Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: Text(
+                          "Выберите дату",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 11,
+                          ),
+                        ),
+                      ),
+                      color: Colors.deepPurple,
+                    ),
+                  ],
+                ),
+              ),
             ]),
             Row(
               children: [
@@ -288,13 +316,15 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
             Row(
               children: [
                 Text(YEAROFBIRTH),
-                Text(DateFormat("dd.MM.yyyy").format(_yearOfBirthMother), style: TextStyle(fontSize: 15),
+                Text(
+                  DateFormat(DATETIME).format(_yearOfBirthMother),
+                  style: TextStyle(fontSize: 15), // const завести
                 ),
                 SizedBox(
                   child: Row(
                     children: [
                       MaterialButton(
-                        onPressed: () => selectTime((DateTime dateTime){
+                        onPressed: () => selectTime((DateTime dateTime) {
                           setState(() {
                             this._yearOfBirthMother = dateTime;
                           });
@@ -335,15 +365,35 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
             ),
             Row(
               children: [
-                //date picker
                 Text(YEAROFBIRTH),
-                /* SizedBox(
-                    height: 100,
-                    child: DatePicker(
-                      onItemSelected: (String selectedValue) =>
-                      this.contact = selectedValue,
-                      items: CONTACTITEM,
-                    ))*/
+                Text(
+                  DateFormat(DATETIME).format(_yearOfBirthFather),
+                  style: TextStyle(fontSize: 15), // const завести
+                ),
+                SizedBox(
+                  child: Row(
+                    children: [
+                      MaterialButton(
+                        onPressed: () => selectTime((DateTime dateTime) {
+                          setState(() {
+                            this._yearOfBirthFather = dateTime;
+                          });
+                        }, 18),
+                        child: Padding(
+                          padding: const EdgeInsets.all(15.0),
+                          child: Text(
+                            "Выберите дату",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 11,
+                            ),
+                          ),
+                        ),
+                        color: Colors.deepPurple,
+                      ),
+                    ],
+                  ),
+                ),
               ],
             ),
             Row(

@@ -1,6 +1,7 @@
 const String HEADER =
     "ГУО \«Ясли-сад  № 555 г. Бреста\»\nПсихолого-педагогическая характеристика\n\nОбщие сведения";
 const String FIOCHILD = " ФИО ребенка: ";
+const String DATETIME = "dd.MM.yyyy";
 const String DATEOFBIRTH = " Дата рождения: ";
 const String GROUPSTSPEC = " группа ст. спец. ";
 const String HOMEADDRES = " Домашний адрес: ";
