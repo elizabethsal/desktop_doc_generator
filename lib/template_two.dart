@@ -44,7 +44,7 @@ class ContentTemplateTwo extends StatefulWidget implements TemplateInterface{
           ]),
           Row(
             children: [
-              Text(GROUPSTSPEC),
+              Text(GROUP_ST_SPEC),
             ],
           ),
           Row(

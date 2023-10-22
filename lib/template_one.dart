@@ -19,7 +19,7 @@ class ContentTemplateOne extends StatefulWidget implements TemplateInterface {
 
   @override
   void createDoc() {
-    state.pdfGenerator();
+   // state.pdfGenerator();
   }
 }
 
@@ -101,12 +101,11 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
   String pedagog = "";
   String teachdefect = "";
 
-  void createDocState() {
+  /*void createDocState() {
     pdfGenerator().then((value) {
       print('Print');
     });
-  }
-
+  }*/
 
   DateTime _yearOfBirthChild = DateTime.now();
   DateTime _yearOfBirthMother = DateTime.now();
@@ -128,7 +127,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
     });
   }
 
-  Future<void> pdfGenerator() async {
+ /* Future<void> pdfGenerator() async {
     final pdf = pw.Document();
 
     var font = pw.Font.ttf(await rootBundle.load("assets/NotoSerif-Black.ttf"));
@@ -136,50 +135,16 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
     pdf.addPage(
       pw.Page(
         build: (pw.Context context) => pw.Center(
-          child: pw.Text('ПШНХДокс',
-              style: pw.TextStyle(
-                  font: font)),
+          child: pw.Text('ПШНХДокс', style: pw.TextStyle(font: font)),
         ),
       ),
     );
 
     final file = File('assets/example.pdf');
     await file.writeAsBytes(await pdf.save());
-  }
+  }*/
 
-  late TextEditingController _textEditingControllerOne;
-  late TextEditingController _textEditingControllerTwo;
-  late TextEditingController _textEditingControllerThree;
-  late TextEditingController _textEditingControllerFour;
-  late TextEditingController _textEditingControllerFive;
-  late TextEditingController _textEditingControllerSix;
-  late TextEditingController _textEditingControllerSeven;
-  late TextEditingController _textEditingControllerEight;
-  late TextEditingController _textEditingControllerNine;
-  late TextEditingController _textEditingControllerTen;
-  late TextEditingController _textEditingControllerEleven;
-  late TextEditingController _textEditingControllerTwelve;
-  late TextEditingController _textEditingControllerThirteen;
-  late TextEditingController _textEditingControllerFourteen;
-  late TextEditingController _textEditingControllerFifteen;
-  late TextEditingController _textEditingControllerSixsteen;
-  late TextEditingController _textEditingControllerSeventeen;
-  late TextEditingController _textEditingControllerEighteen;
-  late TextEditingController _textEditingControllerNineteen;
-  late TextEditingController _textEditingControllerTwenty;
-  late TextEditingController _textEditingControllerTwentyOne;
-  late TextEditingController _textEditingControllerTwentyTwo;
-  late TextEditingController _textEditingControllerTwentyThree;
-  late TextEditingController _textEditingControllerTwentyFour;
-  late TextEditingController _textEditingControllerTwentyFive;
-  late TextEditingController _textEditingControllerTwentySix;
-  late TextEditingController _textEditingControllerTwentySeven;
-  late TextEditingController _textEditingControllerTwentyEight;
-  late TextEditingController _textEditingControllerTwentyNine;
-  late TextEditingController _textEditingControllerThirty;
-  late TextEditingController _textEditingControllerThirtyOne;
-  late TextEditingController _textEditingControllerThirtyTwo;
-  late TextEditingController _textEditingControllerThirtyThree;
+  List<TextEditingController> textEditingController = [];
 
   @override
   Widget build(BuildContext context) {
@@ -187,343 +152,372 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
       color: Colors.white,
       child: SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-                style: TextStyle(fontWeight: FontWeight.bold),
-                textAlign: TextAlign.center,
-                HEADER),
-            Row(children: [
-              const Text(style: TextStyle(fontSize: 16), FIOCHILD),
-              const SizedBox(width: 5),
-              SizedBox(
-                  width: 200,
-                  child: AutoSizeTextField(
-                    onChanged: (name) {
-                      // сохранить фио в локальной переменной (когда надоперересовать лэйаут надо использовать setState())
-                      // ;
-                      this.name = name;
-                    },
-                    controller: _textEditingControllerOne,
-                    maxLines: 2,
-                  ))
-            ]),
-            Row(children: [
-              Text(DATEOFBIRTH),
-              Text(
-                DateFormat(DATETIME).format(_yearOfBirthChild),
-                style: TextStyle(fontSize: 15),
-              ),
-              SizedBox(
-                child: Row(
-                  children: [
-                    MaterialButton(
-                      onPressed: () => selectTime((DateTime dateTime) {
-                        setState(() {
-                          this._yearOfBirthChild = dateTime;
-                        });
-                      }, 18),
-                      child: Padding(
-                        padding: const EdgeInsets.all(15.0),
-                        child: Text(
-                          "Выберите дату",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 11,
+            SizedBox(
+              height: 120,
+              child: const Text(
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                  textAlign: TextAlign.center,
+                  HEADER),
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  height: 70,
+                  child: Wrap(spacing: 8, children: [
+                    const Text(style: TextStyle(fontSize: 16), FIOCHILD),
+                    SizedBox(
+                      height: 30,
+                      child: AutoSizeTextField(
+                        minWidth: 100,
+                        onChanged: (fioChild) {
+                          setState(() {
+                            name = fioChild;
+                          });
+                        },
+                        fullwidth: false,
+                        controller: textEditingController[0],
+                        maxLines: 2,
+                      ),
+                    ),
+                  ]),
+                ),
+                SizedBox(
+                  height: 90,
+                  child: Wrap(
+                    alignment: WrapAlignment.center, // Align items along their baseline
+                    spacing: 8,
+                    children: [
+                      Text(DATEOFBIRTH),
+                      Text(
+                        DateFormat(DATETIME).format(_yearOfBirthChild),
+                        style: TextStyle(fontSize: 15),
+                      ),
+                      MaterialButton(
+                        onPressed: () => selectTime((DateTime dateTime) {
+                          setState(() {
+                            this._yearOfBirthChild = dateTime;
+                          });
+                        }, 18),
+                        child: Padding(
+                          padding: const EdgeInsets.all(15.0),
+                          child: Text(
+                            "Выберите дату",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 11,
+                            ),
                           ),
                         ),
+                        color: Colors.deepPurple,
                       ),
-                      color: Colors.deepPurple,
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: 50,
+                  child: Wrap(
+                    children: [
+                      const Text(GROUP_ST_SPEC),
+                      SizedBox(
+                          height: 100,
+                          child: DropdownMenuItems(
+                            onItemSelected: (String selectedValue) =>
+                                this.group = selectedValue,
+                            items: GROUP_OT_SPEC_ITEMS,
+                          )),
+                    ],
+                  ),
+                ),
+                Wrap(
+                  children: [
+                    Text(HOMEADDRES),
+                    SizedBox(width: 5),
+                    SizedBox(
+                        width: 500,
+                        child: AutoSizeTextField(
+                          onChanged: (hmadress) {
+                            setState(() {
+                              homeaddress = hmadress;
+                            });
+                          },
+                          controller: textEditingController[1],
+                          maxLines: 2,
+                        ))
+                  ],
+                ),
+                Wrap(
+                  children: [
+                    Text(PHONENUMBER),
+                    SizedBox(width: 5),
+                    SizedBox(
+                        width: 200,
+                        child: AutoSizeTextField(
+                          onChanged: (contctphone) {
+                            setState(() {
+                              contactphone = contctphone;
+                            });
+                          },
+                          controller: textEditingController[2],
+                          maxLines: 2,
+                        ))
+                  ],
+                ),
+                Wrap(
+                  children: [
+                    Text(FAMILY),
+                    SizedBox(width: 5),
+                    SizedBox(
+                        width: 200,
+                        child: AutoSizeTextField(
+                          onChanged: (familyMemb) {
+                            setState(() {
+                              family = familyMemb;
+                            });
+                          },
+                          controller: textEditingController[3],
+                          maxLines: 2,
+                        ))
+                  ],
+                ),
+                Wrap(
+                  children: [
+                    Text(FIOMOTHER),
+                    SizedBox(width: 5),
+                    SizedBox(
+                        width: 200,
+                        child: AutoSizeTextField(
+                          onChanged: (fio_Mother) {
+                            setState(() {
+                              fioMother = fio_Mother;
+                            });
+                          },
+                          controller: textEditingController[4],
+                          maxLines: 2,
+                        ))
+                  ],
+                ),
+                Wrap(
+                  children: [
+                    Text(YEAROFBIRTH),
+                    Text(
+                      DateFormat(DATETIME).format(_yearOfBirthMother),
+                      style: TextStyle(fontSize: 15), // const завести
+                    ),
+                    SizedBox(
+                      child: Wrap(
+                        children: [
+                          MaterialButton(
+                            onPressed: () => selectTime((DateTime dateTime) {
+                              setState(() {
+                                this._yearOfBirthMother = dateTime;
+                              });
+                            }, 18),
+                            child: Padding(
+                              padding: const EdgeInsets.all(15.0),
+                              child: Text(
+                                "Выберите дату",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 11,
+                                ),
+                              ),
+                            ),
+                            color: Colors.deepPurple,
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
-              ),
-            ]),
-            Row(
-              children: [
-                const Text(GROUPSTSPEC),
-                SizedBox(
-                    height: 100,
-                    child: DropdownMenuItems(
-                      onItemSelected: (String selectedValue) =>
-                          this.group = selectedValue,
-                      items: GROUPOTSPEC,
-                    )),
-              ],
-            ),
-            Row(
-              children: [
-                Text(HOMEADDRES),
-                SizedBox(width: 5),
-                SizedBox(
-                    width: 500,
-                    child: AutoSizeTextField(
-                      onChanged: (homeaddress) {
-                        // сохранить фио в локальной переменной (когда надоперересовать лэйаут надо использовать setState())
-                        // ;
-                        this.homeaddress = homeaddress;
-                      },
-                      controller: _textEditingControllerTwo,
-                      maxLines: 2,
-                    ))
-              ],
-            ),
-            Row(
-              children: [
-                Text(PHONENUMBER),
-                SizedBox(width: 5),
-                SizedBox(
-                    width: 200,
-                    child: AutoSizeTextField(
-                      onChanged: (contactphone) {
-                        // сохранить фио в локальной переменной (когда надоперересовать лэйаут надо использовать setState())
-                        // ;
-                        this.contactphone = contactphone;
-                      },
-                      controller: _textEditingControllerThree,
-                      maxLines: 2,
-                    ))
-              ],
-            ),
-            Row(
-              children: [
-                Text(FAMILY),
-                SizedBox(width: 5),
-                SizedBox(
-                    width: 200,
-                    child: AutoSizeTextField(
-                      onChanged: (family) {
-                        // сохранить фио в локальной переменной (когда надоперересовать лэйаут надо использовать setState())
-                        // ;
-                        this.family = family;
-                      },
-                      controller: _textEditingControllerFour,
-                      maxLines: 2,
-                    ))
-              ],
-            ),
-            Row(
-              children: [
-                Text(FIOMOTHER),
-                SizedBox(width: 5),
-                SizedBox(
-                    width: 200,
-                    child: AutoSizeTextField(
-                      onChanged: (fioMother) {
-                        // сохранить фио в локальной переменной (когда надоперересовать лэйаут надо использовать setState())
-                        // ;
-                        this.fioMother = fioMother;
-                      },
-                      controller: _textEditingControllerFive,
-                      maxLines: 2,
-                    ))
-              ],
-            ),
-            Row(
-              children: [
-                Text(YEAROFBIRTH),
-                Text(
-                  DateFormat(DATETIME).format(_yearOfBirthMother),
-                  style: TextStyle(fontSize: 15), // const завести
+                Wrap(
+                  children: [
+                    Text(FIOFATHER),
+                    SizedBox(width: 5),
+                    SizedBox(
+                        width: 200,
+                        child: AutoSizeTextField(
+                          onChanged: (fio_Father) {
+                            setState(() {
+                              fioFather = fio_Father;
+                            });
+                          },
+                          controller: textEditingController[5],
+                          maxLines: 2,
+                        ))
+                  ],
                 ),
-                SizedBox(
-                  child: Row(
-                    children: [
-                      MaterialButton(
-                        onPressed: () => selectTime((DateTime dateTime) {
-                          setState(() {
-                            this._yearOfBirthMother = dateTime;
-                          });
-                        }, 18),
-                        child: Padding(
-                          padding: const EdgeInsets.all(15.0),
-                          child: Text(
-                            "Выберите дату",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 11,
+                Wrap(
+                  children: [
+                    Text(YEAROFBIRTH),
+                    Text(
+                      DateFormat(DATETIME).format(_yearOfBirthFather),
+                      style: TextStyle(fontSize: 15), // const завести
+                    ),
+                    SizedBox(
+                      child: Wrap(
+                        children: [
+                          MaterialButton(
+                            onPressed: () => selectTime((DateTime dateTime) {
+                              setState(() {
+                                this._yearOfBirthFather = dateTime;
+                              });
+                            }, 18),
+                            child: Padding(
+                              padding: const EdgeInsets.all(15.0),
+                              child: Text(
+                                "Выберите дату",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 11,
+                                ),
+                              ),
                             ),
+                            color: Colors.deepPurple,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                Wrap(
+                  children: [
+                    Text(EDUCATION),
+                    SizedBox(width: 5),
+                    SizedBox(
+                        width: 200,
+                        child: AutoSizeTextField(
+                          onChanged: (educ) {
+                            setState(() {
+                              education = educ;
+                            });
+                          },
+                          controller: textEditingController[6],
+                          maxLines: 2,
+                        ))
+                  ],
+                ),
+                Wrap(
+                  children: [
+                    Text(HELP),
+                    SizedBox(width: 10),
+                    SizedBox(
+                        width: 300,
+                        child: AutoSizeTextField(
+                          onChanged: (help_using) {
+                            setState(() {
+                              helpusing = help_using;
+                            });
+                          },
+                          controller: textEditingController[7],
+                          maxLines: 2,
+                        ))
+                  ],
+                ),
+              ],
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Wrap(
+                  children: [
+                    Text(
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                        RESULTSPSIX),
+                  ],
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Wrap(
+                      children: [
+                        const Text(CONTACT),
+                        SizedBox(
+                            height: 100,
+                            child: DropdownMenuItems(
+                              onItemSelected: (String selectedValue) =>
+                                  this.contact = selectedValue,
+                              items: CONTACTITEM,
+                            )),
+                      ],
+                    ),
+                    Wrap(
+                      children: [
+                        const Text(EMOTIONS),
+                        SizedBox(
+                          height: 100,
+                          child: DropdownMenuItems(
+                            onItemSelected: (String selectedValue) =>
+                                this.emotions = selectedValue,
+                            items: EMOTIONSiTEM,
                           ),
                         ),
-                        color: Colors.deepPurple,
-                      ),
-                    ],
-                  ),
+                      ],
+                    ),
+                    Wrap(children: [
+                      const Text(EMOTIONALFON),
+                      SizedBox(
+                          height: 100,
+                          child: DropdownMenuItems(
+                            onItemSelected: (String selectedValue) =>
+                                this.emotionsFon = selectedValue,
+                            items: EMOTIONALFONITEMS,
+                          ))
+                    ]),
+                    Wrap(
+                      children: [
+                        const Text(REACTIONFORPOOCHRENIEIPORICANIE),
+                        const Text(REACTIONPOSSHRENIE),
+                        SizedBox(
+                            height: 100,
+                            child: DropdownMenuItems(
+                              onItemSelected: (String selectedValue) =>
+                                  this.reactionOnPoochr = selectedValue,
+                              items: REACTIONPOSSHRENIEITEM,
+                            )),
+                        const Text(REACTIONPORICATIEN),
+                        SizedBox(
+                            height: 100,
+                            child: DropdownMenuItems(
+                              onItemSelected: (String selectedValue) =>
+                                  this.reactionOnPoric = selectedValue,
+                              items: REACTIONPORICATIENITEM,
+                            )),
+                      ],
+                    ),
+                    Wrap(
+                      children: [
+                        const Text(SELFESTIMATE),
+                        SizedBox(
+                            height: 100,
+                            child: DropdownMenuItems(
+                              onItemSelected: (String selectedValue) =>
+                                  this.selfestimate = selectedValue,
+                              items: SELFESTIMATEITEM,
+                            )),
+                      ],
+                    ),
+                    Wrap(
+                      children: [
+                        const Text(CHARACTERSPECIFIC),
+                        SizedBox(
+                            height: 100,
+                            child: DropdownMenuItems(
+                              onItemSelected: (String selectedValue) =>
+                                  this.characterSpec = selectedValue,
+                              items: CHARACTERSPECIFICITEM,
+                            )),
+                      ],
+                    ),
+                  ],
                 ),
               ],
             ),
-            Row(
-              children: [
-                Text(FIOFATHER),
-                SizedBox(width: 5),
-                SizedBox(
-                    width: 200,
-                    child: AutoSizeTextField(
-                      onChanged: (fioFather) {
-                        // сохранить фио в локальной переменной (когда надоперересовать лэйаут надо использовать setState())
-                        // ;
-                        this.fioFather = fioFather;
-                      },
-                      controller: _textEditingControllerSix,
-                      maxLines: 2,
-                    ))
-              ],
-            ),
-            Row(
-              children: [
-                Text(YEAROFBIRTH),
-                Text(
-                  DateFormat(DATETIME).format(_yearOfBirthFather),
-                  style: TextStyle(fontSize: 15), // const завести
-                ),
-                SizedBox(
-                  child: Row(
-                    children: [
-                      MaterialButton(
-                        onPressed: () => selectTime((DateTime dateTime) {
-                          setState(() {
-                            this._yearOfBirthFather = dateTime;
-                          });
-                        }, 18),
-                        child: Padding(
-                          padding: const EdgeInsets.all(15.0),
-                          child: Text(
-                            "Выберите дату",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 11,
-                            ),
-                          ),
-                        ),
-                        color: Colors.deepPurple,
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                Text(EDUCATION),
-                SizedBox(width: 5),
-                SizedBox(
-                    width: 200,
-                    child: AutoSizeTextField(
-                      onChanged: (education) {
-                        // сохранить фио в локальной переменной (когда надоперересовать лэйаут надо использовать setState())
-                        // ;
-                        this.education = education;
-                      },
-                      controller: _textEditingControllerSeven,
-                      maxLines: 2,
-                    ))
-              ],
-            ),
-            Row(
-              children: [
-                Text(HELP),
-                SizedBox(width: 10),
-                SizedBox(
-                    width: 300,
-                    child: AutoSizeTextField(
-                      onChanged: (helpusing) {
-                        // сохранить фио в локальной переменной (когда надоперересовать лэйаут надо использовать setState())
-                        // ;
-                        this.helpusing = helpusing;
-                      },
-                      controller: _textEditingControllerEight,
-                      maxLines: 2,
-                    ))
-              ],
-            ),
-            const Row(
-              children: [
-                Text(
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                    RESULTSPSIX),
-              ],
-            ),
-            Row(
-              children: [
-                const Text(CONTACT),
-                SizedBox(
-                    height: 100,
-                    child: DropdownMenuItems(
-                      onItemSelected: (String selectedValue) =>
-                          this.contact = selectedValue,
-                      items: CONTACTITEM,
-                    )),
-              ],
-            ),
-            Row(
-              children: [
-                const Text(EMOTIONS),
-                SizedBox(
-                  height: 100,
-                  child: DropdownMenuItems(
-                    onItemSelected: (String selectedValue) =>
-                        this.emotions = selectedValue,
-                    items: EMOTIONSiTEM,
-                  ),
-                ),
-              ],
-            ),
-            Row(children: [
-              const Text(EMOTIONALFON),
-              SizedBox(
-                  height: 100,
-                  child: DropdownMenuItems(
-                    onItemSelected: (String selectedValue) =>
-                        this.emotionsFon = selectedValue,
-                    items: EMOTIONALFONITEMS,
-                  ))
-            ]),
-            Row(
-              children: [
-                const Text(REACTIONFORPOOCHRENIEIPORICANIE),
-                const Text(REACTIONPOSSHRENIE),
-                SizedBox(
-                    height: 100,
-                    child: DropdownMenuItems(
-                      onItemSelected: (String selectedValue) =>
-                          this.reactionOnPoochr = selectedValue,
-                      items: REACTIONPOSSHRENIEITEM,
-                    )),
-                const Text(REACTIONPORICATIEN),
-                SizedBox(
-                    height: 100,
-                    child: DropdownMenuItems(
-                      onItemSelected: (String selectedValue) =>
-                          this.reactionOnPoric = selectedValue,
-                      items: REACTIONPORICATIENITEM,
-                    )),
-              ],
-            ),
-            Row(
-              children: [
-                const Text(SELFESTIMATE),
-                SizedBox(
-                    height: 100,
-                    child: DropdownMenuItems(
-                      onItemSelected: (String selectedValue) =>
-                          this.selfestimate = selectedValue,
-                      items: SELFESTIMATEITEM,
-                    )),
-              ],
-            ),
-            Row(
-              children: [
-                const Text(CHARACTERSPECIFIC),
-                SizedBox(
-                    height: 100,
-                    child: DropdownMenuItems(
-                      onItemSelected: (String selectedValue) =>
-                          this.characterSpec = selectedValue,
-                      items: CHARACTERSPECIFICITEM,
-                    )),
-              ],
-            ),
-            const Row(
+            Column(),
+            const Wrap(
               children: [
                 Text(
                     textAlign: TextAlign.center,
@@ -531,7 +525,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     STATEOFMOTORSPHERE),
               ],
             ),
-            Row(
+            Wrap(
               children: [
                 const Text(COORDINATION),
                 SizedBox(
@@ -543,7 +537,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     )),
               ],
             ),
-            Row(
+            Wrap(
               children: [
                 const Text(GENERALMOTORICA),
                 SizedBox(
@@ -555,7 +549,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     )),
               ],
             ),
-            Row(
+            Wrap(
               children: [
                 const Text(LITTLEMOTORICA),
                 SizedBox(
@@ -567,7 +561,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     )),
               ],
             ),
-            Row(
+            Wrap(
               children: [
                 const Text(PRIORITYHAND),
                 SizedBox(
@@ -579,7 +573,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     )),
               ],
             ),
-            Row(
+            Wrap(
               children: [
                 const Text(MIMICALMOTORICA),
                 SizedBox(
@@ -591,7 +585,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     )),
               ],
             ),
-            const Row(
+            const Wrap(
               children: [
                 Text(
                     textAlign: TextAlign.left,
@@ -599,7 +593,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     DEVELOPOMENTDELAYS),
               ],
             ),
-            Row(
+            Wrap(
               children: [
                 const Text(ATTENTION),
                 const Text(PROIZVOL),
@@ -628,7 +622,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     )),
               ],
             ),
-            Row(
+            Wrap(
               children: [
                 const Text(RECOGNITION),
                 SizedBox(
@@ -648,7 +642,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     )),
               ],
             ),
-            Row(
+            Wrap(
               children: [
                 const Text(SPACEPREDSTAVLENIE),
                 SizedBox(
@@ -660,7 +654,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     )),
               ],
             ),
-            Row(
+            Wrap(
               children: [
                 const Text(TIMEPREDSTAVLENIE),
                 SizedBox(
@@ -672,7 +666,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     )),
               ],
             ),
-            Row(
+            Wrap(
               children: [
                 const Text(CONSTRUCTIVEPRACSIS),
                 SizedBox(
@@ -684,7 +678,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     )),
               ],
             ),
-            Row(
+            Wrap(
               children: [
                 const Text(MEMORY),
                 SizedBox(
@@ -696,7 +690,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     )),
               ],
             ),
-            Row(
+            Wrap(
               children: [
                 const Text(IMAGINATION),
                 SizedBox(
@@ -708,7 +702,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     )),
               ],
             ),
-            Row(
+            Wrap(
               children: [
                 const Text(THINKING),
                 SizedBox(
@@ -720,7 +714,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     )),
               ],
             ),
-            Row(
+            Wrap(
               children: [
                 const Text(MODESOFACTION),
                 SizedBox(
@@ -732,7 +726,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     )),
               ],
             ),
-            Row(
+            Wrap(
               children: [
                 const Text(PREDOMINANTFORMOFTHINKING),
                 SizedBox(
@@ -744,7 +738,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     )),
               ],
             ),
-            Row(
+            Wrap(
               children: [
                 const Text(OPERATIONSTORONA),
                 const Text(ANALISANDSINTES),
@@ -789,7 +783,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     )),
               ],
             ),
-            Row(
+            Wrap(
               children: [
                 const Text(RESULTATIVNOST),
                 SizedBox(
@@ -801,7 +795,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     )),
               ],
             ),
-            Row(
+            Wrap(
               children: [
                 const Text(DOZIROVANAYAHELP),
                 SizedBox(
@@ -813,7 +807,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     )),
               ],
             ),
-            Row(
+            Wrap(
               children: [
                 const Text(CHARACTERDEYATELNOSTI),
                 SizedBox(
@@ -833,7 +827,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     )),
               ],
             ),
-            Row(
+            Wrap(
               children: [
                 const Text(TEMPACTIVITYRABOTOSPOSOBNOST),
                 const Text(TEMP),
@@ -854,7 +848,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     )),
               ],
             ),
-            const Row(
+            const Wrap(
               children: [
                 Text(
                     style: TextStyle(fontWeight: FontWeight.bold),
@@ -862,194 +856,194 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     OSOBENNOTIRECHEVOGO),
               ],
             ),
-            Row(
+            Wrap(
               children: [
                 Text(IMPRESSIONSPEECH),
                 SizedBox(width: 5),
                 SizedBox(
                     width: 200,
                     child: AutoSizeTextField(
-                      onChanged: (impressivespeech) {
-                        // сохранить фио в локальной переменной (когда надоперересовать лэйаут надо использовать setState())
-                        // ;
-                        this.impressivespech = impressivespech;
+                      onChanged: (impressive_speech) {
+                        setState(() {
+                          impressivespech = impressive_speech;
+                        });
                       },
-                      controller: _textEditingControllerNine,
+                      controller: textEditingController[8],
                       maxLines: 2,
                     ))
               ],
             ),
-            Row(
+            Wrap(
               children: [
                 Text(EKSPRESSIONSPEECH),
                 SizedBox(width: 5),
                 SizedBox(
                     width: 200,
                     child: AutoSizeTextField(
-                      onChanged: (ekspressivespech) {
-                        // сохранить фио в локальной переменной (когда надоперересовать лэйаут надо использовать setState())
-                        // ;
-                        this.ekspressivespech = ekspressivespech;
+                      onChanged: (ekspressive_speech) {
+                        setState(() {
+                          ekspressivespech = ekspressive_speech;
+                        });
                       },
-                      controller: _textEditingControllerTen,
+                      controller: textEditingController[9],
                       maxLines: 2,
                     ))
               ],
             ),
-            Row(
+            Wrap(
               children: [
                 Text(DICTIONARY),
                 SizedBox(width: 5),
                 SizedBox(
                     width: 200,
                     child: AutoSizeTextField(
-                      onChanged: (vocab) {
-                        // сохранить фио в локальной переменной (когда надоперересовать лэйаут надо использовать setState())
-                        // ;
-                        this.vocab = vocab;
+                      onChanged: (vocabular) {
+                        setState(() {
+                          vocab = vocabular;
+                        });
                       },
-                      controller: _textEditingControllerEleven,
+                      controller: textEditingController[10],
                       maxLines: 2,
                     ))
               ],
             ),
-            Row(
+            Wrap(
               children: [
                 Text(SLOGSTRUCTURE),
                 SizedBox(width: 5),
                 SizedBox(
                     width: 200,
                     child: AutoSizeTextField(
-                      onChanged: (slogstructure) {
-                        // сохранить фио в локальной переменной (когда надоперересовать лэйаут надо использовать setState())
-                        // ;
-                        this.slogstructure = slogstructure;
+                      onChanged: (slog_structure) {
+                        setState(() {
+                          slogstructure = slog_structure;
+                        });
                       },
-                      controller: _textEditingControllerEight,
+                      controller: textEditingController[11],
                       maxLines: 2,
                     ))
               ],
             ),
-            Row(
+            Wrap(
               children: [
                 Text(GRAMMATICALSTROY),
                 SizedBox(width: 5),
                 SizedBox(
                     width: 200,
                     child: AutoSizeTextField(
-                      onChanged: (grammarstroy) {
-                        // сохранить фио в локальной переменной (когда надоперересовать лэйаут надо использовать setState())
-                        // ;
-                        this.grammarstroy = grammarstroy;
+                      onChanged: (grammar_stroy) {
+                        setState(() {
+                          grammarstroy = grammar_stroy;
+                        });
                       },
-                      controller: _textEditingControllerTwelve,
+                      controller: textEditingController[12],
                       maxLines: 2,
                     ))
               ],
             ),
-            Row(
+            Wrap(
               children: [
                 Text(SVYASNAYASPEECH),
                 SizedBox(width: 5),
                 SizedBox(
                     width: 200,
                     child: AutoSizeTextField(
-                      onChanged: (svyasnayaspeech) {
-                        // сохранить фио в локальной переменной (когда надоперересовать лэйаут надо использовать setState())
-                        // ;
-                        this.svyasnayaspeech = svyasnayaspeech;
+                      onChanged: (svyasnaya_speech) {
+                        setState(() {
+                          svyasnayaspeech = svyasnaya_speech;
+                        });
                       },
-                      controller: _textEditingControllerThirteen,
+                      controller: textEditingController[13],
                       maxLines: 2,
                     ))
               ],
             ),
-            Row(
+            Wrap(
               children: [
                 Text(SOUNDPROIZNOSHENIE),
                 SizedBox(width: 5),
                 SizedBox(
                     width: 200,
                     child: AutoSizeTextField(
-                      onChanged: (voicespeech) {
-                        // сохранить фио в локальной переменной (когда надоперересовать лэйаут надо использовать setState())
-                        // ;
-                        this.voicespeech = voicespeech;
+                      onChanged: (voice_speech) {
+                        setState(() {
+                          voicespeech = voice_speech;
+                        });
                       },
-                      controller: _textEditingControllerFourteen,
+                      controller: textEditingController[14],
                       maxLines: 2,
                     ))
               ],
             ),
-            Row(
+            Wrap(
               children: [
                 Text(ARTICULATION),
                 SizedBox(width: 5),
                 SizedBox(
                     width: 200,
                     child: AutoSizeTextField(
-                      onChanged: (artikul) {
-                        // сохранить фио в локальной переменной (когда надоперересовать лэйаут надо использовать setState())
-                        // ;
-                        this.artikul = artikul;
+                      onChanged: (artikul_) {
+                        setState(() {
+                          artikul = artikul_;
+                        });
                       },
-                      controller: _textEditingControllerFifteen,
+                      controller: textEditingController[15],
                       maxLines: 2,
                     ))
               ],
             ),
-            Row(
+            Wrap(
               children: [
                 Text(ARTICULATIONMOTORICA),
                 SizedBox(width: 5),
                 SizedBox(
                     width: 200,
                     child: AutoSizeTextField(
-                      onChanged: (artikulmotor) {
-                        // сохранить фио в локальной переменной (когда надоперересовать лэйаут надо использовать setState())
-                        // ;
-                        this.artikulmotor = artikulmotor;
+                      onChanged: (artikul_motor) {
+                        setState(() {
+                          artikulmotor = artikul_motor;
+                        });
                       },
-                      controller: _textEditingControllerSixsteen,
+                      controller: textEditingController[16],
                       maxLines: 2,
                     ))
               ],
             ),
-            Row(
+            Wrap(
               children: [
                 Text(GOLOSOOBRAZOVANIE),
                 SizedBox(width: 5),
                 SizedBox(
                     width: 200,
                     child: AutoSizeTextField(
-                      onChanged: (voiceandbreathe) {
-                        // сохранить фио в локальной переменной (когда надоперересовать лэйаут надо использовать setState())
-                        // ;
-                        this.voiceandbreathe = voiceandbreathe;
+                      onChanged: (voice_and_breathe) {
+                        setState(() {
+                          voiceandbreathe = voice_and_breathe;
+                        });
                       },
-                      controller: _textEditingControllerSeventeen,
+                      controller: textEditingController[17],
                       maxLines: 2,
                     ))
               ],
             ),
-            Row(
+            Wrap(
               children: [
                 Text(FONEMATICSOUND),
                 SizedBox(width: 5),
                 SizedBox(
                     width: 200,
                     child: AutoSizeTextField(
-                      onChanged: (phonematic) {
-                        // сохранить фио в локальной переменной (когда надоперересовать лэйаут надо использовать setState())
-                        // ;
-                        this.phonematic = phonematic;
+                      onChanged: (phonematic_) {
+                        setState(() {
+                          phonematic = phonematic_;
+                        });
                       },
-                      controller: _textEditingControllerEighteen,
+                      controller: textEditingController[18],
                       maxLines: 2,
                     ))
               ],
             ),
-            const Row(
+            const Wrap(
               children: [
                 Text(
                     style: TextStyle(fontWeight: FontWeight.bold),
@@ -1057,24 +1051,24 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     OSOBENNOSTIRAZVITIEGAMING),
               ],
             ),
-            Row(
+            Wrap(
               children: [
                 Text(CHARACTERACTIONWITHTIYS),
                 SizedBox(width: 5),
                 SizedBox(
                     width: 200,
                     child: AutoSizeTextField(
-                      onChanged: (characteractiontoys) {
-                        // сохранить фио в локальной переменной (когда надоперересовать лэйаут надо использовать setState())
-                        // ;
-                        this.characteractiontoys = characteractiontoys;
+                      onChanged: (character_action_toys) {
+                        setState(() {
+                          characteractiontoys = character_action_toys;
+                        });
                       },
-                      controller: _textEditingControllerNineteen,
+                      controller: textEditingController[19],
                       maxLines: 2,
                     ))
               ],
             ),
-            Row(
+            Wrap(
               children: [
                 Text(PROYAVLENIEINTERESA),
                 SizedBox(width: 5),
@@ -1084,12 +1078,12 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                       onChanged: (interesttoys) {
                         this.interesttoys = interesttoys;
                       },
-                      controller: _textEditingControllerTwenty,
+                      controller: textEditingController[20],
                       maxLines: 2,
                     ))
               ],
             ),
-            Row(
+            Wrap(
               children: [
                 Text(ADEKVATNOSTTOYS),
                 SizedBox(width: 5),
@@ -1099,12 +1093,12 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                       onChanged: (adekvatnost) {
                         this.adekvatnost = adekvatnost;
                       },
-                      controller: _textEditingControllerTwentyOne,
+                      controller: textEditingController[21],
                       maxLines: 2,
                     ))
               ],
             ),
-            Row(
+            Wrap(
               children: [
                 Text(USINGPRESMETOV),
                 SizedBox(width: 5),
@@ -1114,12 +1108,12 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                       onChanged: (usingpredm) {
                         this.usingpredm = usingpredm;
                       },
-                      controller: _textEditingControllerTwentyTwo,
+                      controller: textEditingController[22],
                       maxLines: 2,
                     ))
               ],
             ),
-            const Row(
+            const Wrap(
               children: [
                 Text(
                     style: TextStyle(fontWeight: FontWeight.bold),
@@ -1127,7 +1121,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     ADAPTIVEACTION),
               ],
             ),
-            Row(
+            Wrap(
               children: [
                 Text(SELFCATERING),
                 SizedBox(width: 5),
@@ -1137,12 +1131,12 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                       onChanged: (selfcatering) {
                         this.selfcatering = selfcatering;
                       },
-                      controller: _textEditingControllerTwentyThree,
+                      controller: textEditingController[23],
                       maxLines: 2,
                     ))
               ],
             ),
-            Row(
+            Wrap(
               children: [
                 Text(COMMUNICATIONALSKILLS),
                 SizedBox(width: 5),
@@ -1152,12 +1146,12 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                       onChanged: (navyki) {
                         this.navyki = navyki;
                       },
-                      controller: _textEditingControllerTwentyFour,
+                      controller: textEditingController[24],
                       maxLines: 2,
                     ))
               ],
             ),
-            Row(
+            Wrap(
               children: [
                 Text(PREDPOCHITAEMIEACTIVITY),
                 SizedBox(width: 5),
@@ -1167,12 +1161,12 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                       onChanged: (predpochaction) {
                         this.predpochaction = predpochaction;
                       },
-                      controller: _textEditingControllerTwentyFive,
+                      controller: textEditingController[25],
                       maxLines: 2,
                     ))
               ],
             ),
-            const Row(
+            const Wrap(
               children: [
                 Text(
                     style: TextStyle(fontWeight: FontWeight.bold),
@@ -1180,7 +1174,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     LEVELOFSPECIAL),
               ],
             ),
-            Row(
+            Wrap(
               children: [
                 Text(GENERALAWARNESS),
                 SizedBox(width: 5),
@@ -1190,12 +1184,12 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                       onChanged: (generalosv) {
                         this.generalosv = generalosv;
                       },
-                      controller: _textEditingControllerTwentySix,
+                      controller: textEditingController[26],
                       maxLines: 2,
                     ))
               ],
             ),
-            Row(
+            Wrap(
               children: [
                 Text(ELEMENTSOFMATH),
                 SizedBox(width: 5),
@@ -1205,12 +1199,12 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                       onChanged: (elementmath) {
                         this.elementsmath = elementsmath;
                       },
-                      controller: _textEditingControllerTwentySeven,
+                      controller: textEditingController[27],
                       maxLines: 2,
                     ))
               ],
             ),
-            Row(
+            Wrap(
               children: [
                 Text(ZNANIEBUKV),
                 SizedBox(width: 5),
@@ -1220,12 +1214,12 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                       onChanged: (reading) {
                         this.reading = reading;
                       },
-                      controller: _textEditingControllerTwentyEight,
+                      controller: textEditingController[28],
                       maxLines: 2,
                     ))
               ],
             ),
-            Row(
+            Wrap(
               children: [
                 Text(IZOBRAZITELNAYAACTIVITY),
                 SizedBox(width: 5),
@@ -1235,7 +1229,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                       onChanged: (isob) {
                         this.isob = isob;
                       },
-                      controller: _textEditingControllerTwentyNine,
+                      controller: textEditingController[29],
                       maxLines: 2,
                     ))
               ],
@@ -1250,7 +1244,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                       onChanged: (zaved) {
                         this.zaved = zaved;
                       },
-                      controller: _textEditingControllerThirty,
+                      controller: textEditingController[30],
                       maxLines: 2,
                     )),
                 Text(VOSPITATEL),
@@ -1261,7 +1255,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                       onChanged: (vospit) {
                         this.vospit = vospit;
                       },
-                      controller: _textEditingControllerThirtyOne,
+                      controller: textEditingController[31],
                       maxLines: 2,
                     )),
                 Text(PEDAGOGPSIX),
@@ -1272,7 +1266,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                       onChanged: (pedagog) {
                         this.pedagog = pedagog;
                       },
-                      controller: _textEditingControllerThirtyTwo,
+                      controller: textEditingController[32],
                       maxLines: 2,
                     )),
                 Text(TEZHERDEFECT),
@@ -1283,7 +1277,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                       onChanged: (teachdefect) {
                         this.teachdefect = teachdefect;
                       },
-                      controller: _textEditingControllerThirtyThree,
+                      controller: textEditingController[33],
                       maxLines: 2,
                     ))
               ],
@@ -1296,77 +1290,16 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
 
   void initState() {
     super.initState();
-    _textEditingControllerOne = TextEditingController();
-    _textEditingControllerTwo = TextEditingController();
-    _textEditingControllerThree = TextEditingController();
-    _textEditingControllerFour = TextEditingController();
-    _textEditingControllerFive = TextEditingController();
-    _textEditingControllerFive = TextEditingController();
-    _textEditingControllerSix = TextEditingController();
-    _textEditingControllerSeven = TextEditingController();
-    _textEditingControllerEight = TextEditingController();
-    _textEditingControllerNine = TextEditingController();
-    _textEditingControllerTen = TextEditingController();
-    _textEditingControllerEleven = TextEditingController();
-    _textEditingControllerTwelve = TextEditingController();
-    _textEditingControllerThirteen = TextEditingController();
-    _textEditingControllerFourteen = TextEditingController();
-    _textEditingControllerFifteen = TextEditingController();
-    _textEditingControllerSixsteen = TextEditingController();
-    _textEditingControllerSeventeen = TextEditingController();
-    _textEditingControllerEighteen = TextEditingController();
-    _textEditingControllerNineteen = TextEditingController();
-    _textEditingControllerTwenty = TextEditingController();
-    _textEditingControllerTwentyOne = TextEditingController();
-    _textEditingControllerTwentyTwo = TextEditingController();
-    _textEditingControllerTwentyThree = TextEditingController();
-    _textEditingControllerTwentyFour = TextEditingController();
-    _textEditingControllerTwentyFive = TextEditingController();
-    _textEditingControllerTwentySix = TextEditingController();
-    _textEditingControllerTwentySeven = TextEditingController();
-    _textEditingControllerTwentyEight = TextEditingController();
-    _textEditingControllerTwentyNine = TextEditingController();
-    _textEditingControllerThirty = TextEditingController();
-    _textEditingControllerThirtyOne = TextEditingController();
-    _textEditingControllerThirtyTwo = TextEditingController();
-    _textEditingControllerThirtyThree = TextEditingController();
+    for (int i = 0; i < 34; i++) {
+      textEditingController.add(TextEditingController());
+    }
   }
 
   @override
   void dispose() {
-    _textEditingControllerOne?.dispose();
-    _textEditingControllerTwo?.dispose();
-    _textEditingControllerThree?.dispose();
-    _textEditingControllerFour?.dispose();
-    _textEditingControllerFive?.dispose();
-    _textEditingControllerSix?.dispose();
-    _textEditingControllerSeven?.dispose();
-    _textEditingControllerNine?.dispose();
-    _textEditingControllerTen?.dispose();
-    _textEditingControllerEleven?.dispose();
-    _textEditingControllerTwelve?.dispose();
-    _textEditingControllerThirteen?.dispose();
-    _textEditingControllerFourteen.dispose();
-    _textEditingControllerFifteen.dispose();
-    _textEditingControllerSixsteen.dispose();
-    _textEditingControllerSeventeen.dispose();
-    _textEditingControllerEighteen.dispose();
-    _textEditingControllerNineteen.dispose();
-    _textEditingControllerTwenty.dispose();
-    _textEditingControllerTwentyOne.dispose();
-    _textEditingControllerTwentyTwo.dispose();
-    _textEditingControllerTwentyThree.dispose();
-    _textEditingControllerTwentyFour.dispose();
-    _textEditingControllerTwentyFive.dispose();
-    _textEditingControllerTwentySix.dispose();
-    _textEditingControllerTwentySeven.dispose();
-    _textEditingControllerTwentyEight.dispose();
-    _textEditingControllerTwentyNine.dispose();
-    _textEditingControllerThirty.dispose();
-    _textEditingControllerThirtyOne.dispose();
-    _textEditingControllerThirtyTwo.dispose();
-    _textEditingControllerThirtyThree.dispose();
-
+    for (var controller in textEditingController) {
+      controller.dispose();
+    }
     super.dispose();
   }
 }

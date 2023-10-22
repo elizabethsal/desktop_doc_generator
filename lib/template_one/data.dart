@@ -1,9 +1,9 @@
 const String HEADER =
-    "ГУО \«Ясли-сад  № 555 г. Бреста\»\nПсихолого-педагогическая характеристика\n\nОбщие сведения";
+    "ГУО \«Ясли-сад  № 555 г. Бреста\»\nПсихолого-педагогическая характеристика\n\nОбщие сведения\ ";
 const String FIOCHILD = " ФИО ребенка: ";
 const String DATETIME = "dd.MM.yyyy";
 const String DATEOFBIRTH = " Дата рождения: ";
-const String GROUPSTSPEC = " группа ст. спец. ";
+const String GROUP_ST_SPEC = " группа ст. спец. ";
 const String HOMEADDRES = " Домашний адрес: ";
 const String PHONENUMBER = " Конт. телефон ";
 const String FAMILY = " Семья: ";
@@ -110,7 +110,7 @@ const String TEZHERDEFECT = " Учитель-дефектолог ";
 
 
 
-const List<String> GROUPOTSPEC = ["А", "Б", "В", "Г"];
+const List<String> GROUP_OT_SPEC_ITEMS = ["А", "Б", "В", "Г"];
 const List<String> FAMILYITEM = [""]; //*
 
 const List<String> CONTACTITEM = [
