@@ -2,13 +2,13 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:intl/intl.dart';
 import 'package:pdf/widgets.dart' as pw;
 
 import '../common/date_button_with_title.dart';
+import '../common/dropdown_item.dart';
 import '../common/input_field_with_title.dart';
-import '../resources/const.dart';
 import '../main.dart';
+import '../resources/const.dart';
 import 'data.dart';
 
 class ContentTemplateOne extends StatefulWidget implements TemplateInterface {
@@ -162,21 +162,15 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                 //TODO save date
               },
             ),
-            /*SizedBox(
-              height: HEIGHT_SIZEBOX_DROPDOWNMENU,
-              child: Row(
-                children: [
-                  const Text(GROUP_ST_SPEC,
-                      style: TextStyle(fontSize: FONT_TEXT)),
-                  Flexible(
-                      child: DropdownMenuItems(
-                    onItemSelected: (String selectedValue) =>
-                        this.group = selectedValue,
-                    items: GROUP_OT_SPEC_ITEMS,
-                  )),
-                ],
-              ),
-            ),*/
+            DropdownItem<String>(
+              title: GROUP_ST_SPEC,
+              items: GROUP_OT_SPEC_ITEMS,
+              preselectedItem: GROUP_OT_SPEC_ITEMS.first,
+              onItemChose: (item) {
+                //TODO save
+              },
+              getTitle: (item) => item,
+            ),
             InputFieldWithTitle(
               title: HOMEADDRES,
               onTextChanged: (str) {
@@ -233,20 +227,21 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                 //TODO save help
               },
             ),
+            const SizedBox(height: DEFAULT_MARGIN,),
+            const Center(
+              child: Text(
+                style: TextStyle(
+                    fontWeight: FontWeight.bold, fontSize: FONT_HEADER),
+                textAlign: TextAlign.center,
+                RESULTSPSIX,
+              ),
+            ),
           ],
         ),
         /*Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const Wrap(
-                children: [
-                  Text(
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold, fontSize: FONT_HEADER),
-                      RESULTSPSIX),
-                ],
-              ),
+
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -1119,30 +1114,5 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
       controller.dispose();
     }
     super.dispose();
-  }
-}
-
-class DropdownMenuItems extends StatelessWidget {
-  final Function(String selectedValue) onItemSelected;
-  final List<String> items;
-
-  const DropdownMenuItems(
-      {super.key, required this.onItemSelected, required this.items});
-
-  @override
-  Widget build(BuildContext context) {
-    return DropdownMenu<String>(
-      width: 100,
-      initialSelection: items.first,
-      onSelected: (String? value) {
-        if (value != null) {
-          onItemSelected(value);
-        }
-        //  onItemSelected(value ?? ""); //value == 0, то в itemSelected будет пустая строка
-      },
-      dropdownMenuEntries: items.map<DropdownMenuEntry<String>>((String value) {
-        return DropdownMenuEntry<String>(value: value, label: value);
-      }).toList(),
-    );
   }
 }

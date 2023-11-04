@@ -24,7 +24,7 @@ class _DateButtonWithTitleState extends State<DateButtonWithTitle> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: DEFAULT_MARGIN_SMALL),
+      padding: const EdgeInsets.symmetric(vertical: DEFAULT_MARGIN),
       child: Row(
         children: [
           Text(widget.title, style: const TextStyle(fontSize: FONT_TEXT)),
@@ -46,6 +46,7 @@ class _DateButtonWithTitleState extends State<DateButtonWithTitle> {
                 },
                 minAgeYears: widget.minAge);
           }),
+          const SizedBox(width: DEFAULT_MARGIN),
         ],
       ),
     );

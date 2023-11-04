@@ -11,12 +11,17 @@ class InputFieldWithTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: DEFAULT_MARGIN_SMALL),
+      padding: const EdgeInsets.symmetric(vertical: 4.0),
       child: Row(
         children: [
           Text(title, style: const TextStyle(fontSize: FONT_TEXT)),
+          Expanded(child: TextField(
+            style: const TextStyle(fontSize: FONT_TEXT),
+              decoration: InputDecoration(
+                hintStyle: TextStyle(fontSize: FONT_TEXT),
+              ),
+              onChanged: (str) => onTextChanged(str))),
           const SizedBox(width: DEFAULT_MARGIN),
-          Expanded(child: TextField(onChanged: (str) => onTextChanged(str)))
         ],
       ),
     );
