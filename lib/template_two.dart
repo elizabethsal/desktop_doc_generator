@@ -70,7 +70,7 @@ class ContentTemplateTwo extends StatefulWidget implements TemplateInterface{
           ),
           Row(
             children: [
-              Text(FIOMOTHER),
+              Text(MOTHERS_NAME),
               SizedBox(width: 5),
               SizedBox(width: 200, child: TextField())
             ],

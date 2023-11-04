@@ -1,15 +1,16 @@
 const String HEADER =
     "ГУО \«Ясли-сад  № 555 г. Бреста\»\nПсихолого-педагогическая характеристика\n\nОбщие сведения\ ";
+const String CHOOSE_DATE = "Выберите дату";
 const String FIOCHILD = " ФИО ребенка: ";
-const String DATETIME = "dd.MM.yyyy";
+const String BIRTHDATE_FORMAT = "dd.MM.yyyy";
 const String DATEOFBIRTH = " Дата рождения: ";
 const String GROUP_ST_SPEC = " группа ст. спец. ";
 const String HOMEADDRES = " Домашний адрес: ";
 const String PHONENUMBER = " Конт. телефон ";
 const String FAMILY = " Семья: ";
 const String CONDITIONS = " Условия воспитания: ";
-const String FIOMOTHER = " ФИО матери: ";
-const String FIOFATHER = " ФИО отца: ";
+const String MOTHERS_NAME = " ФИО матери: ";
+const String FATHERS_NAME = " ФИО отца: ";
 const String YEAROFBIRTH = " Год рождения: ";
 const String EDUCATION = " Образование: ";
 const String HELP = " Какая помощь была оказана ранее: ";

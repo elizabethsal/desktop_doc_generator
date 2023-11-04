@@ -1,4 +1,4 @@
-import 'package:desktop_doc_generator/template_one.dart';
+import 'package:desktop_doc_generator/template_one/template_one.dart';
 import 'package:desktop_doc_generator/template_two.dart';
 import 'package:flutter/material.dart';
 
@@ -50,11 +50,11 @@ class _MyHomePageState extends State<MyHomePage> {
     }
     (page as TemplateInterface).createDoc();
 
-    return Scaffold(
-      body: Row(
-        children: [
-          SafeArea(
-            child: NavigationRail(
+    return SafeArea(
+      child: Scaffold(
+        body: Row(
+          children: [
+            NavigationRail(
               extended: true,
               destinations: const [
                 NavigationRailDestination(
@@ -73,25 +73,25 @@ class _MyHomePageState extends State<MyHomePage> {
                 });
               },
             ),
-          ),
-          Expanded(
-            child: Container(
-              color: Theme.of(context).colorScheme.primaryContainer,
-              child: page,
+            Expanded(
+              child: Container(
+                color: Theme.of(context).colorScheme.primaryContainer,
+                child: page,
+              ),
             ),
-          ),
-          FloatingActionButton(
-            onPressed: (){
+          ],
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: (){
 
-            },
-            child: const Icon(Icons.download),
-          ),
-        ],
+          },
+          child: const Icon(Icons.download),
+        ),
       ),
-
     );
   }
 }
+
 
 abstract class TemplateInterface {
   void createDoc();
