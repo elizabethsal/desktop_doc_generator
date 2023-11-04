@@ -15,8 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: appTitle,
       theme: ThemeData(
-        colorScheme:
-            ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
       home: MyHomePage(title: appTitle),
@@ -60,11 +59,11 @@ class _MyHomePageState extends State<MyHomePage> {
               destinations: const [
                 NavigationRailDestination(
                   icon: Icon(Icons.temple_buddhist),
-                  label: Text('Template 1'),
+                  label: Text('Шаблон 1'),
                 ),
                 NavigationRailDestination(
                   icon: Icon(Icons.temple_buddhist_outlined),
-                  label: Text('Template 2'),
+                  label: Text('Шаблон 2'),
                 ),
               ],
               selectedIndex: selectedIndex,
@@ -81,37 +80,19 @@ class _MyHomePageState extends State<MyHomePage> {
               child: page,
             ),
           ),
+          FloatingActionButton(
+            onPressed: (){
+
+            },
+            child: const Icon(Icons.download),
+          ),
         ],
       ),
+
     );
   }
 }
 
-abstract class TemplateInterface{
+abstract class TemplateInterface {
   void createDoc();
 }
-
-
-
-
-/* pageFormat: PdfPageFormat.a4,
-        build: (pw.Context context){
-          return pw.Container(
-              child: pw.Column(
-              children: [
-               pw.Text(
-              style: pw.TextStyle(fontWeight: pw.FontWeight.bold),
-          textAlign: pw.TextAlign.center,
-          HEADER),
-          pw.Row(children: [
-          pw.Text(style: pw.TextStyle(fontSize: 16), FIOCHILD),
-          pw.SizedBox(width: 5),
-          pw.SizedBox(
-          width: 200 )]),
-          pw.Row(children: [
-          pw.Text(DATEOFBIRTH),
-          pw.Text(
-          DateFormat(DATETIME).format(_yearOfBirthChild),
-          style: pw.TextStyle(fontSize: 15),
-          ),
-          ])]));*/

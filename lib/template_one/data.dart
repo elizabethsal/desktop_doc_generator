@@ -11,7 +11,7 @@ const String CONDITIONS = " Условия воспитания: ";
 const String FIOMOTHER = " ФИО матери: ";
 const String FIOFATHER = " ФИО отца: ";
 const String YEAROFBIRTH = " Год рождения: ";
-const String EDUCATION = " образование: ";
+const String EDUCATION = " Образование: ";
 const String HELP = " Какая помощь была оказана ранее: ";
 const String RESULTSPSIX =
     "\Результаты психолого-педагогического обследования.\n\n Особенности развития личности и эмоционально-личностной сферы.";

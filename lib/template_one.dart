@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:pdf/pdf.dart';
+import 'const.dart';
 import 'main.dart';
 import 'template_one/data.dart';
 import 'package:pdf/widgets.dart' as pw;
@@ -19,7 +20,7 @@ class ContentTemplateOne extends StatefulWidget implements TemplateInterface {
 
   @override
   void createDoc() {
-   // state.pdfGenerator();
+    // state.pdfGenerator();
   }
 }
 
@@ -101,11 +102,11 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
   String pedagog = "";
   String teachdefect = "";
 
-  /*void createDocState() {
+  void createDocState() {
     pdfGenerator().then((value) {
       print('Print');
     });
-  }*/
+  }
 
   DateTime _yearOfBirthChild = DateTime.now();
   DateTime _yearOfBirthMother = DateTime.now();
@@ -127,7 +128,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
     });
   }
 
- /* Future<void> pdfGenerator() async {
+   Future<void> pdfGenerator() async {
     final pdf = pw.Document();
 
     var font = pw.Font.ttf(await rootBundle.load("assets/NotoSerif-Black.ttf"));
@@ -142,7 +143,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
 
     final file = File('assets/example.pdf');
     await file.writeAsBytes(await pdf.save());
-  }*/
+  }
 
   List<TextEditingController> textEditingController = [];
 
@@ -152,26 +153,28 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
       color: Colors.white,
       child: SingleChildScrollView(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(
-              height: 120,
-              child: const Text(
-                  style: TextStyle(fontWeight: FontWeight.bold),
+             const SizedBox(
+              height: HEIGHT_HEADER_SIZEDBOX,
+              child: Text(
+                  style: TextStyle(fontWeight: FontWeight.bold,
+                  fontSize: FONT_HEADER),
                   textAlign: TextAlign.center,
-                  HEADER),
+                  HEADER,
+              ),
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
-                  height: 70,
+                  height: HEIGHT_TEXT_SIZEBOX,
                   child: Wrap(spacing: 8, children: [
-                    const Text(style: TextStyle(fontSize: 16), FIOCHILD),
+                    const Text(style: TextStyle(fontSize: FONT_TEXT), FIOCHILD),
                     SizedBox(
-                      height: 30,
+                      height: HEIGHT_TEXT_SIZEBOX,
                       child: AutoSizeTextField(
-                        minWidth: 100,
+                        minWidth: MIN_WIDTH_AUTOSIZETEXTFIELD,
                         onChanged: (fioChild) {
                           setState(() {
                             name = fioChild;
@@ -179,50 +182,54 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                         },
                         fullwidth: false,
                         controller: textEditingController[0],
-                        maxLines: 2,
+                        maxLines: MAX_LINES,
                       ),
                     ),
                   ]),
                 ),
                 SizedBox(
-                  height: 90,
-                  child: Wrap(
-                    alignment: WrapAlignment.center, // Align items along their baseline
-                    spacing: 8,
+                  height: HEIGHT_TEXT_SIZEBOX,
+                  child: Row(
                     children: [
-                      Text(DATEOFBIRTH),
+                      const Text(DATEOFBIRTH, style: TextStyle(fontSize: FONT_TEXT)),
                       Text(
                         DateFormat(DATETIME).format(_yearOfBirthChild),
-                        style: TextStyle(fontSize: 15),
+                        style: const TextStyle(fontSize: FONT_TEXT),
                       ),
-                      MaterialButton(
-                        onPressed: () => selectTime((DateTime dateTime) {
-                          setState(() {
-                            this._yearOfBirthChild = dateTime;
-                          });
-                        }, 18),
-                        child: Padding(
-                          padding: const EdgeInsets.all(15.0),
-                          child: Text(
-                            "Выберите дату",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 11,
+                      Flexible(
+                        // Use Flexible to allow the button to take available space
+                        child: Wrap(
+                          children: [
+                            MaterialButton(
+                              onPressed: () => selectTime((DateTime dateTime) {
+                                setState(() {
+                                  this._yearOfBirthChild = dateTime;
+                                });
+                              }, MIN_AGE),
+                              child: const Padding(
+                                padding: EdgeInsets.all(BUTTON_SIZE),
+                                child: Text(
+                                  "Выберите дату",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: FONT_BUTTON,
+                                  ),
+                                ),
+                              ),
+                              color: Colors.deepPurple,
                             ),
-                          ),
+                          ],
                         ),
-                        color: Colors.deepPurple,
                       ),
                     ],
                   ),
                 ),
                 SizedBox(
-                  height: 50,
-                  child: Wrap(
+                  height: HEIGHT_SIZEBOX_DROPDOWNMENU,
+                  child: Row(
                     children: [
-                      const Text(GROUP_ST_SPEC),
-                      SizedBox(
-                          height: 100,
+                      const Text(GROUP_ST_SPEC, style: TextStyle(fontSize: FONT_TEXT)),
+                      Flexible(
                           child: DropdownMenuItems(
                             onItemSelected: (String selectedValue) =>
                                 this.group = selectedValue,
@@ -236,7 +243,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     Text(HOMEADDRES),
                     SizedBox(width: 5),
                     SizedBox(
-                        width: 500,
+                        width: 50,
                         child: AutoSizeTextField(
                           onChanged: (hmadress) {
                             setState(() {
@@ -244,14 +251,14 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                             });
                           },
                           controller: textEditingController[1],
-                          maxLines: 2,
+                          maxLines: MAX_LINES,
                         ))
                   ],
                 ),
                 Wrap(
                   children: [
-                    Text(PHONENUMBER),
-                    SizedBox(width: 5),
+                    const Text(PHONENUMBER, style: TextStyle(fontSize: FONT_TEXT),),
+                    const SizedBox(width: 5),
                     SizedBox(
                         width: 200,
                         child: AutoSizeTextField(
@@ -267,8 +274,8 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                 ),
                 Wrap(
                   children: [
-                    Text(FAMILY),
-                    SizedBox(width: 5),
+                    const Text(FAMILY, style: TextStyle(fontSize: FONT_TEXT)),
+                    const SizedBox(width: 5),
                     SizedBox(
                         width: 200,
                         child: AutoSizeTextField(
@@ -284,8 +291,8 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                 ),
                 Wrap(
                   children: [
-                    Text(FIOMOTHER),
-                    SizedBox(width: 5),
+                    const Text(FIOMOTHER, style: TextStyle(fontSize: FONT_TEXT)),
+                    const SizedBox(width: 5),
                     SizedBox(
                         width: 200,
                         child: AutoSizeTextField(
@@ -301,10 +308,10 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                 ),
                 Wrap(
                   children: [
-                    Text(YEAROFBIRTH),
+                    const Text(YEAROFBIRTH, style: TextStyle(fontSize: FONT_TEXT)),
                     Text(
                       DateFormat(DATETIME).format(_yearOfBirthMother),
-                      style: TextStyle(fontSize: 15), // const завести
+                      style: const TextStyle(fontSize: 15), // const завести
                     ),
                     SizedBox(
                       child: Wrap(
@@ -315,13 +322,13 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                                 this._yearOfBirthMother = dateTime;
                               });
                             }, 18),
-                            child: Padding(
-                              padding: const EdgeInsets.all(15.0),
+                            child: const Padding(
+                              padding: EdgeInsets.all(15.0),
                               child: Text(
                                 "Выберите дату",
                                 style: TextStyle(
                                   color: Colors.white,
-                                  fontSize: 11,
+                                  fontSize: FONT_BUTTON,
                                 ),
                               ),
                             ),
@@ -334,8 +341,8 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                 ),
                 Wrap(
                   children: [
-                    Text(FIOFATHER),
-                    SizedBox(width: 5),
+                    const Text(FIOFATHER,  style: TextStyle(fontSize: FONT_TEXT)),
+                    const SizedBox(width: 5),
                     SizedBox(
                         width: 200,
                         child: AutoSizeTextField(
@@ -351,10 +358,10 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                 ),
                 Wrap(
                   children: [
-                    Text(YEAROFBIRTH),
+                    const Text(YEAROFBIRTH,  style: TextStyle(fontSize: FONT_TEXT)),
                     Text(
                       DateFormat(DATETIME).format(_yearOfBirthFather),
-                      style: TextStyle(fontSize: 15), // const завести
+                      style: const TextStyle(fontSize: FONT_TEXT), // const завести
                     ),
                     SizedBox(
                       child: Wrap(
@@ -365,13 +372,13 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                                 this._yearOfBirthFather = dateTime;
                               });
                             }, 18),
-                            child: Padding(
-                              padding: const EdgeInsets.all(15.0),
+                            child: const Padding(
+                              padding: EdgeInsets.all(15.0),
                               child: Text(
                                 "Выберите дату",
                                 style: TextStyle(
                                   color: Colors.white,
-                                  fontSize: 11,
+                                  fontSize: FONT_BUTTON,
                                 ),
                               ),
                             ),
@@ -384,8 +391,8 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                 ),
                 Wrap(
                   children: [
-                    Text(EDUCATION),
-                    SizedBox(width: 5),
+                    const Text(EDUCATION,  style: TextStyle(fontSize: FONT_TEXT)),
+                    const SizedBox(width: 5),
                     SizedBox(
                         width: 200,
                         child: AutoSizeTextField(
@@ -401,8 +408,8 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                 ),
                 Wrap(
                   children: [
-                    Text(HELP),
-                    SizedBox(width: 10),
+                    const Text(HELP,  style: TextStyle(fontSize: FONT_TEXT)),
+                    const SizedBox(width: 10),
                     SizedBox(
                         width: 300,
                         child: AutoSizeTextField(
@@ -421,11 +428,11 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Wrap(
+                const Wrap(
                   children: [
                     Text(
                         textAlign: TextAlign.center,
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: FONT_HEADER),
                         RESULTSPSIX),
                   ],
                 ),
@@ -434,7 +441,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                   children: [
                     Wrap(
                       children: [
-                        const Text(CONTACT),
+                        const Text(CONTACT,  style: TextStyle(fontSize: FONT_TEXT)),
                         SizedBox(
                             height: 100,
                             child: DropdownMenuItems(
@@ -446,7 +453,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                     ),
                     Wrap(
                       children: [
-                        const Text(EMOTIONS),
+                        const Text(EMOTIONS,  style: TextStyle(fontSize: FONT_TEXT)),
                         SizedBox(
                           height: 100,
                           child: DropdownMenuItems(
@@ -516,7 +523,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                 ),
               ],
             ),
-            Column(),
+            const Column(),
             const Wrap(
               children: [
                 Text(
@@ -858,8 +865,8 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
             ),
             Wrap(
               children: [
-                Text(IMPRESSIONSPEECH),
-                SizedBox(width: 5),
+                const Text(IMPRESSIONSPEECH),
+                const SizedBox(width: 5),
                 SizedBox(
                     width: 200,
                     child: AutoSizeTextField(
@@ -875,8 +882,8 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
             ),
             Wrap(
               children: [
-                Text(EKSPRESSIONSPEECH),
-                SizedBox(width: 5),
+                const Text(EKSPRESSIONSPEECH),
+                const SizedBox(width: 5),
                 SizedBox(
                     width: 200,
                     child: AutoSizeTextField(
@@ -892,8 +899,8 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
             ),
             Wrap(
               children: [
-                Text(DICTIONARY),
-                SizedBox(width: 5),
+                const Text(DICTIONARY),
+                const SizedBox(width: 5),
                 SizedBox(
                     width: 200,
                     child: AutoSizeTextField(
@@ -909,8 +916,8 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
             ),
             Wrap(
               children: [
-                Text(SLOGSTRUCTURE),
-                SizedBox(width: 5),
+                const Text(SLOGSTRUCTURE),
+                const SizedBox(width: 5),
                 SizedBox(
                     width: 200,
                     child: AutoSizeTextField(
@@ -926,8 +933,8 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
             ),
             Wrap(
               children: [
-                Text(GRAMMATICALSTROY),
-                SizedBox(width: 5),
+                const Text(GRAMMATICALSTROY),
+                const SizedBox(width: 5),
                 SizedBox(
                     width: 200,
                     child: AutoSizeTextField(
@@ -943,8 +950,8 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
             ),
             Wrap(
               children: [
-                Text(SVYASNAYASPEECH),
-                SizedBox(width: 5),
+                const Text(SVYASNAYASPEECH),
+                const SizedBox(width: 5),
                 SizedBox(
                     width: 200,
                     child: AutoSizeTextField(
@@ -960,8 +967,8 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
             ),
             Wrap(
               children: [
-                Text(SOUNDPROIZNOSHENIE),
-                SizedBox(width: 5),
+                const Text(SOUNDPROIZNOSHENIE),
+                const SizedBox(width: 5),
                 SizedBox(
                     width: 200,
                     child: AutoSizeTextField(
@@ -977,8 +984,8 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
             ),
             Wrap(
               children: [
-                Text(ARTICULATION),
-                SizedBox(width: 5),
+                const Text(ARTICULATION),
+                const SizedBox(width: 5),
                 SizedBox(
                     width: 200,
                     child: AutoSizeTextField(
@@ -994,8 +1001,8 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
             ),
             Wrap(
               children: [
-                Text(ARTICULATIONMOTORICA),
-                SizedBox(width: 5),
+                const Text(ARTICULATIONMOTORICA),
+                const SizedBox(width: 5),
                 SizedBox(
                     width: 200,
                     child: AutoSizeTextField(
@@ -1011,8 +1018,8 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
             ),
             Wrap(
               children: [
-                Text(GOLOSOOBRAZOVANIE),
-                SizedBox(width: 5),
+                const Text(GOLOSOOBRAZOVANIE),
+                const SizedBox(width: 5),
                 SizedBox(
                     width: 200,
                     child: AutoSizeTextField(
@@ -1028,8 +1035,8 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
             ),
             Wrap(
               children: [
-                Text(FONEMATICSOUND),
-                SizedBox(width: 5),
+                const Text(FONEMATICSOUND),
+                const SizedBox(width: 5),
                 SizedBox(
                     width: 200,
                     child: AutoSizeTextField(
@@ -1053,8 +1060,8 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
             ),
             Wrap(
               children: [
-                Text(CHARACTERACTIONWITHTIYS),
-                SizedBox(width: 5),
+                const Text(CHARACTERACTIONWITHTIYS),
+                const SizedBox(width: 5),
                 SizedBox(
                     width: 200,
                     child: AutoSizeTextField(
@@ -1070,8 +1077,8 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
             ),
             Wrap(
               children: [
-                Text(PROYAVLENIEINTERESA),
-                SizedBox(width: 5),
+                const Text(PROYAVLENIEINTERESA),
+                const SizedBox(width: 5),
                 SizedBox(
                     width: 200,
                     child: AutoSizeTextField(
@@ -1085,8 +1092,8 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
             ),
             Wrap(
               children: [
-                Text(ADEKVATNOSTTOYS),
-                SizedBox(width: 5),
+                const Text(ADEKVATNOSTTOYS),
+                const SizedBox(width: 5),
                 SizedBox(
                     width: 200,
                     child: AutoSizeTextField(
@@ -1100,8 +1107,8 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
             ),
             Wrap(
               children: [
-                Text(USINGPRESMETOV),
-                SizedBox(width: 5),
+                const Text(USINGPRESMETOV),
+                const SizedBox(width: 5),
                 SizedBox(
                     width: 200,
                     child: AutoSizeTextField(
@@ -1123,8 +1130,8 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
             ),
             Wrap(
               children: [
-                Text(SELFCATERING),
-                SizedBox(width: 5),
+                const Text(SELFCATERING),
+                const SizedBox(width: 5),
                 SizedBox(
                     width: 200,
                     child: AutoSizeTextField(
@@ -1138,8 +1145,8 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
             ),
             Wrap(
               children: [
-                Text(COMMUNICATIONALSKILLS),
-                SizedBox(width: 5),
+                const Text(COMMUNICATIONALSKILLS),
+                const SizedBox(width: 5),
                 SizedBox(
                     width: 200,
                     child: AutoSizeTextField(
@@ -1153,8 +1160,8 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
             ),
             Wrap(
               children: [
-                Text(PREDPOCHITAEMIEACTIVITY),
-                SizedBox(width: 5),
+                const Text(PREDPOCHITAEMIEACTIVITY),
+                const SizedBox(width: 5),
                 SizedBox(
                     width: 200,
                     child: AutoSizeTextField(
@@ -1176,8 +1183,8 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
             ),
             Wrap(
               children: [
-                Text(GENERALAWARNESS),
-                SizedBox(width: 5),
+                const Text(GENERALAWARNESS),
+                const SizedBox(width: 5),
                 SizedBox(
                     width: 200,
                     child: AutoSizeTextField(
@@ -1191,8 +1198,8 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
             ),
             Wrap(
               children: [
-                Text(ELEMENTSOFMATH),
-                SizedBox(width: 5),
+                const Text(ELEMENTSOFMATH),
+                const SizedBox(width: 5),
                 SizedBox(
                     width: 200,
                     child: AutoSizeTextField(
@@ -1206,8 +1213,8 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
             ),
             Wrap(
               children: [
-                Text(ZNANIEBUKV),
-                SizedBox(width: 5),
+                const Text(ZNANIEBUKV),
+                const SizedBox(width: 5),
                 SizedBox(
                     width: 200,
                     child: AutoSizeTextField(
@@ -1221,8 +1228,8 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
             ),
             Wrap(
               children: [
-                Text(IZOBRAZITELNAYAACTIVITY),
-                SizedBox(width: 5),
+                const Text(IZOBRAZITELNAYAACTIVITY),
+                const SizedBox(width: 5),
                 SizedBox(
                     width: 200,
                     child: AutoSizeTextField(
@@ -1236,8 +1243,8 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
             ),
             Column(
               children: [
-                Text(ZAVEDYUSHI),
-                SizedBox(width: 5),
+                const Text(ZAVEDYUSHI),
+                const SizedBox(width: 5),
                 SizedBox(
                     width: 200,
                     child: AutoSizeTextField(
@@ -1247,8 +1254,8 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                       controller: textEditingController[30],
                       maxLines: 2,
                     )),
-                Text(VOSPITATEL),
-                SizedBox(width: 5),
+                const Text(VOSPITATEL),
+                const SizedBox(width: 5),
                 SizedBox(
                     width: 200,
                     child: AutoSizeTextField(
@@ -1258,8 +1265,8 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                       controller: textEditingController[31],
                       maxLines: 2,
                     )),
-                Text(PEDAGOGPSIX),
-                SizedBox(width: 5),
+                const Text(PEDAGOGPSIX),
+                const SizedBox(width: 5),
                 SizedBox(
                     width: 200,
                     child: AutoSizeTextField(
@@ -1269,8 +1276,8 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                       controller: textEditingController[32],
                       maxLines: 2,
                     )),
-                Text(TEZHERDEFECT),
-                SizedBox(width: 5),
+                const Text(TEZHERDEFECT),
+                const SizedBox(width: 5),
                 SizedBox(
                     width: 200,
                     child: AutoSizeTextField(
