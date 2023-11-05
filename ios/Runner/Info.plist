@@ -45,5 +45,8 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+<key>NSPhotoLibraryAddUsageDescription</key>
+<string>Share and save a pdf file created in the application</string>
+
 </dict>
 </plist>
