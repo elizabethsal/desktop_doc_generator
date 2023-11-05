@@ -32,6 +32,7 @@ class DateButtonWithTitle extends StatefulWidget implements AbstractPdfWidget {
 class _DateButtonWithTitleState extends State<DateButtonWithTitle>
     implements AbstractPdfWidget {
   DateTime? chosenDateTime;
+  TextStyle styleText = const TextStyle(fontSize: FONT_TEXT);
 
   @override
   Widget build(BuildContext context) {
@@ -44,9 +45,7 @@ class _DateButtonWithTitleState extends State<DateButtonWithTitle>
             Container(
                 constraints:
                     BoxConstraints(maxWidth: constraints.maxWidth / 2.0),
-                child: Text(widget.title,
-                    softWrap: true,
-                    style: const TextStyle(fontSize: FONT_TEXT))),
+                child: Text(widget.title, softWrap: true, style: styleText)),
             Expanded(
               child: Text(
                       chosenDateTime == null

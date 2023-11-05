@@ -1,4 +1,5 @@
 const double FONT_HEADER = 20.0;
+const double FONT_TEXT_TITLE = 15.0;
 
 const double FONT_TEXT = 14.0;
 

@@ -1,13 +1,30 @@
+import 'package:desktop_doc_generator/common/abstract_pdf_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:pdf/widgets.dart' as pw;
 
 import '../resources/const.dart';
 
-class InputFieldWithTitle extends StatelessWidget {
-  const InputFieldWithTitle(
+class InputFieldWithTitle extends StatefulWidget implements AbstractPdfWidget {
+  InputFieldWithTitle(
       {super.key, required this.title, required this.onTextChanged});
 
   final String title;
   final Function(String str) onTextChanged;
+  final _InputFieldWithTitle state = _InputFieldWithTitle();
+
+  @override
+  State<StatefulWidget> createState() => state;
+
+  @override
+  pw.Widget getPwWidget() {
+    return state.getPwWidget();
+  }
+}
+
+class _InputFieldWithTitle extends State<InputFieldWithTitle>
+    implements AbstractPdfWidget {
+  String finalResult = "";
+  final double fontSize = FONT_HEADER;
 
   @override
   Widget build(BuildContext context) {
@@ -19,20 +36,25 @@ class InputFieldWithTitle extends StatelessWidget {
             Container(
                 constraints:
                     BoxConstraints(maxWidth: constraints.maxWidth / 2.0),
-                child: Text(title,
-                    softWrap: true,
-                    style: const TextStyle(fontSize: FONT_TEXT))),
+                child: Text(widget.title,
+                    softWrap: true, style: TextStyle(fontSize: fontSize))),
             Expanded(
                 child: TextField(
-                    style: const TextStyle(fontSize: FONT_TEXT),
-                    decoration: const InputDecoration(
-                      hintStyle: TextStyle(fontSize: FONT_TEXT),
+                    style: TextStyle(fontSize: fontSize),
+                    decoration: InputDecoration(
+                      hintStyle: TextStyle(fontSize: fontSize),
                     ),
-                    onChanged: (str) => onTextChanged(str))),
+                    onChanged: (str) => finalResult = str)),
             const SizedBox(width: DEFAULT_MARGIN),
           ],
         ),
       );
     });
+  }
+
+  @override
+  pw.Widget getPwWidget() {
+    return pw.Text("${widget.title}$finalResult",
+        style: pw.TextStyle(fontSize: fontSize), softWrap: true);
   }
 }

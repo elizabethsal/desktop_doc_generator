@@ -258,7 +258,10 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
               },
               getTitle: (item) => item,
             ),
-            const Text(REACTIONFORPOOCHRENIEIPORICANIE),
+            const Text(REACTIONFORPOOCHRENIEIPORICANIE, style: TextStyle(
+                fontWeight: FontWeight.bold, fontSize: FONT_TEXT_TITLE),
+                textAlign: TextAlign.center,
+            ),
             DropdownItem<String>(
               title: REACTIONPOSSHRENIE,
               items: REACTIONPOSSHRENIEITEM,
