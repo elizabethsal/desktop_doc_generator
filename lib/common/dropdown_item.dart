@@ -40,9 +40,9 @@ class _DropdownItem<T> extends State<DropdownItem<T>> {
             value: selectedItem,
             items: widget.items
                 .map((value) => DropdownMenuItem(
-                    value: value,
-                    child: Text(widget.getTitle(value),
-                        style: const TextStyle(fontSize: FONT_TEXT))))
+                value: value,
+                child: Text(widget.getTitle(value),
+                    style: const TextStyle(fontSize: FONT_TEXT))))
                 .toList(),
             onChanged: (item) {
               if (item != null) {

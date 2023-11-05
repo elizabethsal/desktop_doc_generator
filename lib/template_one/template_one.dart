@@ -227,7 +227,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                 //TODO save help
               },
             ),
-            const SizedBox(height: DEFAULT_MARGIN,),
+            const SizedBox(height: DEFAULT_MARGIN_BIG),
             const Center(
               child: Text(
                 style: TextStyle(
@@ -236,867 +236,553 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
                 RESULTSPSIX,
               ),
             ),
+            const SizedBox(height: DEFAULT_MARGIN),
+            DropdownItem<String>(
+              title: CONTACT,
+              items: CONTACTITEM,
+              preselectedItem: CONTACTITEM.first,
+              onItemChose: (item) {
+                //TODO save
+              },
+              getTitle: (item) => item,
+            ),
+            DropdownItem<String>(
+              title: EMOTIONS,
+              items: EMOTIONSiTEM,
+              preselectedItem: EMOTIONSiTEM.first,
+              onItemChose: (item) {
+                //TODO save
+              },
+              getTitle: (item) => item,
+            ),
+            DropdownItem<String>(
+              title: EMOTIONALFON,
+              items: EMOTIONALFONITEMS,
+              preselectedItem: EMOTIONALFONITEMS.first,
+              onItemChose: (item) {
+                //TODO save
+              },
+              getTitle: (item) => item,
+            ),
+            const Text(REACTIONFORPOOCHRENIEIPORICANIE),
+            DropdownItem<String>(
+              title: REACTIONPOSSHRENIE,
+              items: REACTIONPOSSHRENIEITEM,
+              preselectedItem: REACTIONPOSSHRENIEITEM.first,
+              onItemChose: (item) {
+                //TODO save
+              },
+              getTitle: (item) => item,
+            ),
+            DropdownItem<String>(
+              title: REACTIONPORICATIEN,
+              items: REACTIONPORICATIENITEM,
+              preselectedItem: REACTIONPORICATIENITEM.first,
+              onItemChose: (item) {
+                //TODO save
+              },
+              getTitle: (item) => item,
+            ),
+            DropdownItem<String>(
+              title: SELFESTIMATE,
+              items: SELFESTIMATEITEM,
+              preselectedItem: SELFESTIMATEITEM.first,
+              onItemChose: (item) {
+                //TODO save
+              },
+              getTitle: (item) => item,
+            ),
+            DropdownItem<String>(
+              title: CHARACTERSPECIFIC,
+              items: CHARACTERSPECIFICITEM,
+              preselectedItem: CHARACTERSPECIFICITEM.first,
+              onItemChose: (item) {
+                //TODO save
+              },
+              getTitle: (item) => item,
+            ),
+            const SizedBox(height: DEFAULT_MARGIN_BIG),
+            const Center(
+              child: Text(
+                style: TextStyle(
+                    fontWeight: FontWeight.bold, fontSize: FONT_HEADER),
+                textAlign: TextAlign.center,
+                STATEOFMOTORSPHERE,
+              ),
+            ),
+            DropdownItem<String>(
+              title: COORDINATION,
+              items: COORDINATIONITEM,
+              preselectedItem: COORDINATIONITEM.first,
+              onItemChose: (item) {
+                //TODO save
+              },
+              getTitle: (item) => item,
+            ),
+            DropdownItem<String>(
+              title: GENERALMOTORICA,
+              items: GENERALMOTORICAITEM,
+              preselectedItem: GENERALMOTORICAITEM.first,
+              onItemChose: (item) {
+                //TODO save
+              },
+              getTitle: (item) => item,
+            ),
+            DropdownItem<String>(
+              title: LITTLEMOTORICA,
+              items: GENERALMOTORICAITEM,
+              preselectedItem: GENERALMOTORICAITEM.first,
+              onItemChose: (item) {
+                //TODO save
+              },
+              getTitle: (item) => item,
+            ),
+            DropdownItem<String>(
+              title: PRIORITYHAND,
+              items: PRIORITYHANDITEM,
+              preselectedItem: PRIORITYHANDITEM.first,
+              onItemChose: (item) {
+                //TODO save
+              },
+              getTitle: (item) => item,
+            ),
+            DropdownItem<String>(
+              title: MIMICALMOTORICA,
+              items: MIMICALMOTORICAITEM,
+              preselectedItem: MIMICALMOTORICAITEM.first,
+              onItemChose: (item) {
+                //TODO save
+              },
+              getTitle: (item) => item,
+            ),
+            const SizedBox(height: DEFAULT_MARGIN_BIG),
+            const Center(
+              child: Text(
+                style: TextStyle(
+                    fontWeight: FontWeight.bold, fontSize: FONT_HEADER),
+                textAlign: TextAlign.center,
+                DEVELOPOMENTDELAYS,
+              ),
+            ),
+            const Text(ATTENTION),
+            DropdownItem<String>(
+              title: PROIZVOL,
+              items: RANDOMNESSITEMSATTENTION,
+              preselectedItem: RANDOMNESSITEMSATTENTION.first,
+              onItemChose: (item) {
+                //TODO save
+              },
+              getTitle: (item) => item,
+            ),
+            DropdownItem<String>(
+              title: USTOICH,
+              items: STABILITYITEMSATTENTION,
+              preselectedItem: STABILITYITEMSATTENTION.first,
+              onItemChose: (item) {
+                //TODO save
+              },
+              getTitle: (item) => item,
+            ),
+            DropdownItem<String>(
+              title: VOLUME,
+              items: VOLUMEITEMSATTENTION,
+              preselectedItem: VOLUMEITEMSATTENTION.first,
+              onItemChose: (item) {
+                //TODO save
+              },
+              getTitle: (item) => item,
+            ),
+            DropdownItem<String>(
+              title: RECOGNITION,
+              items: RECOGNITIONITEM,
+              preselectedItem: RECOGNITIONITEM.first,
+              onItemChose: (item) {
+                //TODO save
+              },
+              getTitle: (item) => item,
+            ),
+            DropdownItem<String>(
+              title: TACTIL,
+              items: RECOGNITIONTACTICALITEM,
+              preselectedItem: RECOGNITIONTACTICALITEM.first,
+              onItemChose: (item) {
+                //TODO save
+              },
+              getTitle: (item) => item,
+            ),
+            DropdownItem<String>(
+              title: SPACEPREDSTAVLENIE,
+              items: SPACEPREDSTAVLENIEITEM,
+              preselectedItem: SPACEPREDSTAVLENIEITEM.first,
+              onItemChose: (item) {
+                //TODO save
+              },
+              getTitle: (item) => item,
+            ),
+            DropdownItem<String>(
+              title: TIMEPREDSTAVLENIE,
+              items: TIMEPREDSTAVLENIEITEM,
+              preselectedItem: TIMEPREDSTAVLENIEITEM.first,
+              onItemChose: (item) {
+                //TODO save
+              },
+              getTitle: (item) => item,
+            ),
+            DropdownItem<String>(
+              title: CONSTRUCTIVEPRACSIS,
+              items: CONSTRUCTIVEPRACSISITEM,
+              preselectedItem: CONSTRUCTIVEPRACSISITEM.first,
+              onItemChose: (item) {
+                //TODO save
+              },
+              getTitle: (item) => item,
+            ),
+            DropdownItem<String>(
+              title: MEMORY,
+              items: MEMORYITEM,
+              preselectedItem: MEMORYITEM.first,
+              onItemChose: (item) {
+                //TODO save
+              },
+              getTitle: (item) => item,
+            ),
+            DropdownItem<String>(
+              title: IMAGINATION,
+              items: IMAGINATIONITEM,
+              preselectedItem: IMAGINATIONITEM.first,
+              onItemChose: (item) {
+                //TODO save
+              },
+              getTitle: (item) => item,
+            ),
+            DropdownItem<String>(
+              title: THINKING,
+              items: THINKINGITEM,
+              preselectedItem: THINKINGITEM.first,
+              onItemChose: (item) {
+                //TODO save
+              },
+              getTitle: (item) => item,
+            ),
+            DropdownItem<String>(
+              title: MODESOFACTION,
+              items: MODESOFACTIONITEM,
+              preselectedItem: MODESOFACTIONITEM.first,
+              onItemChose: (item) {
+                //TODO save
+              },
+              getTitle: (item) => item,
+            ),
+            DropdownItem<String>(
+              title: PREDOMINANTFORMOFTHINKING,
+              items: PREDOMINANTFORMOFTHINKINGITEM,
+              preselectedItem: PREDOMINANTFORMOFTHINKINGITEM.first,
+              onItemChose: (item) {
+                //TODO save
+              },
+              getTitle: (item) => item,
+            ),
+            const Text(OPERATIONSTORONA),
+            DropdownItem<String>(
+              title: ANALISANDSINTES,
+              items: ANALISANDSINTESITEM,
+              preselectedItem: ANALISANDSINTESITEM.first,
+              onItemChose: (item) {
+                //TODO save
+              },
+              getTitle: (item) => item,
+            ),
+            DropdownItem<String>(
+              title: GENERALIZATION,
+              items: GENERALIZATIONITEM,
+              preselectedItem: GENERALIZATIONITEM.first,
+              onItemChose: (item) {
+                //TODO save
+              },
+              getTitle: (item) => item,
+            ),
+            DropdownItem<String>(
+              title: PERENOS,
+              items: PERENOSITEM,
+              preselectedItem: PERENOSITEM.first,
+              onItemChose: (item) {
+                //TODO save
+              },
+              getTitle: (item) => item,
+            ),
+            DropdownItem<String>(
+              title: SRAVNENIE,
+              items: SRAVNENIEITEM,
+              preselectedItem: SRAVNENIEITEM.first,
+              onItemChose: (item) {
+                //TODO save
+              },
+              getTitle: (item) => item,
+            ),
+            DropdownItem<String>(
+              title: UPORIADOCHIVANIE,
+              items: UPORIADOCHIVANIEITEM,
+              preselectedItem: UPORIADOCHIVANIEITEM.first,
+              onItemChose: (item) {
+                //TODO save
+              },
+              getTitle: (item) => item,
+            ),
+            DropdownItem<String>(
+              title: RESULTATIVNOST,
+              items: RESULTATIVNOSTITEM,
+              preselectedItem: RESULTATIVNOSTITEM.first,
+              onItemChose: (item) {
+                //TODO save
+              },
+              getTitle: (item) => item,
+            ),
+            DropdownItem<String>(
+              title: DOZIROVANAYAHELP,
+              items: DOZIROVANAYAHELPITEM,
+              preselectedItem: DOZIROVANAYAHELPITEM.first,
+              onItemChose: (item) {
+                //TODO save
+              },
+              getTitle: (item) => item,
+            ),
+            DropdownItem<String>(
+              title: CHARACTERDEYATELNOSTI,
+              items: CHARACTERDEYATELNOSTIITEM,
+              preselectedItem: CHARACTERDEYATELNOSTIITEM.first,
+              onItemChose: (item) {
+                //TODO save
+              },
+              getTitle: (item) => item,
+            ),
+            DropdownItem<String>(
+              title: MOTIVATION,
+              items: MOTIVATIONITEM,
+              preselectedItem: MOTIVATIONITEM.first,
+              onItemChose: (item) {
+                //TODO save
+              },
+              getTitle: (item) => item,
+            ),
+            const Text(TEMPACTIVITYRABOTOSPOSOBNOST),
+            DropdownItem<String>(
+              title: TEMP,
+              items: TEMPITEM,
+              preselectedItem: TEMPITEM.first,
+              onItemChose: (item) {
+                //TODO save
+              },
+              getTitle: (item) => item,
+            ),
+            DropdownItem<String>(
+              title: RABOTOSPOSOBNOST,
+              items: RABOTOSPOSOBNOSTITEM,
+              preselectedItem: RABOTOSPOSOBNOSTITEM.first,
+              onItemChose: (item) {
+                //TODO save
+              },
+              getTitle: (item) => item,
+            ),
+            const SizedBox(height: DEFAULT_MARGIN_BIG),
+            const Center(
+              child: Text(
+                style: TextStyle(
+                    fontWeight: FontWeight.bold, fontSize: FONT_HEADER),
+                textAlign: TextAlign.center,
+                OSOBENNOTIRECHEVOGO,
+              ),
+            ),
+            InputFieldWithTitle(
+              title: IMPRESSIONSPEECH,
+              onTextChanged: (str) {
+                //TODO save impressive speech
+              },
+            ),
+            InputFieldWithTitle(
+              title: EKSPRESSIONSPEECH,
+              onTextChanged: (str) {
+                //TODO save ekspressive speech
+              },
+            ),
+            InputFieldWithTitle(
+              title: DICTIONARY,
+              onTextChanged: (str) {
+                //TODO save vocabulary
+              },
+            ),
+            InputFieldWithTitle(
+              title: SLOGSTRUCTURE,
+              onTextChanged: (str) {
+                //TODO save structure
+              },
+            ),
+            InputFieldWithTitle(
+              title: GRAMMATICALSTROY,
+              onTextChanged: (str) {
+                //TODO save grammatical
+              },
+            ),
+            InputFieldWithTitle(
+              title: SVYASNAYASPEECH,
+              onTextChanged: (str) {
+                //TODO save speech
+              },
+            ),
+            InputFieldWithTitle(
+              title: SVYASNAYASPEECH,
+              onTextChanged: (str) {
+                //TODO save speech
+              },
+            ),
+            InputFieldWithTitle(
+              title: SOUNDPROIZNOSHENIE,
+              onTextChanged: (str) {
+                //TODO save sound
+              },
+            ),
+            InputFieldWithTitle(
+              title: ARTICULATION,
+              onTextChanged: (str) {
+                //TODO save articulation
+              },
+            ),
+            InputFieldWithTitle(
+              title: ARTICULATIONMOTORICA,
+              onTextChanged: (str) {
+                //TODO save articulation and motorica
+              },
+            ),
+            InputFieldWithTitle(
+              title: GOLOSOOBRAZOVANIE,
+              onTextChanged: (str) {
+                //TODO save sound creating
+              },
+            ),
+            InputFieldWithTitle(
+              title: FONEMATICSOUND,
+              onTextChanged: (str) {
+                //TODO save phonematic
+              },
+            ),
+            const SizedBox(height: DEFAULT_MARGIN_BIG),
+            const Center(
+              child: Text(
+                style: TextStyle(
+                    fontWeight: FontWeight.bold, fontSize: FONT_HEADER),
+                textAlign: TextAlign.center,
+                OSOBENNOSTIRAZVITIEGAMING,
+              ),
+            ),
+            InputFieldWithTitle(
+              title: CHARACTERACTIONWITHTIYS,
+              onTextChanged: (str) {
+                //TODO save toys
+              },
+            ),
+            InputFieldWithTitle(
+              title: PROYAVLENIEINTERESA,
+              onTextChanged: (str) {
+                //TODO save stress
+              },
+            ),
+            InputFieldWithTitle(
+              title: ADEKVATNOSTTOYS,
+              onTextChanged: (str) {
+                //TODO save adekvatnost
+              },
+            ),
+            InputFieldWithTitle(
+              title: USINGPRESMETOV,
+              onTextChanged: (str) {
+                //TODO save things
+              },
+            ),
+            const SizedBox(height: DEFAULT_MARGIN_BIG),
+            const Center(
+              child: Text(
+                style: TextStyle(
+                    fontWeight: FontWeight.bold, fontSize: FONT_HEADER),
+                textAlign: TextAlign.center,
+                ADAPTIVEACTION,
+              ),
+            ),
+            InputFieldWithTitle(
+              title: SELFCATERING,
+              onTextChanged: (str) {
+                //TODO save self
+              },
+            ),
+            InputFieldWithTitle(
+              title: COMMUNICATIONALSKILLS,
+              onTextChanged: (str) {
+                //TODO save communication skills
+              },
+            ),
+            InputFieldWithTitle(
+              title: PREDPOCHITAEMIEACTIVITY,
+              onTextChanged: (str) {
+                //TODO save activity
+              },
+            ),
+            const SizedBox(height: DEFAULT_MARGIN_BIG),
+            const Center(
+              child: Text(
+                style: TextStyle(
+                    fontWeight: FontWeight.bold, fontSize: FONT_HEADER),
+                textAlign: TextAlign.center,
+                LEVELOFSPECIAL,
+              ),
+            ),
+            InputFieldWithTitle(
+              title: GENERALAWARNESS,
+              onTextChanged: (str) {
+                //TODO save general
+              },
+            ),
+            InputFieldWithTitle(
+              title: ELEMENTSOFMATH,
+              onTextChanged: (str) {
+                //TODO save math
+              },
+            ),
+            InputFieldWithTitle(
+              title: ZNANIEBUKV,
+              onTextChanged: (str) {
+                //TODO save litter
+              },
+            ),
+            InputFieldWithTitle(
+              title: IZOBRAZITELNAYAACTIVITY,
+              onTextChanged: (str) {
+                //TODO save izobretactivity
+              },
+            ),
+            InputFieldWithTitle(
+              title: ZAVEDYUSHI,
+              onTextChanged: (str) {
+                //TODO save zaved
+              },
+            ),
+            InputFieldWithTitle(
+              title: VOSPITATEL,
+              onTextChanged: (str) {
+                //TODO save vospit
+              },
+            ),
+            InputFieldWithTitle(
+              title: PEDAGOGPSIX,
+              onTextChanged: (str) {
+                //TODO save counselor
+              },
+            ),
+            InputFieldWithTitle(
+              title: TEZHERDEFECT,
+              onTextChanged: (str) {
+                //TODO save defect
+              },
+            ),
           ],
         ),
-        /*Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Wrap(
-                    children: [
-                      const Text(CONTACT,
-                          style: TextStyle(fontSize: FONT_TEXT)),
-                      SizedBox(
-                          height: 100,
-                          child: DropdownMenuItems(
-                            onItemSelected: (String selectedValue) =>
-                            this.contact = selectedValue,
-                            items: CONTACTITEM,
-                          )),
-                    ],
-                  ),
-                  Wrap(
-                    children: [
-                      const Text(EMOTIONS,
-                          style: TextStyle(fontSize: FONT_TEXT)),
-                      SizedBox(
-                        height: 100,
-                        child: DropdownMenuItems(
-                          onItemSelected: (String selectedValue) =>
-                          this.emotions = selectedValue,
-                          items: EMOTIONSiTEM,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Wrap(children: [
-                    const Text(EMOTIONALFON),
-                    SizedBox(
-                        height: 100,
-                        child: DropdownMenuItems(
-                          onItemSelected: (String selectedValue) =>
-                          this.emotionsFon = selectedValue,
-                          items: EMOTIONALFONITEMS,
-                        ))
-                  ]),
-                  Wrap(
-                    children: [
-                      const Text(REACTIONFORPOOCHRENIEIPORICANIE),
-                      const Text(REACTIONPOSSHRENIE),
-                      SizedBox(
-                          height: 100,
-                          child: DropdownMenuItems(
-                            onItemSelected: (String selectedValue) =>
-                            this.reactionOnPoochr = selectedValue,
-                            items: REACTIONPOSSHRENIEITEM,
-                          )),
-                      const Text(REACTIONPORICATIEN),
-                      SizedBox(
-                          height: 100,
-                          child: DropdownMenuItems(
-                            onItemSelected: (String selectedValue) =>
-                            this.reactionOnPoric = selectedValue,
-                            items: REACTIONPORICATIENITEM,
-                          )),
-                    ],
-                  ),
-                  Wrap(
-                    children: [
-                      const Text(SELFESTIMATE),
-                      SizedBox(
-                          height: 100,
-                          child: DropdownMenuItems(
-                            onItemSelected: (String selectedValue) =>
-                            this.selfestimate = selectedValue,
-                            items: SELFESTIMATEITEM,
-                          )),
-                    ],
-                  ),
-                  Wrap(
-                    children: [
-                      const Text(CHARACTERSPECIFIC),
-                      SizedBox(
-                          height: 100,
-                          child: DropdownMenuItems(
-                            onItemSelected: (String selectedValue) =>
-                            this.characterSpec = selectedValue,
-                            items: CHARACTERSPECIFICITEM,
-                          )),
-                    ],
-                  ),
-                ],
-              ),
-            ],
-          ),*/
-
-        /*const Wrap(
-            children: [
-              Text(
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                  STATEOFMOTORSPHERE),
-            ],
-          ),
-          Wrap(
-            children: [
-              const Text(COORDINATION),
-              SizedBox(
-                  height: 100,
-                  child: DropdownMenuItems(
-                    onItemSelected: (String selectedValue) =>
-                    this.coordination = selectedValue,
-                    items: COORDINATIONITEM,
-                  )),
-            ],
-          ),
-          Wrap(
-            children: [
-              const Text(GENERALMOTORICA),
-              SizedBox(
-                  height: 100,
-                  child: DropdownMenuItems(
-                    onItemSelected: (String selectedValue) =>
-                    this.generalMotorica = selectedValue,
-                    items: GENERALMOTORICAITEM,
-                  )),
-            ],
-          ),
-          Wrap(
-            children: [
-              const Text(LITTLEMOTORICA),
-              SizedBox(
-                  height: 100,
-                  child: DropdownMenuItems(
-                    onItemSelected: (String selectedValue) =>
-                    this.littleMotorica = selectedValue,
-                    items: GENERALMOTORICAITEM,
-                  )),
-            ],
-          ),
-          Wrap(
-            children: [
-              const Text(PRIORITYHAND),
-              SizedBox(
-                  height: 100,
-                  child: DropdownMenuItems(
-                    onItemSelected: (String selectedValue) =>
-                    this.priorityHand = selectedValue,
-                    items: PRIORITYHANDITEM,
-                  )),
-            ],
-          ),
-          Wrap(
-            children: [
-              const Text(MIMICALMOTORICA),
-              SizedBox(
-                  height: 100,
-                  child: DropdownMenuItems(
-                    onItemSelected: (String selectedValue) =>
-                    this.mimicMotor = selectedValue,
-                    items: MIMICALMOTORICAITEM,
-                  )),
-            ],
-          ),
-          const Wrap(
-            children: [
-              Text(
-                  textAlign: TextAlign.left,
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                  DEVELOPOMENTDELAYS),
-            ],
-          ),
-          Wrap(
-            children: [
-              const Text(ATTENTION),
-              const Text(PROIZVOL),
-              SizedBox(
-                  height: 100,
-                  child: DropdownMenuItems(
-                    onItemSelected: (String selectedValue) =>
-                    this.proizvol = selectedValue,
-                    items: RANDOMNESSITEMSATTENTION,
-                  )),
-              const Text(USTOICH),
-              SizedBox(
-                  height: 100,
-                  child: DropdownMenuItems(
-                    onItemSelected: (String selectedValue) =>
-                    this.ustoich = selectedValue,
-                    items: STABILITYITEMSATTENTION,
-                  )),
-              const Text(VOLUME),
-              SizedBox(
-                  height: 100,
-                  child: DropdownMenuItems(
-                    onItemSelected: (String selectedValue) =>
-                    this.volume = selectedValue,
-                    items: VOLUMEITEMSATTENTION,
-                  )),
-            ],
-          ),
-          Wrap(
-            children: [
-              const Text(RECOGNITION),
-              SizedBox(
-                  height: 100,
-                  child: DropdownMenuItems(
-                    onItemSelected: (String selectedValue) =>
-                    this.vospr = selectedValue,
-                    items: RECOGNITIONITEM,
-                  )),
-              const Text(TACTIL),
-              SizedBox(
-                  height: 100,
-                  child: DropdownMenuItems(
-                    onItemSelected: (String selectedValue) =>
-                    this.tact = selectedValue,
-                    items: RECOGNITIONTACTICALITEM,
-                  )),
-            ],
-          ),
-          Wrap(
-            children: [
-              const Text(SPACEPREDSTAVLENIE),
-              SizedBox(
-                  height: 100,
-                  child: DropdownMenuItems(
-                    onItemSelected: (String selectedValue) =>
-                    this.spacepred = selectedValue,
-                    items: SPACEPREDSTAVLENIEITEM,
-                  )),
-            ],
-          ),
-          Wrap(
-            children: [
-              const Text(TIMEPREDSTAVLENIE),
-              SizedBox(
-                  height: 100,
-                  child: DropdownMenuItems(
-                    onItemSelected: (String selectedValue) =>
-                    this.timepred = selectedValue,
-                    items: TIMEPREDSTAVLENIEITEM,
-                  )),
-            ],
-          ),
-          Wrap(
-            children: [
-              const Text(CONSTRUCTIVEPRACSIS),
-              SizedBox(
-                  height: 100,
-                  child: DropdownMenuItems(
-                    onItemSelected: (String selectedValue) =>
-                    this.pracsis = selectedValue,
-                    items: CONSTRUCTIVEPRACSISITEM,
-                  )),
-            ],
-          ),
-          Wrap(
-            children: [
-              const Text(MEMORY),
-              SizedBox(
-                  height: 100,
-                  child: DropdownMenuItems(
-                    onItemSelected: (String selectedValue) =>
-                    this.memory = selectedValue,
-                    items: MEMORYITEM,
-                  )),
-            ],
-          ),
-          Wrap(
-            children: [
-              const Text(IMAGINATION),
-              SizedBox(
-                  height: 100,
-                  child: DropdownMenuItems(
-                    onItemSelected: (String selectedValue) =>
-                    this.imagination = selectedValue,
-                    items: IMAGINATIONITEM,
-                  )),
-            ],
-          ),
-          Wrap(
-            children: [
-              const Text(THINKING),
-              SizedBox(
-                  height: 100,
-                  child: DropdownMenuItems(
-                    onItemSelected: (String selectedValue) =>
-                    this.mushlenie = selectedValue,
-                    items: THINKINGITEM,
-                  )),
-            ],
-          ),
-          Wrap(
-            children: [
-              const Text(MODESOFACTION),
-              SizedBox(
-                  height: 100,
-                  child: DropdownMenuItems(
-                    onItemSelected: (String selectedValue) =>
-                    this.sposobyaction = selectedValue,
-                    items: MODESOFACTIONITEM,
-                  )),
-            ],
-          ),
-          Wrap(
-            children: [
-              const Text(PREDOMINANTFORMOFTHINKING),
-              SizedBox(
-                  height: 100,
-                  child: DropdownMenuItems(
-                    onItemSelected: (String selectedValue) =>
-                    this.preoblform = selectedValue,
-                    items: MODESOFACTIONITEM,
-                  )),
-            ],
-          ),
-          Wrap(
-            children: [
-              const Text(OPERATIONSTORONA),
-              const Text(ANALISANDSINTES),
-              SizedBox(
-                  height: 100,
-                  child: DropdownMenuItems(
-                    onItemSelected: (String selectedValue) =>
-                    this.analyssyntes = selectedValue,
-                    items: ANALISANDSINTESITEM,
-                  )),
-              const Text(GENERALIZATION),
-              SizedBox(
-                  height: 100,
-                  child: DropdownMenuItems(
-                    onItemSelected: (String selectedValue) =>
-                    this.obobshenie = selectedValue,
-                    items: GENERALIZATIONITEM,
-                  )),
-              const Text(PERENOS),
-              SizedBox(
-                  height: 100,
-                  child: DropdownMenuItems(
-                    onItemSelected: (String selectedValue) =>
-                    this.perenos = selectedValue,
-                    items: PERENOSITEM,
-                  )),
-              const Text(SRAVNENIE),
-              SizedBox(
-                  height: 100,
-                  child: DropdownMenuItems(
-                    onItemSelected: (String selectedValue) =>
-                    this.sravnenie = selectedValue,
-                    items: SRAVNENIEITEM,
-                  )),
-              const Text(UPORIADOCHIVANIE),
-              SizedBox(
-                  height: 100,
-                  child: DropdownMenuItems(
-                    onItemSelected: (String selectedValue) =>
-                    this.uporiad = selectedValue,
-                    items: UPORIADOCHIVANIEITEM,
-                  )),
-            ],
-          ),
-          Wrap(
-            children: [
-              const Text(RESULTATIVNOST),
-              SizedBox(
-                  height: 100,
-                  child: DropdownMenuItems(
-                    onItemSelected: (String selectedValue) =>
-                    this.resultcorrect = selectedValue,
-                    items: RESULTATIVNOSTITEM,
-                  )),
-            ],
-          ),
-          Wrap(
-            children: [
-              const Text(DOZIROVANAYAHELP),
-              SizedBox(
-                  height: 100,
-                  child: DropdownMenuItems(
-                    onItemSelected: (String selectedValue) =>
-                    this.helpusing = selectedValue,
-                    items: DOZIROVANAYAHELPITEM,
-                  )),
-            ],
-          ),
-          Wrap(
-            children: [
-              const Text(CHARACTERDEYATELNOSTI),
-              SizedBox(
-                  height: 100,
-                  child: DropdownMenuItems(
-                    onItemSelected: (String selectedValue) =>
-                    this.characteraction = selectedValue,
-                    items: CHARACTERDEYATELNOSTIITEM,
-                  )),
-              const Text(MOTIVATION),
-              SizedBox(
-                  height: 100,
-                  child: DropdownMenuItems(
-                    onItemSelected: (String selectedValue) =>
-                    this.motivation = selectedValue,
-                    items: MOTIVATIONITEM,
-                  )),
-            ],
-          ),
-          Wrap(
-            children: [
-              const Text(TEMPACTIVITYRABOTOSPOSOBNOST),
-              const Text(TEMP),
-              SizedBox(
-                  height: 100,
-                  child: DropdownMenuItems(
-                    onItemSelected: (String selectedValue) =>
-                    this.temp = selectedValue,
-                    items: TEMPITEM,
-                  )),
-              const Text(RABOTOSPOSOBNOST),
-              SizedBox(
-                  height: 100,
-                  child: DropdownMenuItems(
-                    onItemSelected: (String selectedValue) =>
-                    this.rabotosposp = selectedValue,
-                    items: RABOTOSPOSOBNOSTITEM,
-                  )),
-            ],
-          ),
-          const Wrap(
-            children: [
-              Text(
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                  textAlign: TextAlign.center,
-                  OSOBENNOTIRECHEVOGO),
-            ],
-          ),
-          Wrap(
-            children: [
-              const Text(IMPRESSIONSPEECH),
-              const SizedBox(width: 5),
-              SizedBox(
-                  width: 200,
-                  child: AutoSizeTextField(
-                    onChanged: (impressive_speech) {
-                      setState(() {
-                        impressivespech = impressive_speech;
-                      });
-                    },
-                    controller: textEditingController[8],
-                    maxLines: 2,
-                  ))
-            ],
-          ),
-          Wrap(
-            children: [
-              const Text(EKSPRESSIONSPEECH),
-              const SizedBox(width: 5),
-              SizedBox(
-                  width: 200,
-                  child: AutoSizeTextField(
-                    onChanged: (ekspressive_speech) {
-                      setState(() {
-                        ekspressivespech = ekspressive_speech;
-                      });
-                    },
-                    controller: textEditingController[9],
-                    maxLines: 2,
-                  ))
-            ],
-          ),
-          Wrap(
-            children: [
-              const Text(DICTIONARY),
-              const SizedBox(width: 5),
-              SizedBox(
-                  width: 200,
-                  child: AutoSizeTextField(
-                    onChanged: (vocabular) {
-                      setState(() {
-                        vocab = vocabular;
-                      });
-                    },
-                    controller: textEditingController[10],
-                    maxLines: 2,
-                  ))
-            ],
-          ),
-          Wrap(
-            children: [
-              const Text(SLOGSTRUCTURE),
-              const SizedBox(width: 5),
-              SizedBox(
-                  width: 200,
-                  child: AutoSizeTextField(
-                    onChanged: (slog_structure) {
-                      setState(() {
-                        slogstructure = slog_structure;
-                      });
-                    },
-                    controller: textEditingController[11],
-                    maxLines: 2,
-                  ))
-            ],
-          ),
-          Wrap(
-            children: [
-              const Text(GRAMMATICALSTROY),
-              const SizedBox(width: 5),
-              SizedBox(
-                  width: 200,
-                  child: AutoSizeTextField(
-                    onChanged: (grammar_stroy) {
-                      setState(() {
-                        grammarstroy = grammar_stroy;
-                      });
-                    },
-                    controller: textEditingController[12],
-                    maxLines: 2,
-                  ))
-            ],
-          ),
-          Wrap(
-            children: [
-              const Text(SVYASNAYASPEECH),
-              const SizedBox(width: 5),
-              SizedBox(
-                  width: 200,
-                  child: AutoSizeTextField(
-                    onChanged: (svyasnaya_speech) {
-                      setState(() {
-                        svyasnayaspeech = svyasnaya_speech;
-                      });
-                    },
-                    controller: textEditingController[13],
-                    maxLines: 2,
-                  ))
-            ],
-          ),
-          Wrap(
-            children: [
-              const Text(SOUNDPROIZNOSHENIE),
-              const SizedBox(width: 5),
-              SizedBox(
-                  width: 200,
-                  child: AutoSizeTextField(
-                    onChanged: (voice_speech) {
-                      setState(() {
-                        voicespeech = voice_speech;
-                      });
-                    },
-                    controller: textEditingController[14],
-                    maxLines: 2,
-                  ))
-            ],
-          ),
-          Wrap(
-            children: [
-              const Text(ARTICULATION),
-              const SizedBox(width: 5),
-              SizedBox(
-                  width: 200,
-                  child: AutoSizeTextField(
-                    onChanged: (artikul_) {
-                      setState(() {
-                        artikul = artikul_;
-                      });
-                    },
-                    controller: textEditingController[15],
-                    maxLines: 2,
-                  ))
-            ],
-          ),
-          Wrap(
-            children: [
-              const Text(ARTICULATIONMOTORICA),
-              const SizedBox(width: 5),
-              SizedBox(
-                  width: 200,
-                  child: AutoSizeTextField(
-                    onChanged: (artikul_motor) {
-                      setState(() {
-                        artikulmotor = artikul_motor;
-                      });
-                    },
-                    controller: textEditingController[16],
-                    maxLines: 2,
-                  ))
-            ],
-          ),
-          Wrap(
-            children: [
-              const Text(GOLOSOOBRAZOVANIE),
-              const SizedBox(width: 5),
-              SizedBox(
-                  width: 200,
-                  child: AutoSizeTextField(
-                    onChanged: (voice_and_breathe) {
-                      setState(() {
-                        voiceandbreathe = voice_and_breathe;
-                      });
-                    },
-                    controller: textEditingController[17],
-                    maxLines: 2,
-                  ))
-            ],
-          ),
-          Wrap(
-            children: [
-              const Text(FONEMATICSOUND),
-              const SizedBox(width: 5),
-              SizedBox(
-                  width: 200,
-                  child: AutoSizeTextField(
-                    onChanged: (phonematic_) {
-                      setState(() {
-                        phonematic = phonematic_;
-                      });
-                    },
-                    controller: textEditingController[18],
-                    maxLines: 2,
-                  ))
-            ],
-          ),
-          const Wrap(
-            children: [
-              Text(
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                  textAlign: TextAlign.center,
-                  OSOBENNOSTIRAZVITIEGAMING),
-            ],
-          ),
-          Wrap(
-            children: [
-              const Text(CHARACTERACTIONWITHTIYS),
-              const SizedBox(width: 5),
-              SizedBox(
-                  width: 200,
-                  child: AutoSizeTextField(
-                    onChanged: (character_action_toys) {
-                      setState(() {
-                        characteractiontoys = character_action_toys;
-                      });
-                    },
-                    controller: textEditingController[19],
-                    maxLines: 2,
-                  ))
-            ],
-          ),
-          Wrap(
-            children: [
-              const Text(PROYAVLENIEINTERESA),
-              const SizedBox(width: 5),
-              SizedBox(
-                  width: 200,
-                  child: AutoSizeTextField(
-                    onChanged: (interesttoys) {
-                      this.interesttoys = interesttoys;
-                    },
-                    controller: textEditingController[20],
-                    maxLines: 2,
-                  ))
-            ],
-          ),
-          Wrap(
-            children: [
-              const Text(ADEKVATNOSTTOYS),
-              const SizedBox(width: 5),
-              SizedBox(
-                  width: 200,
-                  child: AutoSizeTextField(
-                    onChanged: (adekvatnost) {
-                      this.adekvatnost = adekvatnost;
-                    },
-                    controller: textEditingController[21],
-                    maxLines: 2,
-                  ))
-            ],
-          ),
-          Wrap(
-            children: [
-              const Text(USINGPRESMETOV),
-              const SizedBox(width: 5),
-              SizedBox(
-                  width: 200,
-                  child: AutoSizeTextField(
-                    onChanged: (usingpredm) {
-                      this.usingpredm = usingpredm;
-                    },
-                    controller: textEditingController[22],
-                    maxLines: 2,
-                  ))
-            ],
-          ),
-          const Wrap(
-            children: [
-              Text(
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                  textAlign: TextAlign.center,
-                  ADAPTIVEACTION),
-            ],
-          ),
-          Wrap(
-            children: [
-              const Text(SELFCATERING),
-              const SizedBox(width: 5),
-              SizedBox(
-                  width: 200,
-                  child: AutoSizeTextField(
-                    onChanged: (selfcatering) {
-                      this.selfcatering = selfcatering;
-                    },
-                    controller: textEditingController[23],
-                    maxLines: 2,
-                  ))
-            ],
-          ),
-          Wrap(
-            children: [
-              const Text(COMMUNICATIONALSKILLS),
-              const SizedBox(width: 5),
-              SizedBox(
-                  width: 200,
-                  child: AutoSizeTextField(
-                    onChanged: (navyki) {
-                      this.navyki = navyki;
-                    },
-                    controller: textEditingController[24],
-                    maxLines: 2,
-                  ))
-            ],
-          ),
-          Wrap(
-            children: [
-              const Text(PREDPOCHITAEMIEACTIVITY),
-              const SizedBox(width: 5),
-              SizedBox(
-                  width: 200,
-                  child: AutoSizeTextField(
-                    onChanged: (predpochaction) {
-                      this.predpochaction = predpochaction;
-                    },
-                    controller: textEditingController[25],
-                    maxLines: 2,
-                  ))
-            ],
-          ),
-          const Wrap(
-            children: [
-              Text(
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                  textAlign: TextAlign.center,
-                  LEVELOFSPECIAL),
-            ],
-          ),
-          Wrap(
-            children: [
-              const Text(GENERALAWARNESS),
-              const SizedBox(width: 5),
-              SizedBox(
-                  width: 200,
-                  child: AutoSizeTextField(
-                    onChanged: (generalosv) {
-                      this.generalosv = generalosv;
-                    },
-                    controller: textEditingController[26],
-                    maxLines: 2,
-                  ))
-            ],
-          ),
-          Wrap(
-            children: [
-              const Text(ELEMENTSOFMATH),
-              const SizedBox(width: 5),
-              SizedBox(
-                  width: 200,
-                  child: AutoSizeTextField(
-                    onChanged: (elementmath) {
-                      this.elementsmath = elementsmath;
-                    },
-                    controller: textEditingController[27],
-                    maxLines: 2,
-                  ))
-            ],
-          ),
-          Wrap(
-            children: [
-              const Text(ZNANIEBUKV),
-              const SizedBox(width: 5),
-              SizedBox(
-                  width: 200,
-                  child: AutoSizeTextField(
-                    onChanged: (reading) {
-                      this.reading = reading;
-                    },
-                    controller: textEditingController[28],
-                    maxLines: 2,
-                  ))
-            ],
-          ),
-          Wrap(
-            children: [
-              const Text(IZOBRAZITELNAYAACTIVITY),
-              const SizedBox(width: 5),
-              SizedBox(
-                  width: 200,
-                  child: AutoSizeTextField(
-                    onChanged: (isob) {
-                      this.isob = isob;
-                    },
-                    controller: textEditingController[29],
-                    maxLines: 2,
-                  ))
-            ],
-          ),
-          Column(
-            children: [
-              const Text(ZAVEDYUSHI),
-              const SizedBox(width: 5),
-              SizedBox(
-                  width: 200,
-                  child: AutoSizeTextField(
-                    onChanged: (zaved) {
-                      this.zaved = zaved;
-                    },
-                    controller: textEditingController[30],
-                    maxLines: 2,
-                  )),
-              const Text(VOSPITATEL),
-              const SizedBox(width: 5),
-              SizedBox(
-                  width: 200,
-                  child: AutoSizeTextField(
-                    onChanged: (vospit) {
-                      this.vospit = vospit;
-                    },
-                    controller: textEditingController[31],
-                    maxLines: 2,
-                  )),
-              const Text(PEDAGOGPSIX),
-              const SizedBox(width: 5),
-              SizedBox(
-                  width: 200,
-                  child: AutoSizeTextField(
-                    onChanged: (pedagog) {
-                      this.pedagog = pedagog;
-                    },
-                    controller: textEditingController[32],
-                    maxLines: 2,
-                  )),
-              const Text(TEZHERDEFECT),
-              const SizedBox(width: 5),
-              SizedBox(
-                  width: 200,
-                  child: AutoSizeTextField(
-                    onChanged: (teachdefect) {
-                      this.teachdefect = teachdefect;
-                    },
-                    controller: textEditingController[33],
-                    maxLines: 2,
-                  ))
-            ],
-          )*/
       ),
     );
   }
