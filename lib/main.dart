@@ -50,42 +50,42 @@ class _MyHomePageState extends State<MyHomePage> {
     }
     (page as TemplateInterface).createDoc();
 
-    return SafeArea(
-      child: Scaffold(
-        body: Row(
-          children: [
-            NavigationRail(
-              extended: true,
-              destinations: const [
-                NavigationRailDestination(
-                  icon: Icon(Icons.temple_buddhist),
-                  label: Text('Шаблон 1'),
-                ),
-                NavigationRailDestination(
-                  icon: Icon(Icons.temple_buddhist_outlined),
-                  label: Text('Шаблон 2'),
-                ),
-              ],
-              selectedIndex: selectedIndex,
-              onDestinationSelected: (value) {
-                setState(() {
-                  selectedIndex = value;
-                });
-              },
-            ),
-            Expanded(
-              child: Container(
-                color: Theme.of(context).colorScheme.primaryContainer,
-                child: page,
+    return Container(
+    color: Theme.of(context).colorScheme.background,
+      child: SafeArea(
+        child: Scaffold(
+          body: Row(
+            children: [
+              NavigationRail(
+                extended: false,
+                destinations: const [
+                  NavigationRailDestination(
+                    icon: Icon(Icons.temple_buddhist),
+                    label: Text('Шаблон 1'),
+                  ),
+                  NavigationRailDestination(
+                    icon: Icon(Icons.temple_buddhist_outlined),
+                    label: Text('Шаблон 2'),
+                  ),
+                ],
+                selectedIndex: selectedIndex,
+                onDestinationSelected: (value) {
+                  setState(() {
+                    selectedIndex = value;
+                  });
+                },
               ),
-            ),
-          ],
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: (){
+              Expanded(
+                child: page
+              ),
+            ],
+          ),
+          floatingActionButton: FloatingActionButton(
+            onPressed: (){
 
-          },
-          child: const Icon(Icons.download),
+            },
+            child: const Icon(Icons.download),
+          ),
         ),
       ),
     );

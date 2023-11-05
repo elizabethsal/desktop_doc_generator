@@ -25,27 +25,29 @@ class _DateButtonWithTitleState extends State<DateButtonWithTitle> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: DEFAULT_MARGIN),
-      child: Row(
+      child: Wrap(
         children: [
-          Text(widget.title, style: const TextStyle(fontSize: FONT_TEXT)),
-          const SizedBox(width: DEFAULT_MARGIN),
-          Text(
-                  chosenDateTime == null
-                      ? CHOOSE_DATE
-                      : DateFormat(BIRTHDATE_FORMAT).format(chosenDateTime!),
-                  style: const TextStyle(
-                      fontSize: FONT_TEXT, color: TEXT_HYPERLINK_COLOR))
-              .setOnClickListener(() {
-            selectTime(
-                context: context,
-                onTimeSelected: (dateTime) {
-                  setState(() {
-                    chosenDateTime = dateTime;
-                  });
-                  widget.chosenDate(dateTime);
-                },
-                minAgeYears: widget.minAge);
-          }),
+          Text(widget.title,
+              softWrap:  true, style: const TextStyle(fontSize: FONT_TEXT)),
+          Expanded(
+            child: Text(
+                    chosenDateTime == null
+                        ? CHOOSE_DATE
+                        : DateFormat(BIRTHDATE_FORMAT).format(chosenDateTime!),
+                    style: const TextStyle(
+                        fontSize: FONT_TEXT, color: TEXT_HYPERLINK_COLOR))
+                .setOnClickListener(() {
+              selectTime(
+                  context: context,
+                  onTimeSelected: (dateTime) {
+                    setState(() {
+                      chosenDateTime = dateTime;
+                    });
+                    widget.chosenDate(dateTime);
+                  },
+                  minAgeYears: widget.minAge);
+            }),
+          ),
           const SizedBox(width: DEFAULT_MARGIN),
         ],
       ),

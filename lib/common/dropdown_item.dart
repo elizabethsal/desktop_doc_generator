@@ -34,24 +34,33 @@ class _DropdownItem<T> extends State<DropdownItem<T>> {
   Widget build(BuildContext context) {
     return Padding(
         padding: const EdgeInsets.symmetric(vertical: DEFAULT_MARGIN_SMALL),
-        child: Row(children: [
-          Text(widget.title, style: const TextStyle(fontSize: FONT_TEXT)),
-          DropdownButton(
-            value: selectedItem,
-            items: widget.items
-                .map((value) => DropdownMenuItem(
-                value: value,
-                child: Text(widget.getTitle(value),
-                    style: const TextStyle(fontSize: FONT_TEXT))))
-                .toList(),
-            onChanged: (item) {
-              if (item != null) {
-                setState(() {
-                  selectedItem = item;
-                });
-                widget.onItemChose(item);
-              }
-            },
+        child: Wrap(children: [
+          Text(widget.title,
+              softWrap: true, style: const TextStyle(fontSize: FONT_TEXT)),
+          Expanded(
+            child: DropdownButton(
+              itemHeight: null,
+              isExpanded: true,
+              value: selectedItem,
+              items: widget.items
+                  .map((value) => DropdownMenuItem(
+                      value: value,
+                      child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: DEFAULT_MARGIN_SMALL),
+                          child: Text(widget.getTitle(value),
+                              softWrap: true,
+                              style: const TextStyle(fontSize: FONT_TEXT)))))
+                  .toList(),
+              onChanged: (item) {
+                if (item != null) {
+                  setState(() {
+                    selectedItem = item;
+                  });
+                  widget.onItemChose(item);
+                }
+              },
+            ),
           ),
           const SizedBox(width: DEFAULT_MARGIN),
         ]));

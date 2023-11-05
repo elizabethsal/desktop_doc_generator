@@ -1,5 +1,5 @@
 const String HEADER =
-    "ГУО \«Ясли-сад  № 555 г. Бреста\»\nПсихолого-педагогическая характеристика\n\nОбщие сведения\ ";
+    "ГУО «Ясли-сад  № 555 г. Бреста»\nПсихолого-педагогическая характеристика\n\nОбщие сведения";
 const String CHOOSE_DATE = "Выберите дату";
 const String FIOCHILD = "ФИО ребенка: ";
 const String BIRTHDATE_FORMAT = "dd.MM.yyyy";
@@ -15,7 +15,7 @@ const String YEAROFBIRTH = "Год рождения: ";
 const String EDUCATION = "Образование: ";
 const String HELP = "Какая помощь была оказана ранее: ";
 const String RESULTSPSIX =
-    "\Результаты психолого-педагогического обследования.\n Особенности развития личности и эмоционально-личностной сферы.";
+    "Результаты психолого-педагогического обследования.\nОсобенности развития личности и эмоционально-личностной сферы.";
 const String CONTACT = "Контактность: ";
 const String EMOTIONS = "Эмоции: ";
 const String EMOTIONALFON = "Эмоциональный фон: ";
@@ -25,7 +25,7 @@ const String REACTIONPOSSHRENIE = "поощрение: ";
 const String REACTIONPORICATIEN = "порицание: ";
 const String SELFESTIMATE = "Самооценка и уровень притязаний: ";
 const String CHARACTERSPECIFIC = "Характерологические особенности: ";
-const String STATEOFMOTORSPHERE = "\Состояние двигательной сферы ";
+const String STATEOFMOTORSPHERE = "Состояние двигательной сферы ";
 const String COORDINATION =
     "Статистическая и динамическая координация, скорость, сила, точность движений: ";
 const String GENERALMOTORICA = "Общая моторика: ";
@@ -62,8 +62,8 @@ const String CHARACTERDEYATELNOSTI = "Характер деятельности:
 const String MOTIVATION = "мотивация - ";
 const String TEMPACTIVITYRABOTOSPOSOBNOST = "Темп деятельности и работоспособность: ";
 const String TEMP = "темп - ";
-const String RABOTOSPOSOBNOST = "  работоспособность - ";
-const String OSOBENNOTIRECHEVOGO = "  \Особенности речевого развития ";
+const String RABOTOSPOSOBNOST = "работоспособность - ";
+const String OSOBENNOTIRECHEVOGO = "Особенности речевого развития ";
 const String IMPRESSIONSPEECH = "  Импрессивная речь: ";
 const String EKSPRESSIONSPEECH = "  Экспрессивная речь: ";
 const String DICTIONARY = "  Словарь: ";
@@ -75,16 +75,16 @@ const String ARTICULATION = " Артикуляционный аппарат: ";
 const String ARTICULATIONMOTORICA = " Артикуляционная моторика: ";
 const String GOLOSOOBRAZOVANIE = " Голосообразование и дыхание: ";
 const String FONEMATICSOUND = " Фонематический слух: ";
-const String OSOBENNOSTIRAZVITIEGAMING = " \Особенности развития игровой деятельности ";
+const String OSOBENNOSTIRAZVITIEGAMING = "Особенности развития игровой деятельности ";
 const String CHARACTERACTIONWITHTIYS = " Характер действий с предметами-игрушками: ";
 const String PROYAVLENIEINTERESA = " Проявление интереса к игрушкам, стойкость интереса: ";
 const String ADEKVATNOSTTOYS = " Адекватность употребления игрушек: ";
 const String USINGPRESMETOV = " Использование предметов-заместителей: ";
-const String ADAPTIVEACTION = " \Адаптивное поведение ";
+const String ADAPTIVEACTION = "Адаптивное поведение ";
 const String SELFCATERING = " Самообслуживание: ";
 const String COMMUNICATIONALSKILLS = " Навыки общения: ";
 const String PREDPOCHITAEMIEACTIVITY = " Предпочитаемые занятия: ";
-const String LEVELOFSPECIAL = " \Уровень специальной подготовленности ";
+const String LEVELOFSPECIAL = "Уровень специальной подготовленности ";
 const String GENERALAWARNESS = " Общая осведомленность: ";
 const String ELEMENTSOFMATH = " Элементы математических представлений: ";
 const String ZNANIEBUKV = " Знание букв, чтение: ";
