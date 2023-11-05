@@ -6,6 +6,7 @@ import 'package:pdf/widgets.dart' as pw;
 
 import '../common/date_button_with_title.dart';
 import '../common/dropdown_item.dart';
+import '../common/header.dart';
 import '../common/input_field_with_title.dart';
 import '../main.dart';
 import '../resources/const.dart';
@@ -140,14 +141,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Center(
-              child: Text(
-                style: TextStyle(
-                    fontWeight: FontWeight.bold, fontSize: FONT_HEADER),
-                textAlign: TextAlign.center,
-                HEADER,
-              ),
-            ),
+            const Header(header: HEADER),
             const SizedBox(height: DEFAULT_MARGIN),
             InputFieldWithTitle(
               title: FIOCHILD,
