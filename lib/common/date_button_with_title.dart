@@ -12,11 +12,9 @@ class DateButtonWithTitle extends StatefulWidget implements AbstractPdfWidget {
   DateButtonWithTitle(
       {super.key,
       required this.title,
-      required this.chosenDate,
       required this.minAge});
 
   final String title;
-  final Function(DateTime dateTime) chosenDate;
   final int minAge;
   final _DateButtonWithTitleState state = _DateButtonWithTitleState();
 
@@ -61,7 +59,6 @@ class _DateButtonWithTitleState extends State<DateButtonWithTitle>
                       setState(() {
                         chosenDateTime = dateTime;
                       });
-                      widget.chosenDate(dateTime);
                     },
                     minAgeYears: widget.minAge);
               }),
