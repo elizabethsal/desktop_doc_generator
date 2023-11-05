@@ -36,7 +36,9 @@ class _MyHomePageState extends State<MyHomePage> {
   var selectedIndex = 0;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(
+    BuildContext context,
+  ) {
     Widget page;
     switch (selectedIndex) {
       case 0:
@@ -50,48 +52,46 @@ class _MyHomePageState extends State<MyHomePage> {
     }
     (page as TemplateInterface).createDoc();
 
-    return Container(
-    color: Theme.of(context).colorScheme.background,
-      child: SafeArea(
-        child: Scaffold(
-          body: Row(
-            children: [
-              NavigationRail(
-                extended: false,
-                destinations: const [
-                  NavigationRailDestination(
-                    icon: Icon(Icons.temple_buddhist),
-                    label: Text('Шаблон 1'),
-                  ),
-                  NavigationRailDestination(
-                    icon: Icon(Icons.temple_buddhist_outlined),
-                    label: Text('Шаблон 2'),
-                  ),
-                ],
-                selectedIndex: selectedIndex,
-                onDestinationSelected: (value) {
-                  setState(() {
-                    selectedIndex = value;
-                  });
-                },
-              ),
-              Expanded(
-                child: page
-              ),
-            ],
-          ),
-          floatingActionButton: FloatingActionButton(
-            onPressed: (){
-
-            },
-            child: const Icon(Icons.download),
+    return LayoutBuilder(builder: (context, constraints) {
+      return Container(
+        color: Theme.of(context).colorScheme.background,
+        child: SafeArea(
+          child: Scaffold(
+            body: Row(
+              children: [
+                NavigationRail(
+                  extended: constraints.maxWidth >= 600,
+                  //  extended: false,
+                  destinations: const [
+                    NavigationRailDestination(
+                      icon: Icon(Icons.temple_buddhist),
+                      label: Text('Шаблон 1'),
+                    ),
+                    NavigationRailDestination(
+                      icon: Icon(Icons.temple_buddhist_outlined),
+                      label: Text('Шаблон 2'),
+                    ),
+                  ],
+                  selectedIndex: selectedIndex,
+                  onDestinationSelected: (value) {
+                    setState(() {
+                      selectedIndex = value;
+                    });
+                  },
+                ),
+                Expanded(child: page),
+              ],
+            ),
+            floatingActionButton: FloatingActionButton(
+              onPressed: () {},
+              child: const Icon(Icons.download),
+            ),
           ),
         ),
-      ),
-    );
+      );
+    });
   }
 }
-
 
 abstract class TemplateInterface {
   void createDoc();
