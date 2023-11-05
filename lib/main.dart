@@ -119,7 +119,11 @@ class _MyHomePageState extends State<MyHomePage> {
                 await file.create(recursive: true);
                 await file.writeAsBytes(await pdf.save());
 
-                ShareExtend.share(file.path, "file");
+                if (Platform.isAndroid || Platform.isIOS) {
+                  ShareExtend.share(file.path, "file");
+                } else {
+                  //TODO desktop file saving
+                }
               },
               child: const Icon(Icons.download),
             ),
