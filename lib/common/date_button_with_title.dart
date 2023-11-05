@@ -8,7 +8,10 @@ import '../template_one/data.dart';
 
 class DateButtonWithTitle extends StatefulWidget {
   const DateButtonWithTitle(
-      {super.key, required this.title, required this.chosenDate, required this.minAge});
+      {super.key,
+      required this.title,
+      required this.chosenDate,
+      required this.minAge});
 
   final String title;
   final Function(DateTime dateTime) chosenDate;
@@ -23,35 +26,43 @@ class _DateButtonWithTitleState extends State<DateButtonWithTitle> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: DEFAULT_MARGIN),
-      child: Wrap(
-        children: [
-          Text(widget.title,
-              softWrap:  true, style: const TextStyle(fontSize: FONT_TEXT)),
-          Expanded(
-            child: Text(
-                    chosenDateTime == null
-                        ? CHOOSE_DATE
-                        : DateFormat(BIRTHDATE_FORMAT).format(chosenDateTime!),
-                    style: const TextStyle(
-                        fontSize: FONT_TEXT, color: TEXT_HYPERLINK_COLOR))
-                .setOnClickListener(() {
-              selectTime(
-                  context: context,
-                  onTimeSelected: (dateTime) {
-                    setState(() {
-                      chosenDateTime = dateTime;
-                    });
-                    widget.chosenDate(dateTime);
-                  },
-                  minAgeYears: widget.minAge);
-            }),
-          ),
-          const SizedBox(width: DEFAULT_MARGIN),
-        ],
-      ),
-    );
+    return LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) {
+      return Padding(
+        padding: const EdgeInsets.symmetric(vertical: DEFAULT_MARGIN),
+        child: Row(
+          children: [
+            Container(
+                constraints:
+                    BoxConstraints(maxWidth: constraints.maxWidth / 2.0),
+                child: Text(widget.title,
+                    softWrap: true,
+                    style: const TextStyle(fontSize: FONT_TEXT))),
+            Expanded(
+              child: Text(
+                      chosenDateTime == null
+                          ? CHOOSE_DATE
+                          : DateFormat(BIRTHDATE_FORMAT)
+                              .format(chosenDateTime!),
+                      style: const TextStyle(
+                          fontSize: FONT_TEXT, color: TEXT_HYPERLINK_COLOR))
+                  .setOnClickListener(() {
+                selectTime(
+                    context: context,
+                    onTimeSelected: (dateTime) {
+                      setState(() {
+                        chosenDateTime = dateTime;
+                      });
+                      widget.chosenDate(dateTime);
+                    },
+                    minAgeYears: widget.minAge);
+              }),
+            ),
+            const SizedBox(width: DEFAULT_MARGIN),
+          ],
+        ),
+      );
+    });
   }
 }
 

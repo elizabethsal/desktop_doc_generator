@@ -9,13 +9,12 @@ class DropdownItem<T> extends StatefulWidget {
   final Function(T chosenItem) onItemChose;
   final String Function(T item) getTitle;
 
-  const DropdownItem(
-      {super.key,
-      required this.items,
-      required this.preselectedItem,
-      required this.onItemChose,
-      required this.title,
-      required this.getTitle});
+  const DropdownItem({super.key,
+    required this.items,
+    required this.preselectedItem,
+    required this.onItemChose,
+    required this.title,
+    required this.getTitle});
 
   @override
   _DropdownItem<T> createState() => _DropdownItem<T>();
@@ -32,37 +31,44 @@ class _DropdownItem<T> extends State<DropdownItem<T>> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-        padding: const EdgeInsets.symmetric(vertical: DEFAULT_MARGIN_SMALL),
-        child: Wrap(children: [
-          Text(widget.title,
-              softWrap: true, style: const TextStyle(fontSize: FONT_TEXT)),
-          Expanded(
-            child: DropdownButton(
-              itemHeight: null,
-              isExpanded: true,
-              value: selectedItem,
-              items: widget.items
-                  .map((value) => DropdownMenuItem(
-                      value: value,
-                      child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: DEFAULT_MARGIN_SMALL),
-                          child: Text(widget.getTitle(value),
-                              softWrap: true,
-                              style: const TextStyle(fontSize: FONT_TEXT)))))
-                  .toList(),
-              onChanged: (item) {
-                if (item != null) {
-                  setState(() {
-                    selectedItem = item;
-                  });
-                  widget.onItemChose(item);
-                }
-              },
+    return LayoutBuilder(builder: (context, constraints) {
+      return Padding(
+          padding: const EdgeInsets.symmetric(vertical: DEFAULT_MARGIN_SMALL),
+          child: Row(children: [
+            Container(
+                constraints: BoxConstraints(maxWidth: constraints.maxWidth / 2.0),
+                child: Text(widget.title, softWrap: true,
+                    style: const TextStyle(fontSize: FONT_TEXT))),
+            Expanded(
+              child: DropdownButton(
+                itemHeight: null,
+                isExpanded: true,
+                value: selectedItem,
+                items: widget.items
+                    .map((value) =>
+                    DropdownMenuItem(
+                        value: value,
+                        child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                vertical: DEFAULT_MARGIN_SMALL),
+                            child: Text(widget.getTitle(value),
+                                softWrap: true,
+                                style: const TextStyle(fontSize: FONT_TEXT)))))
+                    .toList(),
+                onChanged: (item) {
+                  if (item != null) {
+                    setState(() {
+                      selectedItem = item;
+                    });
+                    widget.onItemChose(item);
+                  }
+                },
+              ),
             ),
-          ),
-          const SizedBox(width: DEFAULT_MARGIN),
-        ]));
+            const SizedBox(width: DEFAULT_MARGIN),
+          ]));
+    },
+
+    );
   }
 }
