@@ -4,7 +4,7 @@ const String CHOOSE_DATE = "Выберите дату";
 const String FIOCHILD = "ФИО ребенка: ";
 const String BIRTHDATE_FORMAT = "dd.MM.yyyy";
 const String DATEOFBIRTH = "Дата рождения: ";
-const String GROUP_ST_SPEC = "Группа ст. спец. ";
+const String GROUP_ST_SPEC = "Группа ст. спец.: ";
 const String HOMEADDRES = "Домашний адрес: ";
 const String PHONENUMBER = "Контактный телефон: ";
 const String FAMILY = "Семья: ";
@@ -33,66 +33,66 @@ const String LITTLEMOTORICA = "Мелкая моторика: ";
 const String PRIORITYHAND = "Ведущая рука: ";
 const String MIMICALMOTORICA = "Мимическая моторика: ";
 const String DEVELOPOMENTDELAYS =
-    "Особенности развития познавательной деятельности ";
+    "Особенности развития познавательной деятельности";
 const String ATTENTION = "Внимание: ";
-const String PROIZVOL = "произвольность - ";
-const String USTOICH = "устойчивость - ";
-const String VOLUME = "объем - ";
+const String PROIZVOL = "произвольность: ";
+const String USTOICH = "устойчивость: ";
+const String VOLUME = "объем: ";
 
 const String RECOGNITION = "Восприятие: ";
-const String TACTIL = "тактильное -  ";
+const String TACTIL = "тактильное: ";
 
-const String SPACEPREDSTAVLENIE = "Пространственные представления:";
-const String TIMEPREDSTAVLENIE = "Временные представления:";
-const String CONSTRUCTIVEPRACSIS = "Конструктивный праксис:";
+const String SPACEPREDSTAVLENIE = "Пространственные представления: ";
+const String TIMEPREDSTAVLENIE = "Временные представления: ";
+const String CONSTRUCTIVEPRACSIS = "Конструктивный праксис: ";
 const String MEMORY = "Память: ";
 const String IMAGINATION = "Воображение (последовательные картинки): ";
 const String THINKING = "Мышление. Принятие  задачи: ";
 const String MODESOFACTION = "Способы действия: ";
 const String PREDOMINANTFORMOFTHINKING = "Преобладающая форма мышления: ";
 const String OPERATIONSTORONA = "Операционная сторона: ";
-const String ANALISANDSINTES = "анализ и синтез - ";
-const String GENERALIZATION = "обобщение - ";
-const String PERENOS = "перенос - ";
-const String SRAVNENIE = "сравнение -  ";
-const String UPORIADOCHIVANIE = "упорядочивание -  ";
+const String ANALISANDSINTES = "анализ и синтез: ";
+const String GENERALIZATION = "обобщение: ";
+const String PERENOS = "перенос: ";
+const String SRAVNENIE = "сравнение: ";
+const String UPORIADOCHIVANIE = "упорядочивание: ";
 const String RESULTATIVNOST = "Результативность выполнения задания и возможность коррекции ошибок: ";
 const String DOZIROVANAYAHELP = "Использование различных видов дозированной помощи: ";
 const String CHARACTERDEYATELNOSTI = "Характер деятельности: ";
-const String MOTIVATION = "мотивация - ";
+const String MOTIVATION = "мотивация: ";
 const String TEMPACTIVITYRABOTOSPOSOBNOST = "Темп деятельности и работоспособность: ";
-const String TEMP = "темп - ";
-const String RABOTOSPOSOBNOST = "работоспособность - ";
-const String OSOBENNOTIRECHEVOGO = "Особенности речевого развития ";
-const String IMPRESSIONSPEECH = "  Импрессивная речь: ";
-const String EKSPRESSIONSPEECH = "  Экспрессивная речь: ";
-const String DICTIONARY = "  Словарь: ";
-const String SLOGSTRUCTURE = "  Слоговая структура слова:  ";
-const String GRAMMATICALSTROY = " Грамматический строй:  ";
-const String SVYASNAYASPEECH = " Связная речь: ";
-const String SOUNDPROIZNOSHENIE = " Звукопроизношение: ";
-const String ARTICULATION = " Артикуляционный аппарат: ";
-const String ARTICULATIONMOTORICA = " Артикуляционная моторика: ";
-const String GOLOSOOBRAZOVANIE = " Голосообразование и дыхание: ";
-const String FONEMATICSOUND = " Фонематический слух: ";
-const String OSOBENNOSTIRAZVITIEGAMING = "Особенности развития игровой деятельности ";
-const String CHARACTERACTIONWITHTIYS = " Характер действий с предметами-игрушками: ";
-const String PROYAVLENIEINTERESA = " Проявление интереса к игрушкам, стойкость интереса: ";
-const String ADEKVATNOSTTOYS = " Адекватность употребления игрушек: ";
-const String USINGPRESMETOV = " Использование предметов-заместителей: ";
+const String TEMP = "темп: ";
+const String RABOTOSPOSOBNOST = "работоспособность: ";
+const String OSOBENNOTIRECHEVOGO = "Особенности речевого развития";
+const String IMPRESSIONSPEECH = "Импрессивная речь: ";
+const String EKSPRESSIONSPEECH = "Экспрессивная речь: ";
+const String DICTIONARY = "Словарь: ";
+const String SLOGSTRUCTURE = "Слоговая структура слова: ";
+const String GRAMMATICALSTROY = "Грамматический строй: ";
+const String SVYASNAYASPEECH = "Связная речь: ";
+const String SOUNDPROIZNOSHENIE = "Звукопроизношение: ";
+const String ARTICULATION = "Артикуляционный аппарат: ";
+const String ARTICULATIONMOTORICA = "Артикуляционная моторика: ";
+const String GOLOSOOBRAZOVANIE = "Голосообразование и дыхание: ";
+const String FONEMATICSOUND = "Фонематический слух: ";
+const String OSOBENNOSTIRAZVITIEGAMING = "Особенности развития игровой деятельности";
+const String CHARACTERACTIONWITHTIYS = "Характер действий с предметами-игрушками: ";
+const String PROYAVLENIEINTERESA = "Проявление интереса к игрушкам, стойкость интереса: ";
+const String ADEKVATNOSTTOYS = "Адекватность употребления игрушек: ";
+const String USINGPRESMETOV = "Использование предметов-заместителей: ";
 const String ADAPTIVEACTION = "Адаптивное поведение ";
-const String SELFCATERING = " Самообслуживание: ";
-const String COMMUNICATIONALSKILLS = " Навыки общения: ";
-const String PREDPOCHITAEMIEACTIVITY = " Предпочитаемые занятия: ";
+const String SELFCATERING = "Самообслуживание: ";
+const String COMMUNICATIONALSKILLS = "Навыки общения: ";
+const String PREDPOCHITAEMIEACTIVITY = "Предпочитаемые занятия: ";
 const String LEVELOFSPECIAL = "Уровень специальной подготовленности ";
-const String GENERALAWARNESS = " Общая осведомленность: ";
-const String ELEMENTSOFMATH = " Элементы математических представлений: ";
-const String ZNANIEBUKV = " Знание букв, чтение: ";
-const String IZOBRAZITELNAYAACTIVITY = " Изобразительная деятельность, навыки рисования, аппликации, лепки и конструирования: ";
-const String ZAVEDYUSHI = " Заведующий ДУ  ";
-const String VOSPITATEL = " Воспитатель ";
-const String PEDAGOGPSIX = " Педагог-психолог ";
-const String TEZHERDEFECT = " Учитель-дефектолог ";
+const String GENERALAWARNESS = "Общая осведомленность: ";
+const String ELEMENTSOFMATH = "Элементы математических представлений: ";
+const String ZNANIEBUKV = "Знание букв, чтение: ";
+const String IZOBRAZITELNAYAACTIVITY = "Изобразительная деятельность, навыки рисования, аппликации, лепки и конструирования: ";
+const String ZAVEDYUSHI = "Заведующий ДУ  ";
+const String VOSPITATEL = "Воспитатель ";
+const String PEDAGOGPSIX = "Педагог-психолог ";
+const String TEZHERDEFECT = "Учитель-дефектолог ";
 
 
 
@@ -173,7 +173,7 @@ const List<String> SELFESTIMATEITEM = [
 ];
 
 const List<String> CHARACTERSPECIFICITEM = [
-  " живой, усидчив, последователен",
+  "живой, усидчив, последователен",
   "веселый, пассивный, нетерпелив, быстро теряет интерес",
   "тяготится выполнением задания",
   "проявляет выраженный интерес к заданиям",
@@ -204,7 +204,7 @@ const List<String> LITTLEMOTORICAITEM = [
   "манипулятивная функция резко ограничена (трудности манипулирования предметами при наличии хватания)",
 ];
 const List<String> MIMICALMOTORICAITEM = [
-  " «каменное» лицо",
+  "«каменное» лицо",
   "эмоциональная бедность",
   "мышцы лица малоподвижны, совершает движения глазами и ртом, не улыбается",
   "средняя подвижность мышц, может смеяться, хмуриться",
