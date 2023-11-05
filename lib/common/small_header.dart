@@ -1,4 +1,5 @@
 import 'package:desktop_doc_generator/common/abstract_pdf_widget.dart';
+import 'package:desktop_doc_generator/common/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:pdf/widgets.dart' as pw;
 
@@ -17,9 +18,11 @@ class SmallHeader extends StatelessWidget implements AbstractPdfWidget {
   }
 
   @override
-  pw.Widget getPwWidget() {
+  Future<pw.Widget> getPwWidget() async {
     return pw.Text(smallHeader,
-        style:
-            pw.TextStyle(fontSize: fontSize, fontWeight: pw.FontWeight.bold));
+        style: pw.TextStyle(
+            fontSize: fontSize,
+            fontWeight: pw.FontWeight.bold,
+            font: await getPwFont()));
   }
 }

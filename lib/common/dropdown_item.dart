@@ -1,8 +1,9 @@
 import 'package:desktop_doc_generator/common/abstract_pdf_widget.dart';
+import 'package:desktop_doc_generator/common/extensions.dart';
 import 'package:flutter/material.dart';
+import 'package:pdf/widgets.dart' as pw;
 
 import '../resources/const.dart';
-import 'package:pdf/widgets.dart' as pw;
 
 class DropdownItem<T> extends StatefulWidget implements AbstractPdfWidget {
   final List<T> items;
@@ -23,7 +24,7 @@ class DropdownItem<T> extends StatefulWidget implements AbstractPdfWidget {
   _DropdownItem<T> createState() => state;
 
   @override
-  pw.Widget getPwWidget() {
+  Future<pw.Widget> getPwWidget() {
     return state.getPwWidget();
   }
 }
@@ -86,8 +87,10 @@ class _DropdownItem<T> extends State<DropdownItem<T>>
   }
 
   @override
-  pw.Widget getPwWidget() {
+  Future<pw.Widget> getPwWidget() async {
     return pw.Text("${widget.title}${widget.getTitle(selectedItem)}",
-        style: pw.TextStyle(fontSize: fontSize), softWrap: true);
+        textAlign: pw.TextAlign.left,
+        style: pw.TextStyle(font: await getPwFont(), fontSize: fontSize),
+        softWrap: true);
   }
 }

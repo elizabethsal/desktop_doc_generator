@@ -9,10 +9,7 @@ import '../resources/const.dart';
 import '../template_one/data.dart';
 
 class DateButtonWithTitle extends StatefulWidget implements AbstractPdfWidget {
-  DateButtonWithTitle(
-      {super.key,
-      required this.title,
-      required this.minAge});
+  DateButtonWithTitle({super.key, required this.title, required this.minAge});
 
   final String title;
   final int minAge;
@@ -22,7 +19,7 @@ class DateButtonWithTitle extends StatefulWidget implements AbstractPdfWidget {
   _DateButtonWithTitleState createState() => state;
 
   @override
-  pw.Widget getPwWidget() {
+  Future<pw.Widget> getPwWidget() {
     return state.getPwWidget();
   }
 }
@@ -30,7 +27,7 @@ class DateButtonWithTitle extends StatefulWidget implements AbstractPdfWidget {
 class _DateButtonWithTitleState extends State<DateButtonWithTitle>
     implements AbstractPdfWidget {
   DateTime? chosenDateTime;
-  TextStyle styleText = const TextStyle(fontSize: FONT_TEXT);
+  final double fontSize = FONT_TEXT;
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +40,8 @@ class _DateButtonWithTitleState extends State<DateButtonWithTitle>
             Container(
                 constraints:
                     BoxConstraints(maxWidth: constraints.maxWidth / 2.0),
-                child: Text(widget.title, softWrap: true, style: styleText)),
+                child: Text(widget.title,
+                    softWrap: true, style: TextStyle(fontSize: fontSize))),
             Expanded(
               child: Text(
                       chosenDateTime == null
@@ -71,10 +69,12 @@ class _DateButtonWithTitleState extends State<DateButtonWithTitle>
   }
 
   @override
-  pw.Widget getPwWidget() {
+  Future<pw.Widget> getPwWidget() async {
     return pw.Text(
         "${widget.title}${chosenDateTime == null ? "" : DateFormat(BIRTHDATE_FORMAT).format(chosenDateTime!)}",
-        softWrap: true);
+        softWrap: true,
+        textAlign: pw.TextAlign.left,
+        style: pw.TextStyle(font: await getPwFont(), fontSize: fontSize));
   }
 }
 

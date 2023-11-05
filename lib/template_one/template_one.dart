@@ -1,7 +1,4 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:pdf/widgets.dart' as pw;
 
 import '../common/abstract_pdf_widget.dart';
@@ -15,7 +12,8 @@ import '../common/vertical_pdf_margin.dart';
 import '../resources/const.dart';
 import 'data.dart';
 
-class ContentTemplateOne extends StatefulWidget implements PdfConverterInterface {
+class ContentTemplateOne extends StatefulWidget
+    implements PdfConverterInterface {
   ContentTemplateOne({super.key});
 
   final _ContentTemplateOneState state = _ContentTemplateOneState();
@@ -24,8 +22,8 @@ class ContentTemplateOne extends StatefulWidget implements PdfConverterInterface
   _ContentTemplateOneState createState() => state;
 
   @override
-  Future<File> getPdf() {
-    return state.getPdf();
+  Future<List<pw.Widget>> getListPDFWidgets() {
+    return state.getListPDFWidgets();
   }
 }
 
@@ -398,24 +396,14 @@ class _ContentTemplateOneState extends State<ContentTemplateOne>
   );
 
   @override
-  Future<File> getPdf() async {
-    pw.Document pdf = pw.Document();
+  Future<List<pw.Widget>> getListPDFWidgets() async {
+    List<pw.Widget> rv = [];
 
-    //var font = pw.Font.ttf(await rootBundle.load("assets/NotoSerif-Black.ttf"));
+    for (Widget widget in mainColumn.children) {
+      rv.add(await (widget as AbstractPdfWidget).getPwWidget());
+    }
 
-    pdf.addPage(
-      pw.Page(
-          build: (pw.Context context) => pw.Column(
-              children: mainColumn.children
-                  .map((e) => (e as AbstractPdfWidget).getPwWidget())
-                  .toList())),
-    );
-
-    File file = File(
-        "assets/$appName${DateFormat(PDF_TITLE_TIMESTAMP).format(DateTime.now())}.pdf");
-    file.create();
-    file.writeAsBytes(await pdf.save());
-    return file;
+    return rv;
   }
 
   @override

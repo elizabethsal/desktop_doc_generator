@@ -39,6 +39,8 @@ dependencies:
   auto_size_text_field: ^2.2.2
   pdf: ^3.10.4
   intl: ^0.18.1
+  path_provider: ^2.1.1
+  share_extend: ^2.0.0
 
 dev_dependencies:
   flutter_test:
@@ -63,7 +65,7 @@ flutter:
   fonts:
     - family: NotoSerif
       fonts:
-        - asset: assets/NotoSerif-Black.ttf
+        - asset: assets/NotoSerif-Regular.ttf
 
 
   # To add assets to your application, add an assets section, like this:

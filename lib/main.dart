@@ -1,7 +1,14 @@
+import 'dart:io';
+
 import 'package:desktop_doc_generator/common/pdf_converter_interface.dart';
+import 'package:desktop_doc_generator/resources/const.dart';
 import 'package:desktop_doc_generator/template_one/template_one.dart';
 import 'package:desktop_doc_generator/template_two.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:pdf/widgets.dart' as pw;
+import 'package:share_extend/share_extend.dart';
 
 void main() {
   runApp(const MyApp());
@@ -83,10 +90,36 @@ class _MyHomePageState extends State<MyHomePage> {
               ],
             ),
             floatingActionButton: FloatingActionButton(
-              onPressed: () {
-                (page as PdfConverterInterface).getPdf().then((pdfFile) {
-                  print('');
+              onPressed: () async {
+                List<pw.Widget> widgets = await (page as PdfConverterInterface).getListPDFWidgets();
+
+                pw.Document pdf = pw.Document();
+
+                pdf.addPage(pw.Page(
+                  build: (pw.Context context) => pw.Column(
+                      crossAxisAlignment: pw.CrossAxisAlignment.start,
+                      children: widgets),
+                ));
+
+                Directory dir = await getApplicationDocumentsDirectory();
+                List<FileSystemEntity> entities = await dir.list().toList();
+
+                String namePrefix = appName;
+
+                entities
+                    .where((element) =>
+                        element.uri.pathSegments.last.contains(namePrefix))
+                    .forEach((element) {
+                  element.delete();
                 });
+
+                File file = File(
+                    "${dir.path}/$appName${DateFormat(PDF_TITLE_TIMESTAMP).format(DateTime.now())}.pdf");
+
+                await file.create(recursive: true);
+                await file.writeAsBytes(await pdf.save());
+
+                ShareExtend.share(file.path, "file");
               },
               child: const Icon(Icons.download),
             ),
@@ -96,4 +129,3 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 }
-

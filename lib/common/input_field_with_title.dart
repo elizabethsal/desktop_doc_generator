@@ -1,12 +1,12 @@
 import 'package:desktop_doc_generator/common/abstract_pdf_widget.dart';
+import 'package:desktop_doc_generator/common/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:pdf/widgets.dart' as pw;
 
 import '../resources/const.dart';
 
 class InputFieldWithTitle extends StatefulWidget implements AbstractPdfWidget {
-  InputFieldWithTitle(
-      {super.key, required this.title});
+  InputFieldWithTitle({super.key, required this.title});
 
   final String title;
   final _InputFieldWithTitle state = _InputFieldWithTitle();
@@ -15,7 +15,7 @@ class InputFieldWithTitle extends StatefulWidget implements AbstractPdfWidget {
   State<StatefulWidget> createState() => state;
 
   @override
-  pw.Widget getPwWidget() {
+  Future<pw.Widget> getPwWidget() {
     return state.getPwWidget();
   }
 }
@@ -52,8 +52,10 @@ class _InputFieldWithTitle extends State<InputFieldWithTitle>
   }
 
   @override
-  pw.Widget getPwWidget() {
+  Future<pw.Widget> getPwWidget() async {
     return pw.Text("${widget.title}$finalResult",
-        style: pw.TextStyle(fontSize: fontSize), softWrap: true);
+        textAlign: pw.TextAlign.left,
+        style: pw.TextStyle(fontSize: fontSize, font: await getPwFont()),
+        softWrap: true);
   }
 }

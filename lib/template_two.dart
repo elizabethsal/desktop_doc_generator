@@ -1,7 +1,6 @@
-import 'dart:io';
-
 import 'package:desktop_doc_generator/common/pdf_converter_interface.dart';
 import 'package:flutter/material.dart';
+import 'package:pdf/widgets.dart' as pw;
 
 import 'template_one/data.dart';
 
@@ -9,14 +8,14 @@ class ContentTemplateTwo extends StatefulWidget
     implements PdfConverterInterface {
   ContentTemplateTwo({super.key});
 
-  final _ContentTemplateTwo state= _ContentTemplateTwo();
+  final _ContentTemplateTwo state = _ContentTemplateTwo();
 
   @override
   _ContentTemplateTwo createState() => state;
 
   @override
-  Future<File> getPdf() {
-    return state.getPdf();
+  Future<List<pw.Widget>> getListPDFWidgets() {
+    return state.getListPDFWidgets();
   }
 }
 
@@ -98,8 +97,8 @@ class _ContentTemplateTwo extends State<ContentTemplateTwo>
   }
 
   @override
-  Future<File> getPdf() {
-    // TODO: implement getPdf
+  Future<List<pw.Widget>> getListPDFWidgets() {
+    // TODO: implement getListPDFWidgets
     throw UnimplementedError();
   }
 }

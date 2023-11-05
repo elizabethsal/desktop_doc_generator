@@ -12,7 +12,7 @@ class VerticalPdfMargin extends StatelessWidget implements AbstractPdfWidget{
   }
 
   @override
-  pw.Widget getPwWidget() {
+  Future<pw.Widget> getPwWidget() async {
     return pw.SizedBox(height: margin);
   }
 }

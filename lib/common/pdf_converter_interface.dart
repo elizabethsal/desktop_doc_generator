@@ -1,5 +1,4 @@
-import 'dart:io';
-
+import 'package:pdf/widgets.dart' as pw;
 abstract class PdfConverterInterface {
-  Future<File> getPdf();
+ Future<List<pw.Widget>> getListPDFWidgets();
 }
