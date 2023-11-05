@@ -1,13 +1,15 @@
+import 'package:desktop_doc_generator/common/abstract_pdf_widget.dart';
 import 'package:desktop_doc_generator/common/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:pdf/widgets.dart' as pw;
 
 import '../resources/colors.dart';
 import '../resources/const.dart';
 import '../template_one/data.dart';
 
-class DateButtonWithTitle extends StatefulWidget {
-  const DateButtonWithTitle(
+class DateButtonWithTitle extends StatefulWidget implements AbstractPdfWidget {
+  DateButtonWithTitle(
       {super.key,
       required this.title,
       required this.chosenDate,
@@ -16,12 +18,19 @@ class DateButtonWithTitle extends StatefulWidget {
   final String title;
   final Function(DateTime dateTime) chosenDate;
   final int minAge;
+  final _DateButtonWithTitleState state = _DateButtonWithTitleState();
 
   @override
-  _DateButtonWithTitleState createState() => _DateButtonWithTitleState();
+  _DateButtonWithTitleState createState() => state;
+
+  @override
+  pw.Widget getPwWidget() {
+    return state.getPwWidget();
+  }
 }
 
-class _DateButtonWithTitleState extends State<DateButtonWithTitle> {
+class _DateButtonWithTitleState extends State<DateButtonWithTitle>
+    implements AbstractPdfWidget {
   DateTime? chosenDateTime;
 
   @override
@@ -63,6 +72,13 @@ class _DateButtonWithTitleState extends State<DateButtonWithTitle> {
         ),
       );
     });
+  }
+
+  @override
+  pw.Widget getPwWidget() {
+    return pw.Text(
+        "${widget.title}${chosenDateTime == null ? "" : DateFormat(BIRTHDATE_FORMAT).format(chosenDateTime!)}",
+        softWrap: true);
   }
 }
 
