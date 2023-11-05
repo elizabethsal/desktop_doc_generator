@@ -1,3 +1,6 @@
+const String appName = "Psychology template generator";
+const String PDF_TITLE_TIMESTAMP = "hh:mm dd.MM.yyyy";
+
 const double FONT_HEADER = 20.0;
 
 const double FONT_TEXT = 14.0;

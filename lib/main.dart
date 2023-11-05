@@ -1,3 +1,4 @@
+import 'package:desktop_doc_generator/common/pdf_converter_interface.dart';
 import 'package:desktop_doc_generator/template_one/template_one.dart';
 import 'package:desktop_doc_generator/template_two.dart';
 import 'package:flutter/material.dart';
@@ -50,7 +51,6 @@ class _MyHomePageState extends State<MyHomePage> {
       default:
         throw UnimplementedError('no templates for $selectedIndex');
     }
-    (page as TemplateInterface).createDoc();
 
     return LayoutBuilder(builder: (context, constraints) {
       return Container(
@@ -83,7 +83,11 @@ class _MyHomePageState extends State<MyHomePage> {
               ],
             ),
             floatingActionButton: FloatingActionButton(
-              onPressed: () {},
+              onPressed: () {
+                (page as PdfConverterInterface).getPdf().then((pdfFile) {
+                  print('');
+                });
+              },
               child: const Icon(Icons.download),
             ),
           ),
@@ -93,6 +97,3 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-abstract class TemplateInterface {
-  void createDoc();
-}
