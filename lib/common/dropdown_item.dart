@@ -32,7 +32,7 @@ class _DropdownItem<T> extends State<DropdownItem<T>>
     implements AbstractPdfWidget {
   late T selectedItem;
   String finalResult = "";
-  final double fontSize = FONT_HEADER;
+  final double fontSize = FONT_TEXT;
 
   @override
   void initState() {

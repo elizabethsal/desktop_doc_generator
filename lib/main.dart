@@ -60,7 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
             body: Row(
               children: [
                 NavigationRail(
-                  extended: constraints.maxWidth >= 600,
+                  extended: constraints.maxWidth >= 1000,
                   //  extended: false,
                   destinations: const [
                     NavigationRailDestination(

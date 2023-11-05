@@ -23,7 +23,7 @@ class InputFieldWithTitle extends StatefulWidget implements AbstractPdfWidget {
 class _InputFieldWithTitle extends State<InputFieldWithTitle>
     implements AbstractPdfWidget {
   String finalResult = "";
-  final double fontSize = FONT_HEADER;
+  final double fontSize = FONT_TEXT;
 
   @override
   Widget build(BuildContext context) {
