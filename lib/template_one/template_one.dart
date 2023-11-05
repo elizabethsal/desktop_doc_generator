@@ -8,6 +8,8 @@ import '../common/date_button_with_title.dart';
 import '../common/dropdown_item.dart';
 import '../common/header.dart';
 import '../common/input_field_with_title.dart';
+import '../common/small_header.dart';
+import '../common/vertical_pdf_margin.dart';
 import '../main.dart';
 import '../resources/const.dart';
 import 'data.dart';
@@ -145,638 +147,361 @@ class _ContentTemplateOneState extends State<ContentTemplateOne> {
             const SizedBox(height: DEFAULT_MARGIN),
             InputFieldWithTitle(
               title: FIOCHILD,
-              onTextChanged: (str) {
-                //TODO save child name
-              },
             ),
             DateButtonWithTitle(
               minAge: 0,
               title: DATEOFBIRTH,
-              chosenDate: (DateTime date) {
-                //TODO save date
-              },
             ),
             DropdownItem<String>(
               title: GROUP_ST_SPEC,
               items: GROUP_OT_SPEC_ITEMS,
               preselectedItem: GROUP_OT_SPEC_ITEMS.first,
-              onItemChose: (item) {
-                //TODO save
-              },
               getTitle: (item) => item,
             ),
             InputFieldWithTitle(
               title: HOMEADDRES,
-              onTextChanged: (str) {
-                //TODO save child address
-              },
             ),
             InputFieldWithTitle(
               title: PHONENUMBER,
-              onTextChanged: (str) {
-                //TODO save child phone number
-              },
             ),
             InputFieldWithTitle(
               title: FAMILY,
-              onTextChanged: (str) {
-                //TODO save child family
-              },
             ),
             InputFieldWithTitle(
               title: MOTHERS_NAME,
-              onTextChanged: (str) {
-                //TODO save mothers name
-              },
             ),
             DateButtonWithTitle(
               minAge: MIN_PARRENT_AGE,
               title: YEAROFBIRTH,
-              chosenDate: (DateTime date) {
-                //TODO save date
-              },
             ),
             InputFieldWithTitle(
               title: FATHERS_NAME,
-              onTextChanged: (str) {
-                //TODO save fathers name
-              },
             ),
             DateButtonWithTitle(
               minAge: MIN_PARRENT_AGE,
               title: YEAROFBIRTH,
-              chosenDate: (DateTime date) {
-                //TODO save date
-              },
             ),
             InputFieldWithTitle(
               title: EDUCATION,
-              onTextChanged: (str) {
-                //TODO save education
-              },
             ),
             InputFieldWithTitle(
               title: HELP,
-              onTextChanged: (str) {
-                //TODO save help
-              },
             ),
-            const SizedBox(height: DEFAULT_MARGIN_BIG),
-            const Center(
-              child: Text(
-                style: TextStyle(
-                    fontWeight: FontWeight.bold, fontSize: FONT_HEADER),
-                textAlign: TextAlign.center,
-                RESULTSPSIX,
-              ),
-            ),
-            const SizedBox(height: DEFAULT_MARGIN),
+            const VerticalPdfMargin(margin: DEFAULT_MARGIN_BIG),
+            const Header(header: RESULTSPSIX),
+            const VerticalPdfMargin(margin: DEFAULT_MARGIN),
             DropdownItem<String>(
               title: CONTACT,
               items: CONTACTITEM,
               preselectedItem: CONTACTITEM.first,
-              onItemChose: (item) {
-                //TODO save
-              },
               getTitle: (item) => item,
             ),
             DropdownItem<String>(
               title: EMOTIONS,
               items: EMOTIONSiTEM,
               preselectedItem: EMOTIONSiTEM.first,
-              onItemChose: (item) {
-                //TODO save
-              },
               getTitle: (item) => item,
             ),
             DropdownItem<String>(
               title: EMOTIONALFON,
               items: EMOTIONALFONITEMS,
               preselectedItem: EMOTIONALFONITEMS.first,
-              onItemChose: (item) {
-                //TODO save
-              },
               getTitle: (item) => item,
             ),
-            const Text(REACTIONFORPOOCHRENIEIPORICANIE, style: TextStyle(
-                fontWeight: FontWeight.bold, fontSize: FONT_TEXT_TITLE),
-                textAlign: TextAlign.center,
-            ),
+            const SmallHeader(smallHeader: REACTIONFORPOOCHRENIEIPORICANIE),
             DropdownItem<String>(
               title: REACTIONPOSSHRENIE,
               items: REACTIONPOSSHRENIEITEM,
               preselectedItem: REACTIONPOSSHRENIEITEM.first,
-              onItemChose: (item) {
-                //TODO save
-              },
               getTitle: (item) => item,
             ),
             DropdownItem<String>(
               title: REACTIONPORICATIEN,
               items: REACTIONPORICATIENITEM,
               preselectedItem: REACTIONPORICATIENITEM.first,
-              onItemChose: (item) {
-                //TODO save
-              },
               getTitle: (item) => item,
             ),
             DropdownItem<String>(
               title: SELFESTIMATE,
               items: SELFESTIMATEITEM,
               preselectedItem: SELFESTIMATEITEM.first,
-              onItemChose: (item) {
-                //TODO save
-              },
               getTitle: (item) => item,
             ),
             DropdownItem<String>(
               title: CHARACTERSPECIFIC,
               items: CHARACTERSPECIFICITEM,
               preselectedItem: CHARACTERSPECIFICITEM.first,
-              onItemChose: (item) {
-                //TODO save
-              },
               getTitle: (item) => item,
             ),
-            const SizedBox(height: DEFAULT_MARGIN_BIG),
-            const Center(
-              child: Text(
-                style: TextStyle(
-                    fontWeight: FontWeight.bold, fontSize: FONT_HEADER),
-                textAlign: TextAlign.center,
-                STATEOFMOTORSPHERE,
-              ),
-            ),
+            const VerticalPdfMargin(margin: DEFAULT_MARGIN_BIG),
+            const Header(header: STATEOFMOTORSPHERE),
             DropdownItem<String>(
               title: COORDINATION,
               items: COORDINATIONITEM,
               preselectedItem: COORDINATIONITEM.first,
-              onItemChose: (item) {
-                //TODO save
-              },
               getTitle: (item) => item,
             ),
             DropdownItem<String>(
               title: GENERALMOTORICA,
               items: GENERALMOTORICAITEM,
               preselectedItem: GENERALMOTORICAITEM.first,
-              onItemChose: (item) {
-                //TODO save
-              },
               getTitle: (item) => item,
             ),
             DropdownItem<String>(
               title: LITTLEMOTORICA,
               items: GENERALMOTORICAITEM,
               preselectedItem: GENERALMOTORICAITEM.first,
-              onItemChose: (item) {
-                //TODO save
-              },
               getTitle: (item) => item,
             ),
             DropdownItem<String>(
               title: PRIORITYHAND,
               items: PRIORITYHANDITEM,
               preselectedItem: PRIORITYHANDITEM.first,
-              onItemChose: (item) {
-                //TODO save
-              },
               getTitle: (item) => item,
             ),
             DropdownItem<String>(
               title: MIMICALMOTORICA,
               items: MIMICALMOTORICAITEM,
               preselectedItem: MIMICALMOTORICAITEM.first,
-              onItemChose: (item) {
-                //TODO save
-              },
               getTitle: (item) => item,
             ),
-            const SizedBox(height: DEFAULT_MARGIN_BIG),
-            const Center(
-              child: Text(
-                style: TextStyle(
-                    fontWeight: FontWeight.bold, fontSize: FONT_HEADER),
-                textAlign: TextAlign.center,
-                DEVELOPOMENTDELAYS,
-              ),
-            ),
-            const Text(ATTENTION),
+            const VerticalPdfMargin(margin: DEFAULT_MARGIN_BIG),
+            const Header(header: DEVELOPOMENTDELAYS),
+            const SmallHeader(smallHeader: ATTENTION),
             DropdownItem<String>(
               title: PROIZVOL,
               items: RANDOMNESSITEMSATTENTION,
               preselectedItem: RANDOMNESSITEMSATTENTION.first,
-              onItemChose: (item) {
-                //TODO save
-              },
               getTitle: (item) => item,
             ),
             DropdownItem<String>(
               title: USTOICH,
               items: STABILITYITEMSATTENTION,
               preselectedItem: STABILITYITEMSATTENTION.first,
-              onItemChose: (item) {
-                //TODO save
-              },
               getTitle: (item) => item,
             ),
             DropdownItem<String>(
               title: VOLUME,
               items: VOLUMEITEMSATTENTION,
               preselectedItem: VOLUMEITEMSATTENTION.first,
-              onItemChose: (item) {
-                //TODO save
-              },
               getTitle: (item) => item,
             ),
             DropdownItem<String>(
               title: RECOGNITION,
               items: RECOGNITIONITEM,
               preselectedItem: RECOGNITIONITEM.first,
-              onItemChose: (item) {
-                //TODO save
-              },
               getTitle: (item) => item,
             ),
             DropdownItem<String>(
               title: TACTIL,
               items: RECOGNITIONTACTICALITEM,
               preselectedItem: RECOGNITIONTACTICALITEM.first,
-              onItemChose: (item) {
-                //TODO save
-              },
               getTitle: (item) => item,
             ),
             DropdownItem<String>(
               title: SPACEPREDSTAVLENIE,
               items: SPACEPREDSTAVLENIEITEM,
               preselectedItem: SPACEPREDSTAVLENIEITEM.first,
-              onItemChose: (item) {
-                //TODO save
-              },
               getTitle: (item) => item,
             ),
             DropdownItem<String>(
               title: TIMEPREDSTAVLENIE,
               items: TIMEPREDSTAVLENIEITEM,
               preselectedItem: TIMEPREDSTAVLENIEITEM.first,
-              onItemChose: (item) {
-                //TODO save
-              },
               getTitle: (item) => item,
             ),
             DropdownItem<String>(
               title: CONSTRUCTIVEPRACSIS,
               items: CONSTRUCTIVEPRACSISITEM,
               preselectedItem: CONSTRUCTIVEPRACSISITEM.first,
-              onItemChose: (item) {
-                //TODO save
-              },
               getTitle: (item) => item,
             ),
             DropdownItem<String>(
               title: MEMORY,
               items: MEMORYITEM,
               preselectedItem: MEMORYITEM.first,
-              onItemChose: (item) {
-                //TODO save
-              },
               getTitle: (item) => item,
             ),
             DropdownItem<String>(
               title: IMAGINATION,
               items: IMAGINATIONITEM,
               preselectedItem: IMAGINATIONITEM.first,
-              onItemChose: (item) {
-                //TODO save
-              },
               getTitle: (item) => item,
             ),
             DropdownItem<String>(
               title: THINKING,
               items: THINKINGITEM,
               preselectedItem: THINKINGITEM.first,
-              onItemChose: (item) {
-                //TODO save
-              },
               getTitle: (item) => item,
             ),
             DropdownItem<String>(
               title: MODESOFACTION,
               items: MODESOFACTIONITEM,
               preselectedItem: MODESOFACTIONITEM.first,
-              onItemChose: (item) {
-                //TODO save
-              },
               getTitle: (item) => item,
             ),
             DropdownItem<String>(
               title: PREDOMINANTFORMOFTHINKING,
               items: PREDOMINANTFORMOFTHINKINGITEM,
               preselectedItem: PREDOMINANTFORMOFTHINKINGITEM.first,
-              onItemChose: (item) {
-                //TODO save
-              },
               getTitle: (item) => item,
             ),
-            const Text(OPERATIONSTORONA),
+            const SmallHeader(smallHeader: OPERATIONSTORONA),
             DropdownItem<String>(
               title: ANALISANDSINTES,
               items: ANALISANDSINTESITEM,
               preselectedItem: ANALISANDSINTESITEM.first,
-              onItemChose: (item) {
-                //TODO save
-              },
               getTitle: (item) => item,
             ),
             DropdownItem<String>(
               title: GENERALIZATION,
               items: GENERALIZATIONITEM,
               preselectedItem: GENERALIZATIONITEM.first,
-              onItemChose: (item) {
-                //TODO save
-              },
               getTitle: (item) => item,
             ),
             DropdownItem<String>(
               title: PERENOS,
               items: PERENOSITEM,
               preselectedItem: PERENOSITEM.first,
-              onItemChose: (item) {
-                //TODO save
-              },
               getTitle: (item) => item,
             ),
             DropdownItem<String>(
               title: SRAVNENIE,
               items: SRAVNENIEITEM,
               preselectedItem: SRAVNENIEITEM.first,
-              onItemChose: (item) {
-                //TODO save
-              },
               getTitle: (item) => item,
             ),
             DropdownItem<String>(
               title: UPORIADOCHIVANIE,
               items: UPORIADOCHIVANIEITEM,
               preselectedItem: UPORIADOCHIVANIEITEM.first,
-              onItemChose: (item) {
-                //TODO save
-              },
               getTitle: (item) => item,
             ),
             DropdownItem<String>(
               title: RESULTATIVNOST,
               items: RESULTATIVNOSTITEM,
               preselectedItem: RESULTATIVNOSTITEM.first,
-              onItemChose: (item) {
-                //TODO save
-              },
               getTitle: (item) => item,
             ),
             DropdownItem<String>(
               title: DOZIROVANAYAHELP,
               items: DOZIROVANAYAHELPITEM,
               preselectedItem: DOZIROVANAYAHELPITEM.first,
-              onItemChose: (item) {
-                //TODO save
-              },
               getTitle: (item) => item,
             ),
             DropdownItem<String>(
               title: CHARACTERDEYATELNOSTI,
               items: CHARACTERDEYATELNOSTIITEM,
               preselectedItem: CHARACTERDEYATELNOSTIITEM.first,
-              onItemChose: (item) {
-                //TODO save
-              },
               getTitle: (item) => item,
             ),
             DropdownItem<String>(
               title: MOTIVATION,
               items: MOTIVATIONITEM,
               preselectedItem: MOTIVATIONITEM.first,
-              onItemChose: (item) {
-                //TODO save
-              },
               getTitle: (item) => item,
             ),
-            const Text(TEMPACTIVITYRABOTOSPOSOBNOST),
+            const SmallHeader(smallHeader: TEMPACTIVITYRABOTOSPOSOBNOST),
             DropdownItem<String>(
               title: TEMP,
               items: TEMPITEM,
               preselectedItem: TEMPITEM.first,
-              onItemChose: (item) {
-                //TODO save
-              },
               getTitle: (item) => item,
             ),
             DropdownItem<String>(
               title: RABOTOSPOSOBNOST,
               items: RABOTOSPOSOBNOSTITEM,
               preselectedItem: RABOTOSPOSOBNOSTITEM.first,
-              onItemChose: (item) {
-                //TODO save
-              },
               getTitle: (item) => item,
             ),
-            const SizedBox(height: DEFAULT_MARGIN_BIG),
-            const Center(
-              child: Text(
-                style: TextStyle(
-                    fontWeight: FontWeight.bold, fontSize: FONT_HEADER),
-                textAlign: TextAlign.center,
-                OSOBENNOTIRECHEVOGO,
-              ),
-            ),
+            const VerticalPdfMargin(margin: DEFAULT_MARGIN_BIG),
+            const Header(header: OSOBENNOTIRECHEVOGO),
             InputFieldWithTitle(
               title: IMPRESSIONSPEECH,
-              onTextChanged: (str) {
-                //TODO save impressive speech
-              },
             ),
             InputFieldWithTitle(
               title: EKSPRESSIONSPEECH,
-              onTextChanged: (str) {
-                //TODO save ekspressive speech
-              },
             ),
             InputFieldWithTitle(
               title: DICTIONARY,
-              onTextChanged: (str) {
-                //TODO save vocabulary
-              },
             ),
             InputFieldWithTitle(
               title: SLOGSTRUCTURE,
-              onTextChanged: (str) {
-                //TODO save structure
-              },
             ),
             InputFieldWithTitle(
               title: GRAMMATICALSTROY,
-              onTextChanged: (str) {
-                //TODO save grammatical
-              },
             ),
             InputFieldWithTitle(
               title: SVYASNAYASPEECH,
-              onTextChanged: (str) {
-                //TODO save speech
-              },
             ),
             InputFieldWithTitle(
               title: SVYASNAYASPEECH,
-              onTextChanged: (str) {
-                //TODO save speech
-              },
             ),
             InputFieldWithTitle(
               title: SOUNDPROIZNOSHENIE,
-              onTextChanged: (str) {
-                //TODO save sound
-              },
             ),
             InputFieldWithTitle(
               title: ARTICULATION,
-              onTextChanged: (str) {
-                //TODO save articulation
-              },
             ),
             InputFieldWithTitle(
               title: ARTICULATIONMOTORICA,
-              onTextChanged: (str) {
-                //TODO save articulation and motorica
-              },
             ),
             InputFieldWithTitle(
               title: GOLOSOOBRAZOVANIE,
-              onTextChanged: (str) {
-                //TODO save sound creating
-              },
             ),
             InputFieldWithTitle(
               title: FONEMATICSOUND,
-              onTextChanged: (str) {
-                //TODO save phonematic
-              },
             ),
-            const SizedBox(height: DEFAULT_MARGIN_BIG),
-            const Center(
-              child: Text(
-                style: TextStyle(
-                    fontWeight: FontWeight.bold, fontSize: FONT_HEADER),
-                textAlign: TextAlign.center,
-                OSOBENNOSTIRAZVITIEGAMING,
-              ),
-            ),
+            const VerticalPdfMargin(margin: DEFAULT_MARGIN_BIG),
+            const Header(header: OSOBENNOSTIRAZVITIEGAMING),
             InputFieldWithTitle(
               title: CHARACTERACTIONWITHTIYS,
-              onTextChanged: (str) {
-                //TODO save toys
-              },
             ),
             InputFieldWithTitle(
               title: PROYAVLENIEINTERESA,
-              onTextChanged: (str) {
-                //TODO save stress
-              },
             ),
             InputFieldWithTitle(
               title: ADEKVATNOSTTOYS,
-              onTextChanged: (str) {
-                //TODO save adekvatnost
-              },
             ),
             InputFieldWithTitle(
               title: USINGPRESMETOV,
-              onTextChanged: (str) {
-                //TODO save things
-              },
             ),
-            const SizedBox(height: DEFAULT_MARGIN_BIG),
-            const Center(
-              child: Text(
-                style: TextStyle(
-                    fontWeight: FontWeight.bold, fontSize: FONT_HEADER),
-                textAlign: TextAlign.center,
-                ADAPTIVEACTION,
-              ),
-            ),
+            const VerticalPdfMargin(margin: DEFAULT_MARGIN_BIG),
+            const Header(header: ADAPTIVEACTION),
             InputFieldWithTitle(
               title: SELFCATERING,
-              onTextChanged: (str) {
-                //TODO save self
-              },
             ),
             InputFieldWithTitle(
               title: COMMUNICATIONALSKILLS,
-              onTextChanged: (str) {
-                //TODO save communication skills
-              },
             ),
             InputFieldWithTitle(
               title: PREDPOCHITAEMIEACTIVITY,
-              onTextChanged: (str) {
-                //TODO save activity
-              },
             ),
-            const SizedBox(height: DEFAULT_MARGIN_BIG),
-            const Center(
-              child: Text(
-                style: TextStyle(
-                    fontWeight: FontWeight.bold, fontSize: FONT_HEADER),
-                textAlign: TextAlign.center,
-                LEVELOFSPECIAL,
-              ),
-            ),
+            const VerticalPdfMargin(margin: DEFAULT_MARGIN_BIG),
+            const Header(header: LEVELOFSPECIAL),
             InputFieldWithTitle(
               title: GENERALAWARNESS,
-              onTextChanged: (str) {
-                //TODO save general
-              },
             ),
             InputFieldWithTitle(
               title: ELEMENTSOFMATH,
-              onTextChanged: (str) {
-                //TODO save math
-              },
             ),
             InputFieldWithTitle(
               title: ZNANIEBUKV,
-              onTextChanged: (str) {
-                //TODO save litter
-              },
             ),
             InputFieldWithTitle(
               title: IZOBRAZITELNAYAACTIVITY,
-              onTextChanged: (str) {
-                //TODO save izobretactivity
-              },
             ),
             InputFieldWithTitle(
               title: ZAVEDYUSHI,
-              onTextChanged: (str) {
-                //TODO save zaved
-              },
             ),
             InputFieldWithTitle(
               title: VOSPITATEL,
-              onTextChanged: (str) {
-                //TODO save vospit
-              },
             ),
             InputFieldWithTitle(
               title: PEDAGOGPSIX,
-              onTextChanged: (str) {
-                //TODO save counselor
-              },
             ),
             InputFieldWithTitle(
               title: TEZHERDEFECT,
-              onTextChanged: (str) {
-                //TODO save defect
-              },
             ),
           ],
         ),

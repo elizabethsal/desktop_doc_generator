@@ -8,14 +8,12 @@ class DropdownItem<T> extends StatefulWidget implements AbstractPdfWidget {
   final List<T> items;
   final T preselectedItem;
   final String title;
-  final Function(T chosenItem) onItemChose;
   final String Function(T item) getTitle;
 
   DropdownItem(
       {super.key,
       required this.items,
       required this.preselectedItem,
-      required this.onItemChose,
       required this.title,
       required this.getTitle});
 

@@ -6,10 +6,9 @@ import '../resources/const.dart';
 
 class InputFieldWithTitle extends StatefulWidget implements AbstractPdfWidget {
   InputFieldWithTitle(
-      {super.key, required this.title, required this.onTextChanged});
+      {super.key, required this.title});
 
   final String title;
-  final Function(String str) onTextChanged;
   final _InputFieldWithTitle state = _InputFieldWithTitle();
 
   @override
