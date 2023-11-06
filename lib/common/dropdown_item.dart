@@ -9,14 +9,14 @@ class DropdownItem<T> extends StatefulWidget implements AbstractPdfWidget {
   final List<T> items;
   final T preselectedItem;
   final String title;
-  final String Function(T item) getTitle;
+  final String Function(T item) convertToString;
 
   DropdownItem(
       {super.key,
       required this.items,
       required this.preselectedItem,
       required this.title,
-      required this.getTitle});
+      required this.convertToString});
 
   final _DropdownItem<T> state = _DropdownItem();
 
@@ -67,7 +67,7 @@ class _DropdownItem<T> extends State<DropdownItem<T>>
                           child: Padding(
                               padding: const EdgeInsets.symmetric(
                                   vertical: DEFAULT_MARGIN_SMALL),
-                              child: Text(widget.getTitle(value),
+                              child: Text(widget.convertToString(value),
                                   softWrap: true,
                                   style: TextStyle(fontSize: fontSize)))))
                       .toList(),
@@ -88,7 +88,7 @@ class _DropdownItem<T> extends State<DropdownItem<T>>
 
   @override
   Future<pw.Widget> getPwWidget() async {
-    return pw.Text("${widget.title}${widget.getTitle(selectedItem)}",
+    return pw.Text("${widget.title}${widget.convertToString(selectedItem)}",
         textAlign: pw.TextAlign.left,
         style: pw.TextStyle(font: await getPwFont(), fontSize: fontSize),
         softWrap: true);
