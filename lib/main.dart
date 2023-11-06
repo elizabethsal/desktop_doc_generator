@@ -4,6 +4,7 @@ import 'package:desktop_doc_generator/common/pdf_converter_interface.dart';
 import 'package:desktop_doc_generator/resources/const.dart';
 import 'package:desktop_doc_generator/template_one/template_one.dart';
 import 'package:desktop_doc_generator/template_two.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:path_provider/path_provider.dart';
@@ -91,38 +92,41 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             floatingActionButton: FloatingActionButton(
               onPressed: () async {
+
+                bool isMobile = Platform.isAndroid || Platform.isIOS;
+
                 List<pw.Widget> widgets = await (page as PdfConverterInterface).getListPDFWidgets();
 
                 pw.Document pdf = pw.Document();
 
-                pdf.addPage(pw.Page(
-                  build: (pw.Context context) => pw.Column(
-                      crossAxisAlignment: pw.CrossAxisAlignment.start,
-                      children: widgets),
-                ));
+                var pdfPage = pw.MultiPage(
+                  build: (pw.Context context) => widgets,
+                  maxPages: 100
+                );
+
+                pdf.addPage(pdfPage);
 
                 Directory dir = await getApplicationDocumentsDirectory();
                 List<FileSystemEntity> entities = await dir.list().toList();
 
-                String namePrefix = appName;
-
                 entities
                     .where((element) =>
-                        element.uri.pathSegments.last.contains(namePrefix))
+                        element.uri.pathSegments.last.contains(appName))
                     .forEach((element) {
                   element.delete();
                 });
 
+                String? path = isMobile ? dir.path : await FilePicker.platform.getDirectoryPath();
+                if (path == null) return;
+
                 File file = File(
-                    "${dir.path}/$appName${DateFormat(PDF_TITLE_TIMESTAMP).format(DateTime.now())}.pdf");
+                    "$path/$appName ${DateFormat(PDF_TITLE_TIMESTAMP).format(DateTime.now())}.pdf");
 
                 await file.create(recursive: true);
                 await file.writeAsBytes(await pdf.save());
 
-                if (Platform.isAndroid || Platform.isIOS) {
+                if (isMobile) {
                   ShareExtend.share(file.path, "file");
-                } else {
-                  //TODO desktop file saving
                 }
               },
               child: const Icon(Icons.download),

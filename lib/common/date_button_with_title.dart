@@ -12,7 +12,7 @@ import '../template_one/data.dart';
 class DateButtonWithTitle extends StatefulWidget implements AbstractPdfWidget {
   DateButtonWithTitle({super.key, required this.title, required this.minAge});
 
-  final String title;
+  final String? title;
   final int minAge;
   final _DateButtonWithTitleState state = _DateButtonWithTitleState();
 
@@ -38,10 +38,10 @@ class _DateButtonWithTitleState extends State<DateButtonWithTitle>
         padding: const EdgeInsets.symmetric(vertical: DEFAULT_MARGIN),
         child: Row(
           children: [
-            Container(
+            widget.title == null ? const SizedBox() : Container(
                 constraints:
                     BoxConstraints(maxWidth: constraints.maxWidth / 2.0),
-                child: Text(widget.title,
+                child: Text(widget.title!,
                     softWrap: true, style: TextStyle(fontSize: fontSize))),
             Expanded(
               child: Text(

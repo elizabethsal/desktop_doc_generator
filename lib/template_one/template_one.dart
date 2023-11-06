@@ -5,6 +5,7 @@ import '../common/abstract_pdf_widget.dart';
 import '../common/date_button_with_title.dart';
 import '../common/dropdown_item.dart';
 import '../common/header.dart';
+import '../common/input_field_with_date.dart';
 import '../common/input_field_with_title.dart';
 import '../common/pdf_converter_interface.dart';
 import '../common/small_header.dart';
@@ -97,6 +98,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne>
         preselectedItem: EMOTIONALFONITEMS.first,
         convertToString: (item) => item,
       ),
+      const VerticalPdfMargin(margin: DEFAULT_MARGIN),
       const SmallHeader(smallHeader: REACTIONFORPOOCHRENIEIPORICANIE),
       DropdownItem<String>(
         title: REACTIONPOSSHRENIE,
@@ -156,6 +158,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne>
       ),
       const VerticalPdfMargin(margin: DEFAULT_MARGIN_BIG),
       const Header(header: DEVELOPOMENTDELAYS),
+      const VerticalPdfMargin(margin: DEFAULT_MARGIN),
       const SmallHeader(smallHeader: ATTENTION),
       DropdownItem<String>(
         title: PROIZVOL,
@@ -235,6 +238,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne>
         preselectedItem: PREDOMINANTFORMOFTHINKINGITEM.first,
         convertToString: (item) => item,
       ),
+      const VerticalPdfMargin(margin: DEFAULT_MARGIN),
       const SmallHeader(smallHeader: OPERATIONSTORONA),
       DropdownItem<String>(
         title: ANALISANDSINTES,
@@ -290,6 +294,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne>
         preselectedItem: MOTIVATIONITEM.first,
         convertToString: (item) => item,
       ),
+      const VerticalPdfMargin(margin: DEFAULT_MARGIN),
       const SmallHeader(smallHeader: TEMPACTIVITYRABOTOSPOSOBNOST),
       DropdownItem<String>(
         title: TEMP,
@@ -380,9 +385,8 @@ class _ContentTemplateOneState extends State<ContentTemplateOne>
       InputFieldWithTitle(
         title: IZOBRAZITELNAYAACTIVITY,
       ),
-      InputFieldWithTitle(
-        title: ZAVEDYUSHI,
-      ),
+      const VerticalPdfMargin(margin: DEFAULT_MARGIN_BIG),
+      InputFieldWithDate(title: ZAVEDYUSHI),
       InputFieldWithTitle(
         title: VOSPITATEL,
       ),

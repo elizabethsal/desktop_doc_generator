@@ -1,5 +1,5 @@
 const String appName = "Psychology Document Helper";
-const String PDF_TITLE_TIMESTAMP = "hh:mm dd.MM.yyyy";
+const String PDF_TITLE_TIMESTAMP = "HH:mm dd.MM.yyyy";
 
 const double FONT_HEADER = 20.0;
 
