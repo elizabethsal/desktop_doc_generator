@@ -6,6 +6,7 @@ import 'package:pdf/widgets.dart' as pw;
 
 import '../resources/colors.dart';
 import '../resources/const.dart';
+import '../resources/font_loader.dart';
 import '../template_one/data.dart';
 
 class DateButtonWithTitle extends StatefulWidget implements AbstractPdfWidget {
@@ -60,8 +61,7 @@ class _DateButtonWithTitleState extends State<DateButtonWithTitle>
                     },
                     minAgeYears: widget.minAge);
               }),
-            ),
-            const SizedBox(width: DEFAULT_MARGIN),
+            )
           ],
         ),
       );

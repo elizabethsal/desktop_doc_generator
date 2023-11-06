@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:pdf/widgets.dart' as pw;
 
 import '../resources/const.dart';
+import '../resources/font_loader.dart';
 
 class DropdownItem<T> extends StatefulWidget implements AbstractPdfWidget {
   final List<T> items;
@@ -79,8 +80,7 @@ class _DropdownItem<T> extends State<DropdownItem<T>>
                     }
                   },
                 ),
-              ),
-              const SizedBox(width: DEFAULT_MARGIN),
+              )
             ]));
       },
     );

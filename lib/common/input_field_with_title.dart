@@ -1,9 +1,9 @@
 import 'package:desktop_doc_generator/common/abstract_pdf_widget.dart';
-import 'package:desktop_doc_generator/common/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:pdf/widgets.dart' as pw;
 
 import '../resources/const.dart';
+import '../resources/font_loader.dart';
 
 class InputFieldWithTitle extends StatefulWidget implements AbstractPdfWidget {
   InputFieldWithTitle({super.key, required this.title});
@@ -44,7 +44,6 @@ class _InputFieldWithTitle extends State<InputFieldWithTitle>
                       hintStyle: TextStyle(fontSize: fontSize),
                     ),
                     onChanged: (str) => finalResult = str)),
-            const SizedBox(width: DEFAULT_MARGIN),
           ],
         ),
       );

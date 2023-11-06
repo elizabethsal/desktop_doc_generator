@@ -19,14 +19,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String appTitle = 'Doc Generator';
     return MaterialApp(
-      title: appTitle,
+      title: appName,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
+        fontFamily: "NotoSerif",
       ),
-      home: MyHomePage(title: appTitle),
+      home: const MyHomePage(title: appName),
     );
   }
 }

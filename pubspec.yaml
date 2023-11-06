@@ -65,7 +65,11 @@ flutter:
   fonts:
     - family: NotoSerif
       fonts:
-        - asset: assets/NotoSerif-Regular.ttf
+        - asset: fonts/NotoSerif-Regular.ttf
+        - asset: fonts/NotoSerif-Bold.ttf
+          weight: 900
+        - asset: fonts/NotoSerif-Italic.ttf
+          style: italic
 
 
   # To add assets to your application, add an assets section, like this:

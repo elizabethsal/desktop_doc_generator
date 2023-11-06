@@ -410,7 +410,11 @@ class _ContentTemplateOneState extends State<ContentTemplateOne>
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
-      child: SingleChildScrollView(child: mainColumn),
+      child: SingleChildScrollView(
+          child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: DEFAULT_MARGIN_BIGER, horizontal: DEFAULT_MARGIN),
+        child: mainColumn,
+      )),
     );
   }
 }
