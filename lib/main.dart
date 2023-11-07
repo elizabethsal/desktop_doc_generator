@@ -3,10 +3,12 @@ import 'dart:io';
 import 'package:desktop_doc_generator/common/pdf_converter_interface.dart';
 import 'package:desktop_doc_generator/resources/const.dart';
 import 'package:desktop_doc_generator/template_one/template_one.dart';
-import 'package:desktop_doc_generator/template_two.dart';
+import 'package:desktop_doc_generator/template_two/template_two.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/intl.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:share_extend/share_extend.dart';
@@ -22,6 +24,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: appName,
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale("en"),
+        Locale("ru")
+      ],
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
@@ -67,6 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Scaffold(
             body: Row(
               children: [
+            //    Text(AppLocalizations.of(context)!.hello_world),
                 NavigationRail(
                   extended: constraints.maxWidth >= 1000,
                   //  extended: false,
@@ -92,17 +104,15 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             floatingActionButton: FloatingActionButton(
               onPressed: () async {
-
                 bool isMobile = Platform.isAndroid || Platform.isIOS;
 
-                List<pw.Widget> widgets = await (page as PdfConverterInterface).getListPDFWidgets();
+                List<pw.Widget> widgets =
+                    await (page as PdfConverterInterface).getListPDFWidgets();
 
                 pw.Document pdf = pw.Document();
 
                 var pdfPage = pw.MultiPage(
-                  build: (pw.Context context) => widgets,
-                  maxPages: 100
-                );
+                    build: (pw.Context context) => widgets, maxPages: 100);
 
                 pdf.addPage(pdfPage);
 
@@ -116,7 +126,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   element.delete();
                 });
 
-                String? path = isMobile ? dir.path : await FilePicker.platform.getDirectoryPath();
+                String? path = isMobile
+                    ? dir.path
+                    : await FilePicker.platform.getDirectoryPath();
                 if (path == null) return;
 
                 File file = File(

@@ -38,10 +38,12 @@ dependencies:
   cupertino_icons: ^1.0.2
   auto_size_text_field: ^2.2.2
   pdf: ^3.10.4
-  intl: ^0.18.1
+  intl: any
   path_provider: ^2.1.1
   share_extend: ^2.0.0
   file_picker: ^6.1.1
+  flutter_localizations:
+    sdk: flutter
 
 dev_dependencies:
   flutter_test:
@@ -63,6 +65,8 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  generate: true
+
   fonts:
     - family: NotoSerif
       fonts:
