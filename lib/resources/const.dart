@@ -5,6 +5,9 @@ const double FONT_HEADER = 20.0;
 
 const double FONT_TEXT = 14.0;
 
+const double LIST_ELEMENT_HEIGHT = 48.0;
+const double DEFAULT_RADIUS = 10.0;
+
 const double DEFAULT_MARGIN = 16.0;
 const double DEFAULT_MARGIN_BIG = 26.0;
 const double DEFAULT_MARGIN_BIGER = 70.0;

@@ -1,3 +1,14 @@
 {
-  "hello_world": "Hello world"
+  "template_placeholder": "Template {number}",
+  "@template_placeholder": {
+    "placeholders": {
+      "number": {
+        "type": "int",
+        "example": "1"
+      }
+    }
+  },
+  "share": "Generate document & share",
+  "save": "Generate document & save",
+  "print": "Generate document & print"
 }
