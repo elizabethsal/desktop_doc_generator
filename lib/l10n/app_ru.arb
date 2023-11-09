@@ -1,3 +1,14 @@
 {
-  "hello_world": "Привет"
+  "template_placeholder": "Шаблон №{number}",
+  "@template_placeholder": {
+    "placeholders": {
+      "number": {
+        "type": "int",
+        "example": "1"
+      }
+    }
+  },
+  "share": "Сгенерировать документ и поделиться",
+  "save": "Cгенерировать документ и сохранить",
+  "print": "Cгенерировать документ и распечатать"
 }
