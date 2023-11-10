@@ -346,6 +346,46 @@ class _ContentTemplateTwo extends State<ContentTemplateTwo>
       preselectedItem: MEMORY_ITEMS.first,
       convertToString: (item) => item,
     ),
+        DropdownItem<String>(
+          title: IMAGINATION,
+          items: IMAGINATION_ITEMS,
+          preselectedItem: IMAGINATION_ITEMS.first,
+          convertToString: (item) => item,
+        ),
+        const VerticalPdfMargin(margin: DEFAULT_MARGIN_SMALL),
+        const SmallHeader(smallHeader: THINKING),
+        DropdownItem<String>(
+          title: ACCEPT_TASK,
+          items: ACCEPT_TASK_ITEMS,
+          preselectedItem: ACCEPT_TASK_ITEMS.first,
+          convertToString: (item) => item,
+        ),
+        DropdownItem<String>(
+          title: MODES_OF_ACTION,
+          items: MODES_OF_ACTION_ITEMS,
+          preselectedItem: MODES_OF_ACTION_ITEMS.first,
+          convertToString: (item) => item,
+        ),
+        DropdownItem<String>(
+          title: FORM_OF_THINK,
+          items: FORM_OF_THINK_ITEMS,
+          preselectedItem: FORM_OF_THINK_ITEMS.first,
+          convertToString: (item) => item,
+        ),
+        const VerticalPdfMargin(margin: DEFAULT_MARGIN_SMALL),
+        const SmallHeader(smallHeader: OPER_OF_THINK),
+        DropdownItem<String>(
+          title: ANALYS_SYNTES,
+          items: ANALYS_SYNTES_ITEMS,
+          preselectedItem: ANALYS_SYNTES_ITEMS.first,
+          convertToString: (item) => item,
+        ),
+        
+
+
+
+
+
   ]);
 
   @override
@@ -360,82 +400,6 @@ class _ContentTemplateTwo extends State<ContentTemplateTwo>
       )),
     );
   }
-
-  /*
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        color: Colors.white,
-        child: const Column(
-          children: [
-            Text(
-                style: TextStyle(fontWeight: FontWeight.bold),
-                textAlign: TextAlign.center,
-                HEADER),
-            Row(children: [
-              Text(FIOCHILD),
-              SizedBox(width: 5),
-              SizedBox(width: 200, child: TextField())
-            ]),
-            Row(children: [
-              Text(DATEOFBIRTH),
-            ]),
-            Row(
-              children: [
-                Text(GROUP_ST_SPEC),
-              ],
-            ),
-            Row(
-              children: [
-                Text("Ujhjjhbjb"),
-                SizedBox(width: 5),
-                SizedBox(width: 200, child: TextField())
-              ],
-            ),
-            Row(
-              children: [
-                Text(PHONENUMBER),
-                SizedBox(width: 5),
-                SizedBox(width: 200, child: TextField())
-              ],
-            ),
-            Row(
-              children: [
-                Text(FAMILY),
-                SizedBox(width: 5),
-                SizedBox(width: 200, child: TextField())
-              ],
-            ),
-            Row(
-              children: [
-                Text(MOTHERS_NAME),
-                SizedBox(width: 5),
-                SizedBox(width: 200, child: TextField())
-              ],
-            ),
-            Row(
-              children: [
-                //date picker
-                Text(YEAROFBIRTH),
-              ],
-            ),
-            Row(
-              children: [
-                Text(EDUCATION),
-                SizedBox(width: 5),
-                SizedBox(width: 200, child: TextField())
-              ],
-            ),
-            Row(
-              children: [
-                Text(HELP),
-                SizedBox(width: 10),
-                SizedBox(width: 300, child: TextField())
-              ],
-            )
-          ],
-        ));
-  }*/
 
   @override
   Future<List<pw.Widget>> getListPDFWidgets() {
