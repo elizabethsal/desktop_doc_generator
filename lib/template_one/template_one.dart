@@ -46,7 +46,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne>
         title: GROUP_ST_SPEC,
         items: GROUP_OT_SPEC_ITEMS,
         preselectedItem: GROUP_OT_SPEC_ITEMS.first,
-        convertToString: (item) => item,
+        
       ),
       InputFieldWithTitle(
         title: HOMEADDRES,
@@ -84,19 +84,19 @@ class _ContentTemplateOneState extends State<ContentTemplateOne>
         title: CONTACT,
         items: CONTACTITEM,
         preselectedItem: CONTACTITEM.first,
-        convertToString: (item) => item,
+        
       ),
       DropdownItem<String>(
         title: EMOTIONS,
         items: EMOTIONSiTEM,
         preselectedItem: EMOTIONSiTEM.first,
-        convertToString: (item) => item,
+        
       ),
       DropdownItem<String>(
         title: EMOTIONALFON,
         items: EMOTIONALFONITEMS,
         preselectedItem: EMOTIONALFONITEMS.first,
-        convertToString: (item) => item,
+        
       ),
       const VerticalPdfMargin(margin: DEFAULT_MARGIN),
       const SmallHeader(smallHeader: REACTIONFORPOOCHRENIEIPORICANIE),
@@ -104,25 +104,25 @@ class _ContentTemplateOneState extends State<ContentTemplateOne>
         title: REACTIONPOSSHRENIE,
         items: REACTIONPOSSHRENIEITEM,
         preselectedItem: REACTIONPOSSHRENIEITEM.first,
-        convertToString: (item) => item,
+        
       ),
       DropdownItem<String>(
         title: REACTIONPORICATIEN,
         items: REACTIONPORICATIENITEM,
         preselectedItem: REACTIONPORICATIENITEM.first,
-        convertToString: (item) => item,
+        
       ),
       DropdownItem<String>(
         title: SELFESTIMATE,
         items: SELFESTIMATEITEM,
         preselectedItem: SELFESTIMATEITEM.first,
-        convertToString: (item) => item,
+        
       ),
       DropdownItem<String>(
         title: CHARACTERSPECIFIC,
         items: CHARACTERSPECIFICITEM,
         preselectedItem: CHARACTERSPECIFICITEM.first,
-        convertToString: (item) => item,
+        
       ),
       const VerticalPdfMargin(margin: DEFAULT_MARGIN_BIG),
       const Header(header: STATEOFMOTORSPHERE),
@@ -130,31 +130,31 @@ class _ContentTemplateOneState extends State<ContentTemplateOne>
         title: COORDINATION,
         items: COORDINATIONITEM,
         preselectedItem: COORDINATIONITEM.first,
-        convertToString: (item) => item,
+        
       ),
       DropdownItem<String>(
         title: GENERALMOTORICA,
         items: GENERALMOTORICAITEM,
         preselectedItem: GENERALMOTORICAITEM.first,
-        convertToString: (item) => item,
+        
       ),
       DropdownItem<String>(
         title: LITTLEMOTORICA,
         items: GENERALMOTORICAITEM,
         preselectedItem: GENERALMOTORICAITEM.first,
-        convertToString: (item) => item,
+        
       ),
       DropdownItem<String>(
         title: PRIORITYHAND,
         items: PRIORITYHANDITEM,
         preselectedItem: PRIORITYHANDITEM.first,
-        convertToString: (item) => item,
+        
       ),
       DropdownItem<String>(
         title: MIMICALMOTORICA,
         items: MIMICALMOTORICAITEM,
         preselectedItem: MIMICALMOTORICAITEM.first,
-        convertToString: (item) => item,
+        
       ),
       const VerticalPdfMargin(margin: DEFAULT_MARGIN_BIG),
       const Header(header: DEVELOPOMENTDELAYS),
@@ -164,79 +164,79 @@ class _ContentTemplateOneState extends State<ContentTemplateOne>
         title: PROIZVOL,
         items: RANDOMNESSITEMSATTENTION,
         preselectedItem: RANDOMNESSITEMSATTENTION.first,
-        convertToString: (item) => item,
+        
       ),
       DropdownItem<String>(
         title: USTOICH,
         items: STABILITYITEMSATTENTION,
         preselectedItem: STABILITYITEMSATTENTION.first,
-        convertToString: (item) => item,
+        
       ),
       DropdownItem<String>(
         title: VOLUME,
         items: VOLUMEITEMSATTENTION,
         preselectedItem: VOLUMEITEMSATTENTION.first,
-        convertToString: (item) => item,
+        
       ),
       DropdownItem<String>(
         title: RECOGNITION,
         items: RECOGNITIONITEM,
         preselectedItem: RECOGNITIONITEM.first,
-        convertToString: (item) => item,
+        
       ),
       DropdownItem<String>(
         title: TACTIL,
         items: RECOGNITIONTACTICALITEM,
         preselectedItem: RECOGNITIONTACTICALITEM.first,
-        convertToString: (item) => item,
+        
       ),
       DropdownItem<String>(
         title: SPACEPREDSTAVLENIE,
         items: SPACEPREDSTAVLENIEITEM,
         preselectedItem: SPACEPREDSTAVLENIEITEM.first,
-        convertToString: (item) => item,
+        
       ),
       DropdownItem<String>(
         title: TIMEPREDSTAVLENIE,
         items: TIMEPREDSTAVLENIEITEM,
         preselectedItem: TIMEPREDSTAVLENIEITEM.first,
-        convertToString: (item) => item,
+        
       ),
       DropdownItem<String>(
         title: CONSTRUCTIVEPRACSIS,
         items: CONSTRUCTIVEPRACSISITEM,
         preselectedItem: CONSTRUCTIVEPRACSISITEM.first,
-        convertToString: (item) => item,
+        
       ),
       DropdownItem<String>(
         title: MEMORY,
         items: MEMORYITEM,
         preselectedItem: MEMORYITEM.first,
-        convertToString: (item) => item,
+        
       ),
       DropdownItem<String>(
         title: IMAGINATION,
         items: IMAGINATIONITEM,
         preselectedItem: IMAGINATIONITEM.first,
-        convertToString: (item) => item,
+        
       ),
       DropdownItem<String>(
         title: THINKING,
         items: THINKINGITEM,
         preselectedItem: THINKINGITEM.first,
-        convertToString: (item) => item,
+        
       ),
       DropdownItem<String>(
         title: MODESOFACTION,
         items: MODESOFACTIONITEM,
         preselectedItem: MODESOFACTIONITEM.first,
-        convertToString: (item) => item,
+        
       ),
       DropdownItem<String>(
         title: PREDOMINANTFORMOFTHINKING,
         items: PREDOMINANTFORMOFTHINKINGITEM,
         preselectedItem: PREDOMINANTFORMOFTHINKINGITEM.first,
-        convertToString: (item) => item,
+        
       ),
       const VerticalPdfMargin(margin: DEFAULT_MARGIN),
       const SmallHeader(smallHeader: OPERATIONSTORONA),
@@ -244,55 +244,55 @@ class _ContentTemplateOneState extends State<ContentTemplateOne>
         title: ANALISANDSINTES,
         items: ANALISANDSINTESITEM,
         preselectedItem: ANALISANDSINTESITEM.first,
-        convertToString: (item) => item,
+        
       ),
       DropdownItem<String>(
         title: GENERALIZATION,
         items: GENERALIZATIONITEM,
         preselectedItem: GENERALIZATIONITEM.first,
-        convertToString: (item) => item,
+        
       ),
       DropdownItem<String>(
         title: PERENOS,
         items: PERENOSITEM,
         preselectedItem: PERENOSITEM.first,
-        convertToString: (item) => item,
+        
       ),
       DropdownItem<String>(
         title: SRAVNENIE,
         items: SRAVNENIEITEM,
         preselectedItem: SRAVNENIEITEM.first,
-        convertToString: (item) => item,
+        
       ),
       DropdownItem<String>(
         title: UPORIADOCHIVANIE,
         items: UPORIADOCHIVANIEITEM,
         preselectedItem: UPORIADOCHIVANIEITEM.first,
-        convertToString: (item) => item,
+        
       ),
       DropdownItem<String>(
         title: RESULTATIVNOST,
         items: RESULTATIVNOSTITEM,
         preselectedItem: RESULTATIVNOSTITEM.first,
-        convertToString: (item) => item,
+        
       ),
       DropdownItem<String>(
         title: DOZIROVANAYAHELP,
         items: DOZIROVANAYAHELPITEM,
         preselectedItem: DOZIROVANAYAHELPITEM.first,
-        convertToString: (item) => item,
+        
       ),
       DropdownItem<String>(
         title: CHARACTERDEYATELNOSTI,
         items: CHARACTERDEYATELNOSTIITEM,
         preselectedItem: CHARACTERDEYATELNOSTIITEM.first,
-        convertToString: (item) => item,
+        
       ),
       DropdownItem<String>(
         title: MOTIVATION,
         items: MOTIVATIONITEM,
         preselectedItem: MOTIVATIONITEM.first,
-        convertToString: (item) => item,
+        
       ),
       const VerticalPdfMargin(margin: DEFAULT_MARGIN),
       const SmallHeader(smallHeader: TEMPACTIVITYRABOTOSPOSOBNOST),
@@ -300,13 +300,13 @@ class _ContentTemplateOneState extends State<ContentTemplateOne>
         title: TEMP,
         items: TEMPITEM,
         preselectedItem: TEMPITEM.first,
-        convertToString: (item) => item,
+        
       ),
       DropdownItem<String>(
         title: RABOTOSPOSOBNOST,
         items: RABOTOSPOSOBNOSTITEM,
         preselectedItem: RABOTOSPOSOBNOSTITEM.first,
-        convertToString: (item) => item,
+        
       ),
       const VerticalPdfMargin(margin: DEFAULT_MARGIN_BIG),
       const Header(header: OSOBENNOTIRECHEVOGO),

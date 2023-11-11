@@ -6,8 +6,14 @@ import '../resources/const.dart';
 
 class DocumentVariantChooserDialog extends StatefulWidget {
   final List<String> items;
+  final Function(List<String> selected) onSubmit;
+  final List<String> preselectedItems;
 
-  const DocumentVariantChooserDialog({super.key, required this.items});
+  const DocumentVariantChooserDialog(
+      {super.key,
+      required this.items,
+      required this.onSubmit,
+      required this.preselectedItems});
 
   @override
   _DocumentVariantChooserDialogState createState() =>
@@ -16,6 +22,8 @@ class DocumentVariantChooserDialog extends StatefulWidget {
 
 class _DocumentVariantChooserDialogState
     extends State<DocumentVariantChooserDialog> {
+  late List<String> selectedItems = widget.preselectedItems;
+
   @override
   Widget build(BuildContext context) {
     return Dialog(
@@ -36,14 +44,20 @@ class _DocumentVariantChooserDialogState
               const SizedBox(height: DEFAULT_MARGIN),
               Flexible(
                 child: ListView.builder(
-                  shrinkWrap: true,
+                    shrinkWrap: true,
                     itemCount: widget.items.length,
                     itemBuilder: (context, index) {
                       return ListElement(
                         item: widget.items[index],
-                        isChecked: false,
-                        onItemSelected: (item){
-                          //TODO toggle item
+                        isChecked: selectedItems.contains(widget.items[index]),
+                        onItemSelected: (item) {
+                          setState(() {
+                            if (selectedItems.contains(item)) {
+                              selectedItems.remove(item);
+                            } else {
+                              selectedItems.add(item);
+                            }
+                          });
                         },
                       );
                     }),
@@ -54,11 +68,16 @@ class _DocumentVariantChooserDialogState
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        widget.onSubmit(selectedItems);
+                        Navigator.of(context).pop();
+                      },
                       child: Text(AppLocalizations.of(context)!
                           .document_multiple_choose_item_dialog_submit_button)),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
                     child: Text(AppLocalizations.of(context)!
                         .document_multiple_choose_item_dialog_cancel_button),
                   ),
@@ -77,7 +96,11 @@ class ListElement extends StatelessWidget {
   final bool isChecked;
   final Function(String item) onItemSelected;
 
-  const ListElement({super.key, required this.item, required this.isChecked, required this.onItemSelected});
+  const ListElement(
+      {super.key,
+      required this.item,
+      required this.isChecked,
+      required this.onItemSelected});
 
   @override
   Widget build(BuildContext context) {
@@ -85,9 +108,9 @@ class ListElement extends StatelessWidget {
       height: LIST_ELEMENT_HEIGHT,
       child: Row(
         children: [
+          Icon(isChecked ? Icons.check_box : Icons.check_box_outline_blank),
+          SizedBox(width: DEFAULT_MARGIN_SMALL),
           Text(item, style: const TextStyle(fontSize: FONT_TEXT)),
-          const Spacer(),
-          Icon(isChecked ? Icons.check_box : Icons.check_box_outline_blank)
         ],
       ),
     ).setOnClickListener(() {
