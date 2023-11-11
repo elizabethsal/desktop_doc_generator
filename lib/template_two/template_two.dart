@@ -380,7 +380,7 @@ class _ContentTemplateTwo extends State<ContentTemplateTwo>
           preselectedItem: ANALYS_SYNTES_ITEMS.first,
           convertToString: (item) => item,
         ),
-        
+
 
 
 

@@ -1,8 +1,10 @@
 import 'package:desktop_doc_generator/common/abstract_pdf_widget.dart';
+import 'package:desktop_doc_generator/common/dialog.dart';
 import 'package:desktop_doc_generator/common/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:pdf/widgets.dart' as pw;
 
+import '../resources/colors.dart';
 import '../resources/const.dart';
 import '../resources/font_loader.dart';
 
@@ -58,28 +60,18 @@ class _DropdownItem<T> extends State<DropdownItem<T>>
                     style: TextStyle(fontSize: fontSize),
                   )),
               Expanded(
-                child: DropdownButton(
-                  itemHeight: null,
-                  isExpanded: true,
-                  value: selectedItem,
-                  items: widget.items
-                      .map((value) => DropdownMenuItem(
-                          value: value,
-                          child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  vertical: DEFAULT_MARGIN_SMALL),
-                              child: Text(widget.convertToString(value),
-                                  softWrap: true,
-                                  style: TextStyle(fontSize: fontSize)))))
-                      .toList(),
-                  onChanged: (item) {
-                    if (item != null) {
-                      setState(() {
-                        selectedItem = item;
-                      });
-                    }
-                  },
-                ),
+
+                child: const Text(
+                    "CHOOSE VARIANTS",
+                    style: TextStyle(
+                        fontSize: FONT_TEXT, color: TEXT_HYPERLINK_COLOR))
+                    .setOnClickListener(() {
+                  showDialog(context: context, builder: (BuildContext context){
+                    return DocumentVariantChooserDialog(
+                      items: widget.items.cast(),
+                    );
+                  });
+                }),
               )
             ]));
       },
