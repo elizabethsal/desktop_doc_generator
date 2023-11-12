@@ -2,6 +2,7 @@ import 'package:desktop_doc_generator/common/pdf_converter_interface.dart';
 import 'package:flutter/material.dart';
 import 'package:pdf/widgets.dart' as pw;
 
+import '../common/abstract_pdf_widget.dart';
 import '../common/date_button_with_title.dart';
 import '../common/dropdown_item.dart';
 import '../common/header.dart';
@@ -334,6 +335,126 @@ class _ContentTemplateTwo extends State<ContentTemplateTwo>
       items: ANALYS_SYNTES_ITEMS,
       preselectedItem: ANALYS_SYNTES_ITEMS.first,
     ),
+    DropdownItem<String>(
+      title: GENERALIZATION,
+      items: GENERALIZATION_ITEMS,
+      preselectedItem: GENERALIZATION_ITEMS.first,
+    ),
+    DropdownItem<String>(
+      title: PERENOS,
+      items: PERENOS_ITEMS,
+      preselectedItem: PERENOS_ITEMS.first,
+    ),
+    DropdownItem<String>(
+      title: SRAVNENIE,
+      items: SRAVNENIE_ITEMS,
+      preselectedItem: SRAVNENIE_ITEMS.first,
+    ),
+    DropdownItem<String>(
+      title: UPOR,
+      items: UPOR_ITEMS,
+      preselectedItem: UPOR_ITEMS.first,
+    ),
+    DropdownItem<String>(
+      title: RESULT_WORK,
+      items: RESULT_WORK_ITEMS,
+      preselectedItem: RESULT_WORK_ITEMS.first,
+    ),
+    DropdownItem<String>(
+      title: USE_KINDS_OF_HELP,
+      items: USE_KINDS_OF_HELP_ITEMS,
+      preselectedItem: USE_KINDS_OF_HELP_ITEMS.first,
+    ),
+    DropdownItem<String>(
+      title: OCCUPATION_ACTIVITY,
+      items: OCCUPATION_ACTIVITY_ITEMS,
+      preselectedItem: OCCUPATION_ACTIVITY_ITEMS.first,
+    ),
+    DropdownItem<String>(
+      title: MOTIVATION,
+      items: MOTIVATION_ITEMS,
+      preselectedItem: MOTIVATION_ITEMS.first,
+    ),
+    const VerticalPdfMargin(margin: DEFAULT_MARGIN_SMALL),
+    const SmallHeader(smallHeader: TEMP_ACTIVITY),
+    DropdownItem<String>(
+      title: TEMP,
+      items: TEMP_ITEMS,
+      preselectedItem: TEMP_ITEMS.first,
+    ),
+    DropdownItem<String>(
+      title: RABOTOSPOSOBNOST,
+      items: RABOTOSPOSOBNOST_ITEMS,
+      preselectedItem: RABOTOSPOSOBNOST_ITEMS.first,
+    ),
+    const VerticalPdfMargin(margin: DEFAULT_MARGIN),
+    DropdownItem<String>(
+      title: TEACHER_DEFECT,
+      items: TEACHER_DEFECT_ITEMS,
+      preselectedItem: TEACHER_DEFECT_ITEMS.first,
+    ),
+    const VerticalPdfMargin(margin: DEFAULT_MARGIN_SMALL),
+    const SmallHeader(smallHeader: OSOBENNOTI_RECHEVOGO),
+    DropdownItem<String>(
+      title: DORECHEVO,
+      items: DORECHEVO_ITEMS,
+      preselectedItem: DORECHEVO_ITEMS.first,
+    ),
+    DropdownItem<String>(
+      title: IMPRESSION_SPEECH,
+      items: IMPRESSION_SPEECH_ITEMS,
+      preselectedItem: IMPRESSION_SPEECH_ITEMS.first,
+    ),
+    DropdownItem<String>(
+      title: EKSPRESSION_SPEECH,
+      items: EKSPRESSION_SPEECH_ITEMS,
+      preselectedItem: EKSPRESSION_SPEECH_ITEMS.first,
+    ),
+    DropdownItem<String>(
+      title: DICTIONARY,
+      items: DICTIONARY_ITEMS,
+      preselectedItem: DICTIONARY_ITEMS.first,
+    ),
+    DropdownItem<String>(
+      title: SLOG_STRUCTURE,
+      items: SLOG_STRUCTURE_ITEMS,
+      preselectedItem: SLOG_STRUCTURE_ITEMS.first,
+    ),
+    DropdownItem<String>(
+      title: GRAMMAR_STRUCTURE,
+      items: GRAMMAR_STRUCTURE_ITEMS,
+      preselectedItem: GRAMMAR_STRUCTURE_ITEMS.first,
+    ),
+    DropdownItem<String>(
+      title: SOUNDS,
+      items: SOUNDS_ITEMS,
+      preselectedItem: SOUNDS_ITEMS.first,
+    ),
+    DropdownItem<String>(
+      title: ARTIKUL_APPARAT,
+      items: ARTIKUL_APPARAT_ITEMS,
+      preselectedItem: ARTIKUL_APPARAT_ITEMS.first,
+    ),
+    DropdownItem<String>(
+      title: ARTIKUL_MOTORICA,
+      items: ARTIKUL_MOTORICA_ITEMS,
+      preselectedItem: ARTIKUL_MOTORICA_ITEMS.first,
+    ),
+    DropdownItem<String>(
+      title: ZAIKANIE,
+      items: ZAIKANIE_ITEMS,
+      preselectedItem: ZAIKANIE_ITEMS.first,
+    ),
+    DropdownItem<String>(
+      title: FONEMATIC_HEAR,
+      items: FONEMATIC_HEAR_ITEMS,
+      preselectedItem: FONEMATIC_HEAR_ITEMS.first,
+    ),
+    DropdownItem<String>(
+      title: FONEMATIC_ANALIS_SYNTES,
+      items: FONEMATIC_ANALIS_SYNTES_ITEMS,
+      preselectedItem: FONEMATIC_ANALIS_SYNTES_ITEMS.first,
+    ),
   ]);
 
   @override
@@ -350,8 +471,13 @@ class _ContentTemplateTwo extends State<ContentTemplateTwo>
   }
 
   @override
-  Future<List<pw.Widget>> getListPDFWidgets() {
-    // TODO: implement getListPDFWidgets
-    throw UnimplementedError();
+  Future<List<pw.Widget>> getListPDFWidgets() async {
+    List<pw.Widget> rv = [];
+
+    for (Widget widget in mainColumn.children) {
+      rv.add(await (widget as AbstractPdfWidget).getPwWidget());
+    }
+
+    return rv;
   }
 }
