@@ -109,8 +109,14 @@ class ListElement extends StatelessWidget {
       child: Row(
         children: [
           Icon(isChecked ? Icons.check_box : Icons.check_box_outline_blank),
-          SizedBox(width: DEFAULT_MARGIN_SMALL),
-          Text(item, style: const TextStyle(fontSize: FONT_TEXT)),
+          const SizedBox(width: DEFAULT_MARGIN_SMALL),
+
+          Expanded(
+            child: Text(item, style: const TextStyle(fontSize: FONT_TEXT), softWrap: true,
+                textAlign: TextAlign.start,
+                overflow: TextOverflow.ellipsis,
+                ),
+          ),
         ],
       ),
     ).setOnClickListener(() {
