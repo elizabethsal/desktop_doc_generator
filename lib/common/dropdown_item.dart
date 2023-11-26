@@ -40,9 +40,11 @@ class _DropdownItem<T> extends State<DropdownItem<T>>
     implements AbstractPdfWidget {
   final double fontSize = FONT_TEXT;
   List<String> selectedItems = [];
+  String? manualInput;
 
   String convertedToString() {
-    return selectedItems.join("; ");
+    String manualInputSeparator = selectedItems.isEmpty ? "" : "; ";
+    return selectedItems.join("; ") + (manualInput == null ? "" : manualInputSeparator + manualInput!) ;
   }
 
   @override
@@ -62,7 +64,7 @@ class _DropdownItem<T> extends State<DropdownItem<T>>
                   )),
               Expanded(
                 child: Text(
-                        selectedItems.isEmpty
+                        selectedItems.isEmpty && (manualInput?.isEmpty ?? true)
                             ? AppLocalizations.of(context)!
                                 .document_multiple_choose_item_dialog_label
                             : convertedToString(),
@@ -74,11 +76,13 @@ class _DropdownItem<T> extends State<DropdownItem<T>>
                       builder: (BuildContext context) {
                         return DocumentVariantChooserDialog(
                           preselectedItems: selectedItems,
-                          onSubmit: (elements) {
+                          onSubmit: (elements, manualInput) {
                             setState(() {
                               selectedItems = elements;
+                              this.manualInput = manualInput;
                             });
                           },
+                          manualInput: this.manualInput,
                           items: widget.items.cast(),
                         );
                       });

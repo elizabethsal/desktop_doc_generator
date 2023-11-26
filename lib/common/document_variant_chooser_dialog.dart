@@ -6,14 +6,18 @@ import '../resources/const.dart';
 
 class DocumentVariantChooserDialog extends StatefulWidget {
   final List<String> items;
-  final Function(List<String> selected) onSubmit;
+  final Function(List<String> selected, String? manualInput) onSubmit;
   final List<String> preselectedItems;
+  final String? manualInput;
+  final bool withManualInput;
 
   const DocumentVariantChooserDialog(
       {super.key,
       required this.items,
       required this.onSubmit,
-      required this.preselectedItems});
+      required this.preselectedItems,
+      this.manualInput,
+      this.withManualInput = true});
 
   @override
   _DocumentVariantChooserDialogState createState() =>
@@ -23,6 +27,22 @@ class DocumentVariantChooserDialog extends StatefulWidget {
 class _DocumentVariantChooserDialogState
     extends State<DocumentVariantChooserDialog> {
   late List<String> selectedItems = widget.preselectedItems;
+  late List<String?> allItems = [];
+  final TextEditingController manualController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    allItems.addAll(widget.items);
+    if (widget.manualInput != null || widget.withManualInput) {
+      //adding null element to use it as placeholder in itemBuilder and show TextField
+      allItems.add(null);
+    }
+    if (widget.manualInput != null) {
+      //prefill TextField with text, if there is any filled previously
+      manualController.text = widget.manualInput!;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,22 +64,38 @@ class _DocumentVariantChooserDialogState
               const SizedBox(height: DEFAULT_MARGIN),
               Flexible(
                 child: ListView.builder(
+                    padding: const EdgeInsets.only(bottom: DEFAULT_MARGIN),
                     shrinkWrap: true,
-                    itemCount: widget.items.length,
+                    itemCount: allItems.length,
                     itemBuilder: (context, index) {
-                      return ListElement(
-                        item: widget.items[index],
-                        isChecked: selectedItems.contains(widget.items[index]),
-                        onItemSelected: (item) {
-                          setState(() {
-                            if (selectedItems.contains(item)) {
-                              selectedItems.remove(item);
-                            } else {
-                              selectedItems.add(item);
-                            }
-                          });
-                        },
-                      );
+                      String? item = allItems[index];
+                      if (item == null) {
+                        //if item in allItems == null, then return TextField
+                        return TextField(
+                          controller: manualController,
+                          style: const TextStyle(fontSize: FONT_TEXT),
+                          decoration: InputDecoration(
+                              hintStyle: const TextStyle(fontSize: FONT_TEXT),
+                              hintText: AppLocalizations.of(context)!
+                                  .input_variant_hint),
+                        );
+                      } else {
+                        // else - return default checkbox list element
+                        return ListElement(
+                          item: item,
+                          isChecked:
+                              selectedItems.contains(widget.items[index]),
+                          onItemSelected: (item) {
+                            setState(() {
+                              if (selectedItems.contains(item)) {
+                                selectedItems.remove(item);
+                              } else {
+                                selectedItems.add(item);
+                              }
+                            });
+                          },
+                        );
+                      }
                     }),
               ),
               const SizedBox(height: DEFAULT_MARGIN),
@@ -69,7 +105,8 @@ class _DocumentVariantChooserDialogState
                 children: [
                   TextButton(
                       onPressed: () {
-                        widget.onSubmit(selectedItems);
+                        //getting input text from manualController of TextField and passing in lambda's second param
+                        widget.onSubmit(selectedItems, manualController.text);
                         Navigator.of(context).pop();
                       },
                       child: Text(AppLocalizations.of(context)!
@@ -110,12 +147,13 @@ class ListElement extends StatelessWidget {
         children: [
           Icon(isChecked ? Icons.check_box : Icons.check_box_outline_blank),
           const SizedBox(width: DEFAULT_MARGIN_SMALL),
-
-          Expanded(
-            child: Text(item, style: const TextStyle(fontSize: FONT_TEXT), softWrap: true,
-                textAlign: TextAlign.start,
-                overflow: TextOverflow.ellipsis,
-                ),
+          Flexible(
+            child: Text(
+              item, style: const TextStyle(fontSize: FONT_TEXT), softWrap: true,
+              textAlign: TextAlign.start,
+              //no need to use overflow logic if we need softWrap
+              //overflow: TextOverflow.ellipsis,
+            ),
           ),
         ],
       ),

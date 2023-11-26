@@ -11,6 +11,7 @@
   "share": "Сгенерировать документ и поделиться",
   "save": "Cгенерировать документ и сохранить",
   "print": "Cгенерировать документ и распечатать",
+  "input_variant_hint": "Введите свой вариант вручную (опционально)",
   "document_multiple_choose_item_dialog_label": "Выберите варианты",
   "document_multiple_choose_item_dialog_submit_button": "Вставить",
   "document_multiple_choose_item_dialog_cancel_button": "Отмена"
