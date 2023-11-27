@@ -2,6 +2,7 @@ import 'package:desktop_doc_generator/common/pdf_converter_interface.dart';
 import 'package:flutter/material.dart';
 import 'package:pdf/widgets.dart' as pw;
 
+import '../common/abstract_pdf_widget.dart';
 import '../common/date_button_with_title.dart';
 import '../common/dropdown_item.dart';
 import '../common/header.dart';
@@ -49,7 +50,6 @@ class _ContentTemplateTwo extends State<ContentTemplateTwo>
       title: GROUP,
       items: GROUP_ITEMS,
       preselectedItem: GROUP_ITEMS.first,
-      convertToString: (item) => item,
     ),
     InputFieldWithTitle(
       title: HOMEADDRES,
@@ -61,13 +61,11 @@ class _ContentTemplateTwo extends State<ContentTemplateTwo>
       title: FAMILY,
       items: FAMILY_ITEMS,
       preselectedItem: FAMILY_ITEMS.first,
-      convertToString: (item) => item,
     ),
     DropdownItem<String>(
       title: CONDITIONS,
       items: CONDITIONS_ITEMS,
       preselectedItem: CONDITIONS_ITEMS.first,
-      convertToString: (item) => item,
     ),
     const VerticalPdfMargin(margin: DEFAULT_MARGIN),
     const SmallHeader(smallHeader: INFROMATION_ABOUT_PARENTS),
@@ -82,13 +80,11 @@ class _ContentTemplateTwo extends State<ContentTemplateTwo>
       title: MOTHERS_EDUCATION,
       items: EDUCATIONS_ITEMS,
       preselectedItem: EDUCATIONS_ITEMS.first,
-      convertToString: (item) => item,
     ),
     DropdownItem<String>(
       title: MOTHERS_OCCUPATION,
       items: MOTHERS_OCCUPATION_ITEMS,
       preselectedItem: MOTHERS_OCCUPATION_ITEMS.first,
-      convertToString: (item) => item,
     ),
     InputFieldWithTitle(
       title: MOTHERS_WORK,
@@ -107,13 +103,11 @@ class _ContentTemplateTwo extends State<ContentTemplateTwo>
       title: FATHERS_EDUCATION,
       items: EDUCATIONS_ITEMS,
       preselectedItem: EDUCATIONS_ITEMS.first,
-      convertToString: (item) => item,
     ),
     DropdownItem<String>(
       title: FATHERS_OCCUPATION,
       items: FATHERS_OCCUPATION_ITEMS,
       preselectedItem: FATHERS_OCCUPATION_ITEMS.first,
-      convertToString: (item) => item,
     ),
     InputFieldWithTitle(
       title: FATHERS_WORK,
@@ -125,7 +119,6 @@ class _ContentTemplateTwo extends State<ContentTemplateTwo>
       title: HELP_PROVIDED,
       items: HELP_PROVIDED_ITEMS,
       preselectedItem: HELP_PROVIDED_ITEMS.first,
-      convertToString: (item) => item,
     ),
     const VerticalPdfMargin(margin: DEFAULT_MARGIN),
     const SmallHeader(smallHeader: PECULIARITIES_GAMING),
@@ -133,25 +126,21 @@ class _ContentTemplateTwo extends State<ContentTemplateTwo>
       title: CHARACTER_OF_ACTIVITY_TOYS,
       items: CHARACTER_OF_ACTIVITY_TOYS_ITEMS,
       preselectedItem: CHARACTER_OF_ACTIVITY_TOYS_ITEMS.first,
-      convertToString: (item) => item,
     ),
     DropdownItem<String>(
       title: INTEREST_IN_TOYS,
       items: INTEREST_IN_TOYS_ITEMS,
       preselectedItem: INTEREST_IN_TOYS_ITEMS.first,
-      convertToString: (item) => item,
     ),
     DropdownItem<String>(
       title: FAIRNESS_TOYS,
       items: FAIRNESS_TOYS_ITEMS,
       preselectedItem: FAIRNESS_TOYS_ITEMS.first,
-      convertToString: (item) => item,
     ),
     DropdownItem<String>(
       title: USE_STUFF,
       items: USE_STUFF_ITEMS,
       preselectedItem: USE_STUFF_ITEMS.first,
-      convertToString: (item) => item,
     ),
     const VerticalPdfMargin(margin: DEFAULT_MARGIN),
     const SmallHeader(smallHeader: ADAPTIVE_ACTIVITY),
@@ -159,19 +148,16 @@ class _ContentTemplateTwo extends State<ContentTemplateTwo>
       title: SELFCATERING,
       items: SELFCATERING_ITEMS,
       preselectedItem: SELFCATERING_ITEMS.first,
-      convertToString: (item) => item,
     ),
     DropdownItem<String>(
       title: COMMUNICATION_SKILLS,
       items: COMMUNICATION_SKILLS_ITEMS,
       preselectedItem: COMMUNICATION_SKILLS_ITEMS.first,
-      convertToString: (item) => item,
     ),
     DropdownItem<String>(
       title: CHOOSEN_ACTIVITY,
       items: CHOOSEN_ACTIVITY_ITEMS,
       preselectedItem: CHOOSEN_ACTIVITY_ITEMS.first,
-      convertToString: (item) => item,
     ),
     const VerticalPdfMargin(margin: DEFAULT_MARGIN),
     const SmallHeader(smallHeader: LEVEL_OF_SPEC_PREPARATION),
@@ -179,31 +165,26 @@ class _ContentTemplateTwo extends State<ContentTemplateTwo>
       title: GENERAL_AWARENESS,
       items: GENERAL_AWARENESS_ITEMS,
       preselectedItem: GENERAL_AWARENESS_ITEMS.first,
-      convertToString: (item) => item,
     ),
     DropdownItem<String>(
       title: ELEMENTS_OF_MATH,
       items: ELEMENTS_OF_MATH_ITEMS,
       preselectedItem: ELEMENTS_OF_MATH_ITEMS.first,
-      convertToString: (item) => item,
     ),
     DropdownItem<String>(
       title: LETTERS_KNOWLEDGE,
       items: LETTERS_KNOWLEDGE_ITEMS,
       preselectedItem: LETTERS_KNOWLEDGE_ITEMS.first,
-      convertToString: (item) => item,
     ),
     DropdownItem<String>(
       title: ARTS,
       items: ARTS_ITEMS,
       preselectedItem: ARTS_ITEMS.first,
-      convertToString: (item) => item,
     ),
     DropdownItem<String>(
       title: ARTS,
       items: ARTS_ITEMS,
       preselectedItem: ARTS_ITEMS.first,
-      convertToString: (item) => item,
     ),
     const VerticalPdfMargin(margin: DEFAULT_MARGIN),
     const Header(header: RESULT_COUNCALER_TEACHER),
@@ -216,19 +197,16 @@ class _ContentTemplateTwo extends State<ContentTemplateTwo>
       title: CONTACT,
       items: CONTACT_ITEMS,
       preselectedItem: CONTACT_ITEMS.first,
-      convertToString: (item) => item,
     ),
     DropdownItem<String>(
       title: EMOTIONS,
       items: EMOTIONS_ITEMS,
       preselectedItem: EMOTIONS_ITEMS.first,
-      convertToString: (item) => item,
     ),
     DropdownItem<String>(
       title: EMOTIONS,
       items: EMOTIONS_ITEMS,
       preselectedItem: EMOTIONALFON_ITEMS.first,
-      convertToString: (item) => item,
     ),
     const VerticalPdfMargin(margin: DEFAULT_MARGIN),
     const SmallHeader(smallHeader: REACTIONFORPOOCHRENIEIPORICANIE),
@@ -236,25 +214,21 @@ class _ContentTemplateTwo extends State<ContentTemplateTwo>
       title: REACTIONPOSSHRENIE,
       items: REACTIONPOSSHRENIE_ITEMS,
       preselectedItem: REACTIONPOSSHRENIE_ITEMS.first,
-      convertToString: (item) => item,
     ),
     DropdownItem<String>(
       title: REACTIONPORICATIEN,
       items: REACTIONPORICATIEN_ITEMS,
       preselectedItem: REACTIONPORICATIEN_ITEMS.first,
-      convertToString: (item) => item,
     ),
     DropdownItem<String>(
       title: SELFESTIMATE,
       items: SELFESTIMATE_ITEMS,
       preselectedItem: SELFESTIMATE_ITEMS.first,
-      convertToString: (item) => item,
     ),
     DropdownItem<String>(
       title: CARACTER_SPECIAL,
       items: CARACTER_SPECIAL_ITEMS,
       preselectedItem: CARACTER_SPECIAL_ITEMS.first,
-      convertToString: (item) => item,
     ),
     const VerticalPdfMargin(margin: DEFAULT_MARGIN_SMALL),
     const SmallHeader(smallHeader: CONDITION_ACTIVITY),
@@ -262,31 +236,26 @@ class _ContentTemplateTwo extends State<ContentTemplateTwo>
       title: STATIV_DYNAMIC_COORDINATION,
       items: COORDINATION_ACTIVITY_ITEMS,
       preselectedItem: COORDINATION_ACTIVITY_ITEMS.first,
-      convertToString: (item) => item,
     ),
     DropdownItem<String>(
       title: GENERAL_MOTORICA,
       items: GENERAL_MOTORICA_ITEMS,
       preselectedItem: GENERAL_MOTORICA_ITEMS.first,
-      convertToString: (item) => item,
     ),
     DropdownItem<String>(
       title: LITTLE_MOTORICA,
       items: LITTLE_MOTORICA_ITEMS,
       preselectedItem: LITTLE_MOTORICA_ITEMS.first,
-      convertToString: (item) => item,
     ),
     DropdownItem<String>(
       title: MIMICAL_MOTORICA,
       items: MIMICAL_MOTORICA_ITEMS,
       preselectedItem: MIMICAL_MOTORICA_ITEMS.first,
-      convertToString: (item) => item,
     ),
     DropdownItem<String>(
       title: PRIORITY_HAND,
       items: PRIORITY_HAND_ITEMS,
       preselectedItem: PRIORITY_HAND_ITEMS.first,
-      convertToString: (item) => item,
     ),
     const VerticalPdfMargin(margin: DEFAULT_MARGIN),
     const Header(header: DEVELOP_QUARIS_ACTIVITY),
@@ -296,96 +265,196 @@ class _ContentTemplateTwo extends State<ContentTemplateTwo>
       title: PROIZVOL,
       items: PROIZVOL_ITEMS,
       preselectedItem: PROIZVOL_ITEMS.first,
-      convertToString: (item) => item,
     ),
     DropdownItem<String>(
       title: SUSTAINABILITY,
       items: SUSTAINABILITY_ITEMS,
       preselectedItem: SUSTAINABILITY_ITEMS.first,
-      convertToString: (item) => item,
     ),
     DropdownItem<String>(
       title: VOLUME,
       items: VOLUME_ITEMS,
       preselectedItem: VOLUME_ITEMS.first,
-      convertToString: (item) => item,
     ),
     DropdownItem<String>(
       title: PERCEPTION,
       items: PERCEPTION_ITEMS,
       preselectedItem: PERCEPTION_ITEMS.first,
-      convertToString: (item) => item,
     ),
     DropdownItem<String>(
       title: TACTICAL_PERCEPTION,
       items: TACTICAL_PERCEPTION_ITEMS,
       preselectedItem: TACTICAL_PERCEPTION_ITEMS.first,
-      convertToString: (item) => item,
     ),
     DropdownItem<String>(
       title: SPACE_PERSEPTION,
       items: SPACE_PERSEPTION_ITEMS,
       preselectedItem: SPACE_PERSEPTION_ITEMS.first,
-      convertToString: (item) => item,
     ),
     DropdownItem<String>(
       title: TIME_PERSEPTION,
       items: TIME_PERSEPTION_ITEMS,
       preselectedItem: TIME_PERSEPTION_ITEMS.first,
-      convertToString: (item) => item,
     ),
     DropdownItem<String>(
       title: CONSTRUCTIVE_PRACSIS,
       items: CONSTRUCTIVE_PRACSIS_ITEMS,
       preselectedItem: CONSTRUCTIVE_PRACSIS_ITEMS.first,
-      convertToString: (item) => item,
     ),
     DropdownItem<String>(
       title: MEMORY,
       items: MEMORY_ITEMS,
       preselectedItem: MEMORY_ITEMS.first,
-      convertToString: (item) => item,
     ),
-        DropdownItem<String>(
-          title: IMAGINATION,
-          items: IMAGINATION_ITEMS,
-          preselectedItem: IMAGINATION_ITEMS.first,
-          convertToString: (item) => item,
-        ),
-        const VerticalPdfMargin(margin: DEFAULT_MARGIN_SMALL),
-        const SmallHeader(smallHeader: THINKING),
-        DropdownItem<String>(
-          title: ACCEPT_TASK,
-          items: ACCEPT_TASK_ITEMS,
-          preselectedItem: ACCEPT_TASK_ITEMS.first,
-          convertToString: (item) => item,
-        ),
-        DropdownItem<String>(
-          title: MODES_OF_ACTION,
-          items: MODES_OF_ACTION_ITEMS,
-          preselectedItem: MODES_OF_ACTION_ITEMS.first,
-          convertToString: (item) => item,
-        ),
-        DropdownItem<String>(
-          title: FORM_OF_THINK,
-          items: FORM_OF_THINK_ITEMS,
-          preselectedItem: FORM_OF_THINK_ITEMS.first,
-          convertToString: (item) => item,
-        ),
-        const VerticalPdfMargin(margin: DEFAULT_MARGIN_SMALL),
-        const SmallHeader(smallHeader: OPER_OF_THINK),
-        DropdownItem<String>(
-          title: ANALYS_SYNTES,
-          items: ANALYS_SYNTES_ITEMS,
-          preselectedItem: ANALYS_SYNTES_ITEMS.first,
-          convertToString: (item) => item,
-        ),
-        
-
-
-
-
-
+    DropdownItem<String>(
+      title: IMAGINATION,
+      items: IMAGINATION_ITEMS,
+      preselectedItem: IMAGINATION_ITEMS.first,
+    ),
+    const VerticalPdfMargin(margin: DEFAULT_MARGIN_SMALL),
+    const SmallHeader(smallHeader: THINKING),
+    DropdownItem<String>(
+      title: ACCEPT_TASK,
+      items: ACCEPT_TASK_ITEMS,
+      preselectedItem: ACCEPT_TASK_ITEMS.first,
+    ),
+    DropdownItem<String>(
+      title: MODES_OF_ACTION,
+      items: MODES_OF_ACTION_ITEMS,
+      preselectedItem: MODES_OF_ACTION_ITEMS.first,
+    ),
+    DropdownItem<String>(
+      title: FORM_OF_THINK,
+      items: FORM_OF_THINK_ITEMS,
+      preselectedItem: FORM_OF_THINK_ITEMS.first,
+    ),
+    const VerticalPdfMargin(margin: DEFAULT_MARGIN_SMALL),
+    const SmallHeader(smallHeader: OPER_OF_THINK),
+    DropdownItem<String>(
+      title: ANALYS_SYNTES,
+      items: ANALYS_SYNTES_ITEMS,
+      preselectedItem: ANALYS_SYNTES_ITEMS.first,
+    ),
+    DropdownItem<String>(
+      title: GENERALIZATION,
+      items: GENERALIZATION_ITEMS,
+      preselectedItem: GENERALIZATION_ITEMS.first,
+    ),
+    DropdownItem<String>(
+      title: PERENOS,
+      items: PERENOS_ITEMS,
+      preselectedItem: PERENOS_ITEMS.first,
+    ),
+    DropdownItem<String>(
+      title: SRAVNENIE,
+      items: SRAVNENIE_ITEMS,
+      preselectedItem: SRAVNENIE_ITEMS.first,
+    ),
+    DropdownItem<String>(
+      title: UPOR,
+      items: UPOR_ITEMS,
+      preselectedItem: UPOR_ITEMS.first,
+    ),
+    DropdownItem<String>(
+      title: RESULT_WORK,
+      items: RESULT_WORK_ITEMS,
+      preselectedItem: RESULT_WORK_ITEMS.first,
+    ),
+    DropdownItem<String>(
+      title: USE_KINDS_OF_HELP,
+      items: USE_KINDS_OF_HELP_ITEMS,
+      preselectedItem: USE_KINDS_OF_HELP_ITEMS.first,
+    ),
+    DropdownItem<String>(
+      title: OCCUPATION_ACTIVITY,
+      items: OCCUPATION_ACTIVITY_ITEMS,
+      preselectedItem: OCCUPATION_ACTIVITY_ITEMS.first,
+    ),
+    DropdownItem<String>(
+      title: MOTIVATION,
+      items: MOTIVATION_ITEMS,
+      preselectedItem: MOTIVATION_ITEMS.first,
+    ),
+    const VerticalPdfMargin(margin: DEFAULT_MARGIN_SMALL),
+    const SmallHeader(smallHeader: TEMP_ACTIVITY),
+    DropdownItem<String>(
+      title: TEMP,
+      items: TEMP_ITEMS,
+      preselectedItem: TEMP_ITEMS.first,
+    ),
+    DropdownItem<String>(
+      title: RABOTOSPOSOBNOST,
+      items: RABOTOSPOSOBNOST_ITEMS,
+      preselectedItem: RABOTOSPOSOBNOST_ITEMS.first,
+    ),
+    const VerticalPdfMargin(margin: DEFAULT_MARGIN),
+    DropdownItem<String>(
+      title: TEACHER_DEFECT,
+      items: TEACHER_DEFECT_ITEMS,
+      preselectedItem: TEACHER_DEFECT_ITEMS.first,
+    ),
+    const VerticalPdfMargin(margin: DEFAULT_MARGIN_SMALL),
+    const SmallHeader(smallHeader: OSOBENNOTI_RECHEVOGO),
+    DropdownItem<String>(
+      title: DORECHEVO,
+      items: DORECHEVO_ITEMS,
+      preselectedItem: DORECHEVO_ITEMS.first,
+    ),
+    DropdownItem<String>(
+      title: IMPRESSION_SPEECH,
+      items: IMPRESSION_SPEECH_ITEMS,
+      preselectedItem: IMPRESSION_SPEECH_ITEMS.first,
+    ),
+    DropdownItem<String>(
+      title: EKSPRESSION_SPEECH,
+      items: EKSPRESSION_SPEECH_ITEMS,
+      preselectedItem: EKSPRESSION_SPEECH_ITEMS.first,
+    ),
+    DropdownItem<String>(
+      title: DICTIONARY,
+      items: DICTIONARY_ITEMS,
+      preselectedItem: DICTIONARY_ITEMS.first,
+    ),
+    DropdownItem<String>(
+      title: SLOG_STRUCTURE,
+      items: SLOG_STRUCTURE_ITEMS,
+      preselectedItem: SLOG_STRUCTURE_ITEMS.first,
+    ),
+    DropdownItem<String>(
+      title: GRAMMAR_STRUCTURE,
+      items: GRAMMAR_STRUCTURE_ITEMS,
+      preselectedItem: GRAMMAR_STRUCTURE_ITEMS.first,
+    ),
+    DropdownItem<String>(
+      title: SOUNDS,
+      items: SOUNDS_ITEMS,
+      preselectedItem: SOUNDS_ITEMS.first,
+    ),
+    DropdownItem<String>(
+      title: ARTIKUL_APPARAT,
+      items: ARTIKUL_APPARAT_ITEMS,
+      preselectedItem: ARTIKUL_APPARAT_ITEMS.first,
+    ),
+    DropdownItem<String>(
+      title: ARTIKUL_MOTORICA,
+      items: ARTIKUL_MOTORICA_ITEMS,
+      preselectedItem: ARTIKUL_MOTORICA_ITEMS.first,
+    ),
+    DropdownItem<String>(
+      title: ZAIKANIE,
+      items: ZAIKANIE_ITEMS,
+      preselectedItem: ZAIKANIE_ITEMS.first,
+    ),
+    DropdownItem<String>(
+      title: FONEMATIC_HEAR,
+      items: FONEMATIC_HEAR_ITEMS,
+      preselectedItem: FONEMATIC_HEAR_ITEMS.first,
+    ),
+    DropdownItem<String>(
+      title: FONEMATIC_ANALIS_SYNTES,
+      items: FONEMATIC_ANALIS_SYNTES_ITEMS,
+      preselectedItem: FONEMATIC_ANALIS_SYNTES_ITEMS.first,
+    ),
   ]);
 
   @override
@@ -402,8 +471,13 @@ class _ContentTemplateTwo extends State<ContentTemplateTwo>
   }
 
   @override
-  Future<List<pw.Widget>> getListPDFWidgets() {
-    // TODO: implement getListPDFWidgets
-    throw UnimplementedError();
+  Future<List<pw.Widget>> getListPDFWidgets() async {
+    List<pw.Widget> rv = [];
+
+    for (Widget widget in mainColumn.children) {
+      rv.add(await (widget as AbstractPdfWidget).getPwWidget());
+    }
+
+    return rv;
   }
 }

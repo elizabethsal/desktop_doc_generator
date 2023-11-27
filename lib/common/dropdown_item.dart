@@ -3,21 +3,23 @@ import 'package:desktop_doc_generator/common/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:pdf/widgets.dart' as pw;
 
+import '../resources/colors.dart';
 import '../resources/const.dart';
 import '../resources/font_loader.dart';
+import 'document_variant_chooser_dialog.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class DropdownItem<T> extends StatefulWidget implements AbstractPdfWidget {
   final List<T> items;
   final T preselectedItem;
   final String title;
-  final String Function(T item) convertToString;
 
-  DropdownItem(
-      {super.key,
-      required this.items,
-      required this.preselectedItem,
-      required this.title,
-      required this.convertToString});
+  DropdownItem({
+    super.key,
+    required this.items,
+    required this.preselectedItem,
+    required this.title,
+  });
 
   final _DropdownItem<T> state = _DropdownItem();
 
@@ -28,18 +30,21 @@ class DropdownItem<T> extends StatefulWidget implements AbstractPdfWidget {
   Future<pw.Widget> getPwWidget() {
     return state.getPwWidget();
   }
+
+  String convertedToString() {
+    return state.convertedToString();
+  }
 }
 
 class _DropdownItem<T> extends State<DropdownItem<T>>
     implements AbstractPdfWidget {
-  late T selectedItem;
-  String finalResult = "";
   final double fontSize = FONT_TEXT;
+  List<String> selectedItems = [];
+  String? manualInput;
 
-  @override
-  void initState() {
-    super.initState();
-    selectedItem = widget.items.first;
+  String convertedToString() {
+    String manualInputSeparator = selectedItems.isEmpty ? "" : "; ";
+    return selectedItems.join("; ") + (manualInput == null ? "" : manualInputSeparator + manualInput!) ;
   }
 
   @override
@@ -58,28 +63,30 @@ class _DropdownItem<T> extends State<DropdownItem<T>>
                     style: TextStyle(fontSize: fontSize),
                   )),
               Expanded(
-                child: DropdownButton(
-                  itemHeight: null,
-                  isExpanded: true,
-                  value: selectedItem,
-                  items: widget.items
-                      .map((value) => DropdownMenuItem(
-                          value: value,
-                          child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  vertical: DEFAULT_MARGIN_SMALL),
-                              child: Text(widget.convertToString(value),
-                                  softWrap: true,
-                                  style: TextStyle(fontSize: fontSize)))))
-                      .toList(),
-                  onChanged: (item) {
-                    if (item != null) {
-                      setState(() {
-                        selectedItem = item;
+                child: Text(
+                        selectedItems.isEmpty && (manualInput?.isEmpty ?? true)
+                            ? AppLocalizations.of(context)!
+                                .document_multiple_choose_item_dialog_label
+                            : convertedToString(),
+                        style: const TextStyle(
+                            fontSize: FONT_TEXT, color: TEXT_HYPERLINK_COLOR))
+                    .setOnClickListener(() {
+                  showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return DocumentVariantChooserDialog(
+                          preselectedItems: selectedItems,
+                          onSubmit: (elements, manualInput) {
+                            setState(() {
+                              selectedItems = elements;
+                              this.manualInput = manualInput;
+                            });
+                          },
+                          manualInput: this.manualInput,
+                          items: widget.items.cast(),
+                        );
                       });
-                    }
-                  },
-                ),
+                }),
               )
             ]));
       },
@@ -88,7 +95,7 @@ class _DropdownItem<T> extends State<DropdownItem<T>>
 
   @override
   Future<pw.Widget> getPwWidget() async {
-    return pw.Text("${widget.title}${widget.convertToString(selectedItem)}",
+    return pw.Text("${widget.title}${widget.convertedToString()}",
         textAlign: pw.TextAlign.left,
         style: pw.TextStyle(font: await getPwFont(), fontSize: fontSize),
         softWrap: true);

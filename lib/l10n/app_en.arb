@@ -10,5 +10,9 @@
   },
   "share": "Generate document & share",
   "save": "Generate document & save",
-  "print": "Generate document & print"
+  "print": "Generate document & print",
+  "input_variant_hint": "Input your variant (optional)",
+  "document_multiple_choose_item_dialog_label": "Choose variants",
+  "document_multiple_choose_item_dialog_submit_button": "Submit",
+  "document_multiple_choose_item_dialog_cancel_button": "Cancel"
 }
