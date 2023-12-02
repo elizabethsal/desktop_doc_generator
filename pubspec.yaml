@@ -45,6 +45,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   printing: ^5.11.1
+  win32: ^5.1.1
 
 dev_dependencies:
   flutter_test:
