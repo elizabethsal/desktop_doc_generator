@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pdf/widgets.dart' as pw;
 
+import '../common/InputHeader.dart';
 import '../common/abstract_pdf_widget.dart';
 import '../common/date_button_with_title.dart';
 import '../common/dropdown_item.dart';
@@ -33,7 +34,7 @@ class _ContentTemplateOneState extends State<ContentTemplateOne>
   Column mainColumn = Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      const Header(header: HEADER),
+      InputHeader(controller: TextEditingController(), hint: INPUT_HEADER_HINT),
       const VerticalPdfMargin(margin: DEFAULT_MARGIN),
       InputFieldWithTitle(
         title: FIOCHILD,

@@ -7,7 +7,6 @@ import '../resources/font_loader.dart';
 
 class Header extends StatelessWidget implements AbstractPdfWidget {
   final String header;
-  final double fontSize = FONT_TEXT;
 
   const Header({super.key, required this.header});
 
@@ -15,7 +14,7 @@ class Header extends StatelessWidget implements AbstractPdfWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Text(
-        style: TextStyle(fontWeight: FontWeight.bold, fontSize: fontSize),
+        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: FONT_TEXT),
         textAlign: TextAlign.center,
         header,
       ),
@@ -26,7 +25,7 @@ class Header extends StatelessWidget implements AbstractPdfWidget {
   Future<pw.Widget> getPwWidget() async {
     return pw.Center(
         child: pw.Text(
-      style: pw.TextStyle(fontSize: fontSize, font: await getPwFontBold()),
+      style: pw.TextStyle(fontSize: FONT_TEXT, font: await getPwFontBold()),
       textAlign: pw.TextAlign.center,
       header,
     ));

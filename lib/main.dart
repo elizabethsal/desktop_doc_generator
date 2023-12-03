@@ -211,14 +211,20 @@ class BottomSheetBody extends StatelessWidget {
     List<Widget> buttons = [
       BottomSheetElement(
         title: isMobile ? AppLocalizations.of(context)!.share : AppLocalizations.of(context)!.save,
-        onClickAction: () => onShareAction(),
+        onClickAction: () {
+          onShareAction();
+          Navigator.of(context).pop();
+        },
         icon: Icon(isMobile
             ? Icons.share
             : Icons.download),
       ),
       BottomSheetElement(
         title: AppLocalizations.of(context)!.print,
-        onClickAction: () => onPrintAction(),
+        onClickAction: () {
+          onPrintAction();
+          Navigator.of(context).pop();
+        },
         icon: const Icon(Icons.print),
       ),
     ];
