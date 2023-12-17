@@ -4,7 +4,6 @@ import 'package:desktop_doc_generator/common/extensions.dart';
 import 'package:desktop_doc_generator/common/pdf_converter_interface.dart';
 import 'package:desktop_doc_generator/resources/const.dart';
 import 'package:desktop_doc_generator/template_one/template_one.dart';
-import 'package:desktop_doc_generator/template_two/template_two.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -54,64 +53,27 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  var selectedIndex = 0;
 
   @override
   Widget build(
     BuildContext context,
   ) {
-    Widget page;
-    switch (selectedIndex) {
-      case 0:
-        page = ContentTemplateOne();
-        break;
-      case 1:
-        page = ContentTemplateTwo();
-        break;
-      default:
-        throw UnimplementedError('no templates for $selectedIndex');
-    }
-
+    var page = ContentTemplateOne();
     return LayoutBuilder(builder: (context, constraints) {
       return Container(
         color: Theme.of(context).colorScheme.background,
         child: SafeArea(
           child: Scaffold(
-            body: Row(
-              children: [
-                //    Text(AppLocalizations.of(context)!.hello_world),
-                NavigationRail(
-                  extended: constraints.maxWidth >= 1000,
-                  //  extended: false,
-                  destinations: [
-                    NavigationRailDestination(
-                      icon: getNumberedNavigationIcon(context, 1),
-                      label: Text(AppLocalizations.of(context)!.template_placeholder(1)),
-                    ),
-                    NavigationRailDestination(
-                      icon: getNumberedNavigationIcon(context, 2),
-                      label: Text(AppLocalizations.of(context)!.template_placeholder(2)),
-                    ),
-                  ],
-                  selectedIndex: selectedIndex,
-                  onDestinationSelected: (value) {
-                    setState(() {
-                      selectedIndex = value;
-                    });
-                  },
-                ),
-                Expanded(child: page),
-              ],
-            ),
+            body: page,
             floatingActionButton: FloatingActionButton(
               onPressed: () {
                 showModalBottomSheet(
                     context: context,
                     builder: (BuildContext context) => BottomSheetBody(
                           onShareAction: () =>
-                              saveOrSharePage(page as PdfConverterInterface),
+                              saveOrSharePage(page),
                           onPrintAction: () =>
-                              printPage(page as PdfConverterInterface),
+                              printPage(page),
                         ));
               },
               child: const Icon(Icons.add),
