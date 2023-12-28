@@ -132,8 +132,9 @@ class _MyHomePageState extends State<MyHomePage> {
         isMobile ? dir.path : await FilePicker.platform.getDirectoryPath();
     if (path == null) return;
 
+    String slash = Platform.isWindows ? "\\" : "/";
     File file = File(
-        "$path/$appName ${DateFormat(PDF_TITLE_TIMESTAMP).format(DateTime.now())}.pdf");
+        "$path$slash$appName ${DateFormat(PDF_TITLE_TIMESTAMP).format(DateTime.now())}.pdf");
 
     await file.create(recursive: true);
     await file.writeAsBytes(await pdf.save());
